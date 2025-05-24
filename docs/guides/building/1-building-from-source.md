@@ -41,12 +41,12 @@ sudo apt install -y musl-tools musl-dev
 - Docker & Docker Compose (Docker compose should come bundled)
 - [Poppler](https://poppler.freedesktop.org/)
 
-You need to install Poppler if you are running the server directly on your computer. If you are running the server using the [Dockerfile](./containers/Docbox.Dockerfile) it will be installed within the docker image 
+You need to install Poppler if you are running the server directly on your computer. If you are running the server using the [Dockerfile](https://github.com/docbox-nz/docbox/blob/main/containers/Docbox.Dockerfile) it will be installed within the docker image 
 
 
 ## Terraform (Infrastructure & Deploying)
 
-For setting up the infrastructure and deploying to it you can find the terraform instructions [Here](./docs/TERRAFORM.md)
+For setting up the infrastructure and deploying to it you can find the terraform instructions [Here](/docs/guides/infrastructure/intro)
 
 ## Local testing 
 

@@ -41,7 +41,7 @@ To setup the instructions for doing this are [Here](/docs/guides/infrastructure/
 > [!IMPORTANT]
 > Terraform uses a state file to track the currently deployed infrastructure. In order to keep this in sync and backed up we will be using the S3 "backend" for terraform which will allow it to store the state in an S3 bucket so we don't have to manually share the state file.
 
-You will need to follow [Setup Terraform S3](/docs/infrastructure/aws/setup-terraform-s3) to setup a bucket to store the state. The same bucket can be reused for multiple infrastructures as long as the key used in the terraform config is different
+You will need to follow [Setup Terraform S3](/docs/guides/infrastructure/aws/setup-terraform-s3) to setup a bucket to store the state. The same bucket can be reused for multiple infrastructures as long as the key used in the terraform config is different
 
 ## 5. Initialize Terraform
 
