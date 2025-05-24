@@ -1,0 +1,74 @@
+---
+id: document-box-stats
+title: "Get document box stats by scope"
+description: "Requests stats about a document box using its scope. Provides stats such as:"
+sidebar_label: "Get document box stats by scope"
+hide_title: true
+hide_table_of_contents: true
+api: eJzdVlFP2zAQ/ivWPW1SoN3E9pA3EAi6hw1B99RVyEkujSG1g33p2kX579PFSdvQDhggTdpTYp9933fnz3eugOTMQTiBUxOXc9QkTswSpgEk6GKrClJGQwhXeF+iIyccSXJCRqYkIUXSbYrMUpRO6ZlQvCg2BR6KS2sWKsFukyvjTEgX/tAHYmxI5iJVObrNMFf6bmuYmjxB6yAAU6CVzGSUQAgd6E1kljeNawigkFbOkXh9OKlAyzlCCA0RCEBxDIWkDB4Gds0rhEkFZdgLBwKweF8qiwmEZEsMwMUZziWEFdCqaNyTVXoGdR2sEZcHhFpqOlBJh5uhTNDuII9OO1i/Q6xMKaRFQdLOkNjxKymgXjzB4UwvlDW6ifktyUx5sSuMdujY/nE45E8f/HRbPF4iJiKpNCaslRidS8s8X0EAsdGEmtiHLIpcxY0aBreOHVW7REx0izH1KE+AWFU3jeYgaEeN5NajTnHTAArLoiPl+W9v3aAoTThrspoaO5fkpz4f7aTZ61mX8wgt57lxJH4qypTeFV79kM5bIHpXT2P6hLwBYuPoz3gMqCjHLR2cmOV1c5vrms1Hw6MnNKMNidSUOnmNQvr+L8bjS4HWGiu+XH/7KnzQ/BEOrZK5+sVFbiPuvsQsSgbc0U87v+/artNwQVScMfJV67zNw6d9d2ekCa2WObNaoPWU/+M01AHMkTLD9X+G1BR8yiCEQWSWg6qp8/WgawZKp6ZB2SiM9XJ8OdqJtDU1AXt7rmJk2HBdUPl2LNA6v2N4+OFwyFOFcTSXemvhOVK/JfqqFq1E14h64NXmuP5xg22Pg3BJgyKXSnN8pc2Zo0/0BHxPDLtIfK6nAWTGEdurKpIOv9u8rnn6vkS7gnAyDWAhrZIRn8SkgkQ5/k8gTGXu8JGUvLtqJfVePNal93JvJ6Xm7rGQedmcYwB3uFo/C+ppHXSN8cXMntXF91L0VPrvhTVTbucv4vN3Hf05xPwrosfMrziOYyxoy7ZTcfgdsL6252djqOvfLzujGw==
+sidebar_class_name: "get api-method"
+info_path: docs/api/docbox-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get document box stats by scope"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/box/{scope}/stats"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Requests stats about a document box using its scope. Provides stats such as:
+- Total files
+- Total links
+- Total folders
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"scope","in":"path","description":"Scope of the document box","required":true,"schema":{"type":"string"}},{"name":"x-tenant-id","in":"header","description":"ID of the tenant you are targeting","required":true,"schema":{"type":"string"}},{"name":"x-tenant-env","in":"header","description":"Environment of the tenant you are targeting","required":true,"schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Document box stats obtained successfully","content":{"application/json":{"schema":{"type":"object","required":["total_files","total_links","total_folders"],"properties":{"total_files":{"type":"integer","format":"int64","description":"Total number of files within the document box"},"total_folders":{"type":"integer","format":"int64","description":"Total number of folders within the document box"},"total_links":{"type":"integer","format":"int64","description":"Total number of links within the document box"}},"title":"DocumentBoxStats"}}}},"404":{"description":"Document box not found","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}},"500":{"description":"Internal server error","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

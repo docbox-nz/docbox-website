@@ -1,0 +1,65 @@
+---
+id: admin-flush-database-pool-cache
+title: "Flush database cache"
+description: "Empties all the database pool and credentials caches, you can use this endpoint"
+sidebar_label: "Flush database cache"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVUstuGzEM/BWBZyV2ipz2FqAtklMNxDltDINe0ZEALaVIXDfGYv+94NppnaA/kJMEPmaGHI4g+FKhaeHO9YFhY8FR7UrIEhJDAz/6LIGqwRiNeDIOBXdYyeSUokF2pivkiCVgrKbDzlO15pgG0yGboZIRH6ohdjkFlmcO+zlbkqCQfss/zEsoSabQvlD1/+H9HcSnQZ6ZiVzgl1N1FSwyV1cqBypgIWUqqKM8OGgAdcbtPg7Vb98Btwq4nYWDhUI1J65UoRnh2/JWn48L+f5XrLaYGYwcTJOFnsQn5cmpCljIKB4aWMy0i7nyyu2u3rkC75PiS5BIipy6XXozd6sH+OzCOXW/Xq/O+Rg64kraz9hrO0wWDlTqqWN5fXO91JBq6ZEvCn+qkIuln+V8YByhSyzE8vVPQI5ZpxZ6k0WOGFi3MpSoQ54cak+HARY+ebSx4NXKpoVxVOqnEqdJw68DlSM07cbCAUvAnTrYbi6PYPXrcQ3T9AcXzjDb
+sidebar_class_name: "post api-method"
+info_path: docs/api/docbox-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Flush database cache"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/admin/flush-db-cache"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Empties all the database pool and credentials caches, you can use this endpoint
+if you rotate your database credentials to refresh the database pool without
+needing to restart the server
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"204":{"description":"Database cache flushed"}}}
+>
+  
+</StatusCodes>
+
+
+      

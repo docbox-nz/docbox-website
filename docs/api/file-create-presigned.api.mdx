@@ -1,0 +1,73 @@
+---
+id: file-create-presigned
+title: "Create presigned file upload"
+description: "Creates a new 'presigned' upload, where the file is uploaded"
+sidebar_label: "Create presigned file upload"
+hide_title: true
+hide_table_of_contents: true
+api: eJzdWFlv2zgQ/ivEPO0CSnOnu3rrtimaxbYJkhT74BgBLY0sNhSpkpRj19B/L4aULaly4zTBHqhfLFNzfHNwDi/B8amFeARvhUQYR5CiTYwondAKYnhtkDu0jDOF9+wGSoNWTBWmN8CqUmqeRuw+R4PM5cgyIZEJ27zB9EalwmDi5II5za4O2SjRRSnR4e1a0JgYEi4lpmyy8GISKVC5G8Uzh4YJx3Ju2YozZcKtNEAEukTDCexZCjEQgNvEY241QAQlN7xAh4ZMXYLiBUIMNtElQgSCLC25y+Fb86+IgrAHma2R98LlQkEEBj9XwmAKsTMVRmCTHAsO8RLcovRKnBFqCnUdrfXOdxwqrtyOSFfac+QpmoH+szdMZ15r4GALXTFO3uZmio4EPxMCqtkWDKdqJoxWBSr3j4GpLJrt3jj3D1yy1i3EyETGSjSZNgWmTCs2wZzLjEi4J+jByri0G3CNVsAiUJWUMN4A0P96JESi/U9AioJP8Qd86en/JY+OAxta94dOF0SaaOVQOXrkZSlF4u/y7idLIJfD7NGTT5i4gTWXQWrnpoaCta4B4dauq0YLfgRNVDMtUzS33nFWfKGjQhS+JJaGqowTaAlJSzhIapJiCu4ghqrykvow33pWQmmd7tVMBXWjb4PQvpD3okBGJKuIkQRiD3mwjf1DJzG97gkKNV2XbG+2+gvV1OUQ79e+dqJyPXsHod1m+DrbgrCg+OwNoS6NTtBaoaa3iVaZmJIarfA886W6McaroWT/nty1FNZIiQYp0w8jFlzIH9F1SgzMlpiITCRDjVXoQ1sV2ztR3nLneJJTTbVdt060lshVx699DH/n6PImg+5EyXDuDE+o9LKOROrIqguQKxbMJXkZr6SDmBTUdQROOIkr8y7WPK+DF+vxAywbqOvm8rRpKJTDqa8Y6xQRyh0eDHut+LI9MUVRFZSWHRRhRLlY3fSmFEBNNP1u5A9sqZUNkTjY26evTRNP2ikdAQGzVULWZpWUC4ieXrm6tcdxexdKToEu1/RQGQFRU7XtsPqsXmwQzNNUhOtw0WP5pvGuJS6oFGyiqNdwNnGvMG+tfnUwZqP8NoUaL3/0Tr5swkPRqyM42tsbBug9l6vGZJhQMy5Fypq2wpR2rEA/jDD/xkeFNT4P9+0ZsesjeXd9fcHQGG3Yn1fnH1gwn76YRSO4FF8IR5tz/eAb5KRwEOLm/EG/vXOuPCXNA48dDT127eczFhoXS3QlU++oCbJMVyr9qT1yvCmHzpRDQ33DopmhCZB/Yjd0bjSU2vqmRPtODLsTPd9d+k2o3qWyu9vdm8jwy3ZiO51zWsK+mYLgMOO/HWcnRzvHL/df7hwdnxzsTA6zZOcg+f3kMDs54Rk/WY1TnWqx2sJWv0Pj2KtpcM20N7Mx6o1OJnrOXl2cDVzdvPIeD++lSJDsjteTMVWiGRobOPZe7L/Y82VQW1dw1SEMtf+7U2NPc2d2/f9vyU2+OJy73VLyMG5Wxs8/IRFo9phDBPFqKfZTZdSaQumYU+rEI1guJ9ziRyPrmo4/V2gWEI/GEcy4EXxCQRstIRWWntsV4bsO/OWySf9f2faVe6MxzSFX1JtnXFY+8BHc4WK96fvxpNmHnozvUSv5RogBSn/5XyP18+ZT8PzYev4YYOEvgScie8aO/iC29h+C5wJ7yma+HVqzRT4X3FO38Uf4rv1foAcyEL0OUHauF2XXjEETbDleJQmW7kHacafrXJxfXUMEk2bvL3RKPIbfU+/j9+Gyau+G0OvobAmSq2nFp0QbZNLnK9biMDY=
+sidebar_class_name: "post api-method"
+info_path: docs/api/docbox-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create presigned file upload"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/box/{scope}/file/presigned"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Creates a new "presigned" upload, where the file is uploaded
+directly to S3 [complete_presigned] is called by the client
+after it has completed its upload
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"scope","in":"path","description":"Scope to create the file within","required":true,"schema":{"type":"string"}},{"name":"x-tenant-id","in":"header","description":"ID of the tenant you are targeting","required":true,"schema":{"type":"string"}},{"name":"x-tenant-env","in":"header","description":"Environment of the tenant you are targeting","required":true,"schema":{"type":"string"}},{"name":"x-user-id","in":"header","description":"Optional ID of the user if performed on behalf of a user","required":false,"schema":{"type":["string","null"]}},{"name":"x-user-name","in":"header","description":"Optional name of the user if performed on behalf of a user","required":false,"schema":{"type":["string","null"]}},{"name":"x-user-image-id","in":"header","description":"Optional image ID of the user if performed on behalf of a user","required":false,"schema":{"type":["string","null"]}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","description":"Request to create a new presigned file upload","required":["name","folder_id","size","mime"],"properties":{"folder_id":{"type":"string","format":"uuid","description":"Folder to store the file in"},"mime":{"type":"string","description":"Mime type of the file"},"name":{"type":"string","description":"Name of the file being uploaded","minLength":1},"parent_id":{"type":["string","null"],"format":"uuid","description":"Optional parent file ID"},"processing_config":{"oneOf":[{"type":"null"},{"description":"Optional processing config","type":"object","properties":{"email":{"oneOf":[{"type":"null"},{"description":"Email specific processing configuration","type":"object","properties":{"skip_attachments":{"type":["boolean","null"],"description":"Whether to skip extracting attachments when processing an email","default":null}},"title":"EmailProcessingConfig"}],"default":null}},"title":"ProcessingConfig"}]},"size":{"type":"integer","format":"int32","description":"Size of the file being uploaded","minimum":1}},"title":"CreatePresignedRequest"}}},"required":true}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Created presigned upload successfully","content":{"application/json":{"schema":{"type":"object","required":["task_id","method","uri","headers"],"properties":{"headers":{"type":"object","additionalProperties":{"type":"string"},"propertyNames":{"type":"string"}},"method":{"type":"string"},"task_id":{"type":"string","format":"uuid"},"uri":{"type":"string"}},"title":"PresignedUploadResponse"}}}},"400":{"description":"Malformed or invalid request not meeting validation requirements","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}},"404":{"description":"Target folder could not be found","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}},"500":{"description":"Internal server error","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

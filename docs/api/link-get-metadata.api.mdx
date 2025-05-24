@@ -1,0 +1,73 @@
+---
+id: link-get-metadata
+title: "Get link website metadata"
+description: "Requests metadata for the link. This will make a request"
+sidebar_label: "Get link website metadata"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV01v2zgQ/SvEnHYBJc4uuhfdCiRIsyiaIE3Rg2sYtDSy2FCkQo4cewX998VQsizFbj6MvbTYUxyRM+/Nm+FwWAPJpYd4Ch+VuYdZBCn6xKmSlDUQwy0+VOjJiwJJppKkyKwTlKPQytyfirtcefGotBaFvEchhWsNvhmyYZtXhEJSbyJWUlcoyApck5MJDTw7W3wzvPERF8FOkUedCV8luZBekCKNkZAmFdeXN70hRGBLdJIpX6UQA+PMl0jzwY5SOlkgoeNgazCyQIjBJ7ZEiEBxrKWkHJ4K8Jl37Ng79CpFDplyZSACjlc5TCEmV2EEPsmxkBDXQJsyQJBTZglNE/WogZ9Kn8W9Ohc22+GS3Sr7BswIMusKSRBDVal0xGF9QmikoZMdjxxliu4ZJq2F2NhKSIeCpFsitUDHyNBTQLN6gcOFWSlnTYGG/lMyM97sS2s8el7/8+yM/4zBrxcklcG0zURfrr5KEvQ+q7TeQASJNYSG2FyWpVZJqMfJd88+6n0OdvEdk3E2pxCSEeSJIByUkEOdomvrJXEoCdO5pME/C4bX0tO8sKnKVPtpFkHp+FyQamMb2D5XKakkPCEVKIx1+JqjCdJnSqN4lF50LqEZkYlrsAavs3DQOhxTaQ2c+7HLLx6deMzt1lPvHqKXdNqLT6WH4nqCZ9RDhWJX0pVHx/RVIZc4H7qY7nwE8nut8aP0JLxcYSqCNXvdNset27bSj3HJlk/cNRGEDtjpBs2sGVbHi8f/KdqNdHyeWg/i6jzocISfTlSVoiEuP9fzDplsnhbnsAAPSPKKSgw68cq4HLcI+5BHViU76b3+X5tvrc0xwo/i/sTeBncdc2t734um7Swxsh0Q4Ynmq6L8ggcNaBpee3f2br/B80ZhLB+FyqTCOpFJpTnjfOt6q1c4HDaO7vRj1A93dzcCnbNO/P35+pNo6z7o6tEpqdU/yizF7n4al5lDyYB7pdZ9P3Tz9sp8ICovGPm2c96p89eh6+/KEDojNbNaoWsp/8IyNBEUSLnlSXKJFGZHyiGGycKuJ3UYGZsJV9uk7ia5ZjIoD2UyG3A7lHObLOxavL+52ou9WwoStOtaJchE4n5KCscBnW8tzk7/OD3jT6X1VEgz2HiJ1E4o2+l5wGkEW+9S97PM910OCdc0KbVUhiWonOZg2uxMYWHXEEG8HelDO4gg3g3bvb9ZBLn1xEZ1vZAevzjdNPz5oUK3gXg64xbklFxwBqc1pMrz7xTiTGqPzwj6221XnL+Ll54OB4PqPkqz6UfAGCCCe9z075VwYx3D6LlHxRFsttKGZt9N7ker9apnxkGSLZnxg6bnerRWb3tyvIZY+8wZMWt3vE8SLGmwttdP+aHSN6XLiztomn8BYeJuFg==
+sidebar_class_name: "get api-method"
+info_path: docs/api/docbox-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get link website metadata"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/box/{scope}/link/{link_id}/metadata"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Requests metadata for the link. This will make a request
+to the site at the link value to extract metadata from
+the website itself such as title, and OGP metadata
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"scope","in":"path","description":"Scope the link resides within","required":true,"schema":{"type":"string"}},{"name":"link_id","in":"path","description":"ID of the link to request","required":true,"schema":{"type":"string","format":"uuid"}},{"name":"x-tenant-id","in":"header","description":"ID of the tenant you are targeting","required":true,"schema":{"type":"string"}},{"name":"x-tenant-env","in":"header","description":"Environment of the tenant you are targeting","required":true,"schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Obtained link metadata successfully","content":{"application/json":{"schema":{"type":"object","required":["id","name","value","folder_id","created_at","created_by","last_modified_by"],"properties":{"created_at":{"type":"string","format":"date-time","description":"When the file was created"},"created_by":{"oneOf":[{"type":"null"},{"description":"User who created the file","type":"object","required":["id"],"properties":{"id":{"type":"string","description":"Unique ID of the user"},"image_id":{"type":["string","null"],"description":"Last saved image ID for the user"},"name":{"type":["string","null"],"description":"Last saved name for the user"}},"title":"User"}]},"folder_id":{"type":"string","format":"uuid","description":"Parent folder ID"},"id":{"type":"string","format":"uuid","description":"Unique identifier for the file"},"last_modified_at":{"type":["string","null"],"format":"date-time","description":"Last time the file was modified"},"last_modified_by":{"oneOf":[{"type":"null"},{"description":"User who last modified the file","type":"object","required":["id"],"properties":{"id":{"type":"string","description":"Unique ID of the user"},"image_id":{"type":["string","null"],"description":"Last saved image ID for the user"},"name":{"type":["string","null"],"description":"Last saved name for the user"}},"title":"User"}]},"name":{"type":"string","description":"Name of the link"},"value":{"type":"string","description":"value of the link"}},"title":"LinkWithExtra"}}}},"404":{"description":"Link not found or failed to resolve metadata","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}},"500":{"description":"Internal server error","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

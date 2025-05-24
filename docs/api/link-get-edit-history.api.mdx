@@ -1,0 +1,71 @@
+---
+id: link-get-edit-history
+title: "Get link edit history"
+description: "Request the edit history for the provided link"
+sidebar_label: "Get link edit history"
+hide_title: true
+hide_table_of_contents: true
+api: eJzdV1Fv2zgM/isCnzbAXXqH3YvfBqy39tCtRZfePQRBodhMrM2WXIlOmwv83w+UbCdO0iTNdvdweYkhifw+UiRFLoHkzEE8gmulv8M4ghRdYlVJymiI4Q4fK3QkKEOBqSKRKUfGLsTUWL9YWjNXKaYiZ/kITIlWsvBVCjHw4sMM6YFlHxpZiKCUVhZIaBl6CVoWCDG4xJQIEShGLiVlsEnnK5/wuKxZWHQqRSeeFGVKQwQWHytlMYWYbIURuCTDQkK8BFqUHoKs0jOo66hD9RxVuhf36qMw0xUuGWGDY16BGcHU2EISxFBVKu1xeD4j1FLT2YpHhjJFu4dJkBALUwlpUZC0M6QAdIobOgqo5wc4XOi5skYXqOmnkhnzYVca7dDx/q/n5/zXB7+ZkFQa0144QgSJ0YSaWECWZa4SH4WDb46lltuo0lrJcoqwcGvrZvINk/69jsBfS+W8L/y5CAokmUqSDG1REqYPkjiBSss5QCrYsLa3LyJSSXhGqsAtZ/+VoRaUKSeSTOoZiifpRCFThDqCqcqRY7dTPVrp1lWeM59+1L0cT6xLUCbJI7B3MRVvrqZChq3V6lsPbfIU7X8B7oE24ddxX8qwTbh7rR4rFCpFTWqq0DZVTLmurKEmu2D9bVX4l43z5WTDtC6ytmL/c7MjpHMmURxYvvZ5lBAeXII13kx9Xd0X0iFFQ+Hz57ZC11g1U1rmP+aG38P1FWaOqZhaU7CJK/BXX2JPHxmvzSvYVoS6KpjxZzPHoQmCMK591dvnms5wXxoj0PjUfu72VHdgB4k++y/4JPzJOtqAOSh6a3GuTOU6+UNm36E/eYTBZaP6YS7zqrW4/X7Z5HDiKJvv766Z8gbQ8TY38odM5ibmT6+arR5HQIpyPnmRKroMOd4m0bq+PuqQH7RFiZy/TdHtstdX3ui4UIvaK4jWie0kNWR9dfPGbBG6d2gDBYbvmrEVj+5W+5d0IHF3VsdV2fJcuNQWcnbwlenrupaOhJOcol6atbYdY6u2H/WvUcmSG+rqnV6937MHNf8ieH/+ftvhfF1CGxJTU+n0hO6iu5C+3svh8FagtcaKP77efBGh1HlbHFolc/W30jOx6oL6eWpRMuBWMjbru/q7zvRLovKCke8a5RDs/21Xk3WlCa2WObOaow2U/8duCK9uZnhmmaFPJB4DYhhMzPNg6QeTesCP9WDZdAb1gFPwbNWAKj01HrtB+miSiXkWH26vtuxvtrwbwn6uEmQycdePc4rM0bogcf7ul3fnvoIaR4XUawc/IYU2YqMh7kEuV1f3+pmu8SbhMw3KXCrtK5XNWW3w0wgm5hkiiNsRrpGMV8NVz1vjCDLjiAWXy4l0eG/zuublxwrtAuLROIK5tEpO2JejJaTK8XcK8VTmDveY9+auCZW34tC4uNOwdj7Q7MTmnQKI4DsuuhmVH9STGO0bJE9g07q3HtdRO62d7K2jRsudJAOZ/hDbcT3ZV68bM48hFkbbHrNw4kOSYElre1vVjZuJrkR8uhhCXf8DrLjvGA==
+sidebar_class_name: "get api-method"
+info_path: docs/api/docbox-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get link edit history"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/box/{scope}/link/{link_id}/edit-history"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Request the edit history for the provided link
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"scope","in":"path","description":"Scope the link resides within","required":true,"schema":{"type":"string"}},{"name":"link_id","in":"path","description":"ID of the link to request","required":true,"schema":{"type":"string","format":"uuid"}},{"name":"x-tenant-id","in":"header","description":"ID of the tenant you are targeting","required":true,"schema":{"type":"string"}},{"name":"x-tenant-env","in":"header","description":"Environment of the tenant you are targeting","required":true,"schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Obtained edit history","content":{"application/json":{"schema":{"type":"array","items":{"type":"object","required":["id","user","type","metadata","created_at"],"properties":{"created_at":{"type":"string","format":"date-time","description":"When this change was made"},"file_id":{"type":["string","null"],"format":"uuid","description":"ID of the file that was edited (If a file was edited)"},"folder_id":{"type":["string","null"],"format":"uuid","description":"ID of the file that was edited (If a folder was edited)"},"id":{"type":"string","format":"uuid","description":"Unique identifier for this history entry"},"link_id":{"type":["string","null"],"format":"uuid","description":"ID of the file that was edited (If a link was edited)"},"metadata":{"description":"Metadata associated with the change","oneOf":[{"type":"object","required":["target_id","type"],"properties":{"original_id":{"type":["string","null"],"format":"uuid","description":"Folder moved from"},"target_id":{"type":"string","format":"uuid","description":"Folder moved to"},"type":{"type":"string","enum":["MoveToFolder"]}}},{"type":"object","required":["original_name","new_name","type"],"properties":{"new_name":{"type":"string","description":"New name"},"original_name":{"type":"string","description":"Previous name"},"type":{"type":"string","enum":["Rename"]}}},{"type":"object","required":["previous_value","new_value","type"],"properties":{"new_value":{"type":"string","description":"New URL"},"previous_value":{"type":"string","description":"Previous URL"},"type":{"type":"string","enum":["LinkValue"]}}}],"title":"EditHistoryMetadata"},"type":{"description":"The type of change that was made","type":"string","enum":["MoveToFolder","Rename","LinkValue"],"title":"EditHistoryType"},"user":{"description":"User that made the edit","type":"object","properties":{"id":{"type":["string","null"],"description":"Unique ID of the user"},"image_id":{"type":["string","null"],"description":"Last saved image ID for the user"},"name":{"type":["string","null"],"description":"Last saved name for the user"}},"title":"EditHistoryUser"}},"title":"EditHistory"}}}}},"404":{"description":"Link not found","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}},"500":{"description":"Internal server error","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

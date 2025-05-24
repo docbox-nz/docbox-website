@@ -1,11 +1,11 @@
 ---
 id: admin-purge-expired-presigned-tasks
-title: "Flush database cache"
-description: "Administrative endpoint, runs the cleanup logic to clear presigned file upload tasks that have expired. This task is automatically run in the background internally this  endpoint just allows manually triggering it"
-sidebar_label: "Flush database cache"
+title: "Purge Presigned Tasks"
+description: "Purges all expired presigned tasks"
+sidebar_label: "Purge Presigned Tasks"
 hide_title: true
 hide_table_of_contents: true
-api: eJzdks+OEzEMxl/F8nn6B8RpbishpJ6oxHIqVeVm3BmzGSckTmlVzbujTJcK9sADcIrk2P758+cbdpxdkmgSFFt86kZRyZbI5MzA2sUgag2kohlsYHCeSUsEH3pxYGEOJIiJs/TKHZzEM5ToA3VglF9qGRkMVPtdoiTulvA8SJ5/QTJQsTCSiSPvr5UEojPrSO6lT6FoB6LGSecEq7WP0eB7yQbkffiZYSQt95wkfc9JtAexb4oNhshVVNBNhy1S1XmIJfV8eB3q8JBwmMfGBhPnGDRzxvaG79cf6vP3vj75kgfIxTnO+VQ8TlODI9sQKiWGbNhgJBuwxdUMXc3QxSt08YAufkNFT6GCTMwztvgxuGO4wNN2gw2eOeU7+d1yvVxj89a/7QZyZCcncbNaOIUE3dwCp2aeaCSt/ZVGfijoyOhImcGRG/ht2xu6oMZq//WF2DXWhRhfbBU9idaFleSr/ruFu/vdVEv/aeK+waFa3+7wdqtr/Zr8NNXwj8Lpiu1u3+CZktCxWrzb/3k0289fnnGafgEZNUuR
+api: eJyNkkFv2zAMhf+KwLPTeMV20S1AN7Q9rMGanQwjYGQmVitLqiQHyQz/94G2m6QNMMwXGZSe3tNHdpBwF0EWsKgabaHMoKKogvZJOwsSlm3YURRojKCD14Eq4QNFvbNUiYTxNUIGzlNAFjxUIAH5prVn4XrSrE+a9bsmUPTORoogO7jNv/Ly0foOE24wklCoahJb08aaKugz+Jbn18d/oDacyYnB+iLmoIcMlLOJbGIpem+0GjLPXyLrO4iqpgb5Lx09gQS3eSGV4DOS+9VqKSgEF8Tj89NPsXWhwcSLiBQ0Gv1H2504P5Af+9YyBwYdCNmwzMAHBpf0yGCqn+1jCtruoO8zSDoZLt2n5L+z86/pcuj5y6ChVDuG713kxB5TDRLmQy/mA5DZ1IvZCczsvRfabt1gPNncObVxB7FYPlw9ftoaGIz7RiviJLIDiw3LuUV7CnFU5DdfbnIucbQG7cXBYbjE8tSo1ZTng2V37tv/TeOEL9Ehzb1Bbdm8DYavGrkU44wyp3+SKTOomacsoOt4FH8H0/dcfmspHEEWZQZ7DBo3zK0o+wxqwooCyKKDVzqChIVS5LknezQtB7uavb68aODy6XkFff8X84BAIA==
 sidebar_class_name: "post api-method"
 info_path: docs/api/docbox-api
 custom_edit_url: null
@@ -22,7 +22,7 @@ import Heading from "@theme/Heading";
 <Heading
   as={"h1"}
   className={"openapi__heading"}
-  children={"Flush database cache"}
+  children={"Purge Presigned Tasks"}
 >
 </Heading>
 
@@ -36,8 +36,7 @@ import Heading from "@theme/Heading";
 
 
 
-Administrative endpoint, runs the cleanup logic to clear presigned file upload tasks that have expired. This task is automatically run in the background internally this  endpoint just allows manually triggering it
-
+Purges all expired presigned tasks
 
 <ParamsDetails
   parameters={undefined}
@@ -55,7 +54,7 @@ Administrative endpoint, runs the cleanup logic to clear presigned file upload t
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{"204":{"description":"Flush successful"}}}
+  responses={{"204":{"description":"Database cache flushed"},"500":{"description":"Failed to purge presigned cache","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}}}}
 >
   
 </StatusCodes>

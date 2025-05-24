@@ -1,0 +1,71 @@
+---
+id: file-delete
+title: "Delete file by ID"
+description: "Deletes the provided file"
+sidebar_label: "Delete file by ID"
+hide_title: true
+hide_table_of_contents: true
+api: eJzdVU1v2zAM/SsCTxugNtnQXXwrkAzNMGxF252CYFBsJlarSKpEZ8kM//eBlpN+JEvbYKedbJCU3uMT9VQDqXmEbAyftUGYSCgw5kF70s5CBgM0SBgFlSh8cEtdYCFmXCrBeQyK60YFZMDBn0VbDhK8CmqBhIH3rsGqBUIGMXees5q39opKeI53zRWCnMgDKsIW12h7J35pKrUFCQHvKx2wgIxChRJiXuJCQVYDrX0LQkHbOTSN3OK23HRxEHk0EG7W4nE1U7ivMKzfgChh5sJCEWRQVbp4wmB1QmiVpZMHFiWqAsMBHmmFWLtKqICCVJgjJaBjRNhSQLt8gcPQLnVwdoGW/imZCRdH72zEyPmP/TP+7Bu5NGUiVnmOMc4qY9bQSDjbt4JHV1hHYuYqy/rmzhJa4krlvdF5O6a928jl9S5BN73FnHZkuLi5uRQYggviy/X3byIdL39ExKCV0b+1nYuHlh5rMYaAigEnEnzgu0I6dd3F9x0WkCbDoQsiP2Tkq25zaBrOf+r3d/sfWcJglWFWSwyJ8n8sQyNhgVQ6tp1HjkMlZNCbulWvbo2m6fEI9eru9jft0M9ci9jtP3D51K3E+eVop+su1Taf8kbnyBSy7ZXiiVxiiGlF//TDaZ9D3kVaKPuoMM10GunpWowGz+Hqh8M66LmdVIQr6nmjtGW8KhjeISkwhqlbgYRsY7bdymxjghMJpYvElXU9VRF/BNM0HE6Gl40nEpYqaDVljcY1FDryfwHZTJmIB6i/u+oO/r142cn39tIFlWXnXSpTtTpLuMP19gFhUzuK0989/gguGz2bSSM3Rnq0Wq9y/b0kE5mn78uW69FKve0FeA2x9Oo8YZYqzvMcPT3K7XgVvxvbCz8Yfh3eDKFp/gAnRP2b
+sidebar_class_name: "delete api-method"
+info_path: docs/api/docbox-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete file by ID"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/box/{scope}/file/{file_id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Deletes the provided file
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"scope","in":"path","description":"Scope to create the link within","required":true,"schema":{"type":"string"}},{"name":"file_id","in":"path","description":"ID of the file to query","required":true,"schema":{"type":"string","format":"uuid"}},{"name":"x-tenant-id","in":"header","description":"ID of the tenant you are targeting","required":true,"schema":{"type":"string"}},{"name":"x-tenant-env","in":"header","description":"Environment of the tenant you are targeting","required":true,"schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"204":{"description":"Deleted file successfully"},"404":{"description":"File not found","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}},"500":{"description":"Internal server error","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

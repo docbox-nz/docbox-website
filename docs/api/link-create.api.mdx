@@ -1,0 +1,71 @@
+---
+id: link-create
+title: "Create link"
+description: "Creates a new link within the provided document box"
+sidebar_label: "Create link"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV9tu4zYQ/RVinlpA3jg3b6u37SbFpgg2QS7YB8MIaGlkcyORCkn5UkP/Xgwp25LljR0HbYGifrFEkTNnzlw4swDLRwbCPlwL+QyDAGI0kRa5FUpCCJ81couGcSZxylIhn9lU2LGQzI6R5VpNRIwxi1VUZCgtG6oZBKBy1JwkXMUQAp16ipwgCCDnmmdoUZPWBUieIYRgIpXTV0FKc27HsInknnYwq5iX5PTX8EAAGl8KoTGG0OoCAzDRGDMO4QLsPHdKrBZyBGUZrPTOOhYll7Yj4qX2MfIYdUv/1QVTidPqT7C5KhjXyCzXI7Qk+J0QUE52YLiUE6GVdEz/XWAKg3o3GzfugadsTQsdZCJhOepE6QxjpiQb4pinCW3hbkMDVsJTswVXfwksAFmkKQy2AHRve0Kkvf8KSJHxEb6BS7f/H2J04I+hsb+peE5bIyUtSkuPPM9TEbkMPvpuCOSiHT1q+B0j27LmzkutZSrfLA9rvH2oHDnhaUH/iUpj1E8iplKUayokVqAhtetPrQimczrjFkIoCsd3E9Pv7ihBMlbpqm4ICWVQeawtsCngK4VQovSq6kAAmZDXKEd2DOFxubRgpyQqs+zx7npTQBmAFTbFVc119bik9WYeuwWTK2k8LSfdY/rbosXTHzNTRBEakxRpOofgcD/X3eZI/qHvAqh0P3FbexmS+pQb+5SpWCTCL7UcXTv7mqdjbrFjhYPQtP7bGP39lIgU2ZSbJRXk8BqYcAFK4k3iLqJKj8sPSuWmyEdKxelYrUhdiodgF08t+7ZH8IY+KV6KzVpA8F2NaCRBK7lbIceNZYZPMF5XmGUsL8U20+AtImU9Nby4Wiw/uoVBGbwnfW+5puLhJbCrC8fDAXIqUkWM0lL46RVu58lyMzjrAbiFkj0i0fFEX5rhuNTQVnlgVJKQldT/Y/OtsfmGS6Ay2d0B+1d9t615tgaEqvU3YceXM6s51fwygLPuWbusX6CxQrp6vcwGqSgxChm/p7I3tXx5eLhlqLXS7I/7m6/Mx7nj0aAWPBV/Cjli61uoGVYaOSlshVa1vq39XDHxxdr8kjTfVcIrNs673TYbV9Kipr7JoJ6g9pD/wzSUAWRox4pmqlwZ64Yp6h7gaKhmRws3Q5VHVXtC5t6tO7zLGc/yFDcaKThN+C/nSe+sc/7x+GPn7Lx30hmeJlHnJPq1d5r0ejzhveVNX4vuKuxX2KnBTZQzqjLhQkVDNWOfbq9axFafHL/+eyoiJCvDVQftcgu18Se6H44/dGmJzM64rG30zdKyJ2soqrW0B86xlYcszuxRnnLfMRY6Jdme+j74neFygE2rMXpMDgr7sFgMucFHnZYlLb8UqOcQ9gfEoRZ8SGT1FxALQ8/rFv6Hlvx0VwXZz2z3SLzVgGqRy3nNkxDAM85Xk7gri9W8cjC+vUbmrRA9lOZwvkLq7sFD8LxtfN4HmB/ZD0T2jhn6VWzrCf69wA6ZnHdDa4wNh4M7dFreg7v13N4A6Td99lA6D/O8bkbrqlmf+BRFmNtX9w5qtf325v4BAhhWc3mmYjqj+ZRuGD71yaocDf5GobUFpFyOCj6ivV4m/f4CjbrSGg==
+sidebar_class_name: "post api-method"
+info_path: docs/api/docbox-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create link"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/box/{scope}/link"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Creates a new link within the provided document box
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"scope","in":"path","description":"Scope to create the link within","required":true,"schema":{"type":"string"}},{"name":"x-tenant-id","in":"header","description":"ID of the tenant you are targeting","required":true,"schema":{"type":"string"}},{"name":"x-tenant-env","in":"header","description":"Environment of the tenant you are targeting","required":true,"schema":{"type":"string"}},{"name":"x-user-id","in":"header","description":"Optional ID of the user if performed on behalf of a user","required":false,"schema":{"type":["string","null"]}},{"name":"x-user-name","in":"header","description":"Optional name of the user if performed on behalf of a user","required":false,"schema":{"type":["string","null"]}},{"name":"x-user-image-id","in":"header","description":"Optional image ID of the user if performed on behalf of a user","required":false,"schema":{"type":["string","null"]}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","description":"Request to create a document box","required":["name","value","folder_id"],"properties":{"folder_id":{"type":"string","format":"uuid","description":"Folder to store link in"},"name":{"type":"string","description":"Name for the link","minLength":1},"value":{"type":"string","description":"Link URL","minLength":1}},"title":"CreateLink"}}},"required":true}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Link created successfully","content":{"application/json":{"schema":{"type":"object","required":["id","name","value","folder_id","created_at","created_by","last_modified_by"],"properties":{"created_at":{"type":"string","format":"date-time","description":"When the file was created"},"created_by":{"oneOf":[{"type":"null"},{"description":"User who created the file","type":"object","required":["id"],"properties":{"id":{"type":"string","description":"Unique ID of the user"},"image_id":{"type":["string","null"],"description":"Last saved image ID for the user"},"name":{"type":["string","null"],"description":"Last saved name for the user"}},"title":"User"}]},"folder_id":{"type":"string","format":"uuid","description":"Parent folder ID"},"id":{"type":"string","format":"uuid","description":"Unique identifier for the file"},"last_modified_at":{"type":["string","null"],"format":"date-time","description":"Last time the file was modified"},"last_modified_by":{"oneOf":[{"type":"null"},{"description":"User who last modified the file","type":"object","required":["id"],"properties":{"id":{"type":"string","description":"Unique ID of the user"},"image_id":{"type":["string","null"],"description":"Last saved image ID for the user"},"name":{"type":["string","null"],"description":"Last saved name for the user"}},"title":"User"}]},"name":{"type":"string","description":"Name of the link"},"value":{"type":"string","description":"value of the link"}},"title":"LinkWithExtra"}}}},"404":{"description":"Destination folder not found","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}},"500":{"description":"Internal server error","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

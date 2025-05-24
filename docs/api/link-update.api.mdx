@@ -1,0 +1,71 @@
+---
+id: link-update
+title: "Update link"
+description: "Updates a link, can be a name change, value change, a folder move, or all"
+sidebar_label: "Update link"
+hide_title: true
+hide_table_of_contents: true
+api: eJzdVt9v2zYQ/leIe9oApnaH7kVv7RqgGYo2SJO9GMZwls42G4pUScqxJ+h/H46ULf+qkzjdBiwvkanj3cdPx+++BgLOPGQj+KjMPYwlFORzp6qgrIEM7qoCA3mBQitzL0WORkxIoDBYksjnaGYkxQJ13f9CMbW6ICdKuyAprBOoNUiwFTnkvFcFZMD5/qxjepBQocOSAjnG0gBnhwx8bit+qxhKhWEO+/i+cIQIc4r4hCOvCvLiQYW5MiDB0bdaOSogC64mCT6fU4mQNRBWVSwRnDIzaFu5qRqRqeJk3av3wk77usEKrkQ+PKOmhKl1JQbIoK5VsYNheRHIoAkXPY45YUHuBJK0Q6xsLdCRCOhmFFKhc2jYQCCzeATDpVkoZ01JJvxjYGpP7nE2PscH1KKnhTcKNRUVOeabCmG5h+eopxyCMWAH1hS1P4Jr1H84U2sN4yMA468nQoxX6L8AqUqc0TO4jPH/EqPjtI18eGeLFYfm1gQygR+xqrTKo4YMvnoG2Rx2j518pTwcnOYmZU1XNVKPYqp0FB/H0hQUeU6TxIsF4Ps496/ufrFP9CAqdHwfOi2cWreRC2hl90VOFNhLyIB3ckgolflIZhbmkL1uJUQRfkbKP6Jon8rZSggqaNrMAZ4RHY/Q8uvdqxwXfGWNT0z+Mhzyv2MTpUi66es8J++ntdYrZuXN8M3hDq4qjGUqa8Nc/6CO+HB7ey3IOevE718+fxLpk0ZGPDmFWv2lzEz0R9o+7wgcIRcc7/dPt35MzjZ0fgihuuTKN11yprOV8Osxxq5MIMf30JNbkEuQ/8c0tBJKCnPLLqGqQ3QH3JAwmNjloImmoB1w/wyabla3IIHPfdNLx+USy4qrNC3L3NRGKF3h9zaf2KV4e311QEf3KrKS3muVE2PLNjrKrbog59OO4avXr4a8VFkfSjRbganZ15drp9CWsP1Ql9WxHWgZBpVGZRhZ7TRXTDyOYGKXICFb26sOXrY2PmMJc+sDRzbNBD3dOd22vPytJreCbDRmuXEKJ8zmqIFCeX7ulf67R/3ppuudn8Vj3u3oSbpFNCvYSB6AhHtabQwjT7yzEJ1ydWegWfPZjlu5HrJns/Ukn3cUZAKz6yg3WM/m6nme7ynAks88E9kLjN9JbL3tfCmwc+ze49A6w/lScOdavCdw15vNHZAp6LcE5eJ2VW0f42Ce9Tve5jlV4WTseGuAXN/dgoRJ5yVLW/AWhw88xfAh3VYbWUhTi9ca0GhmNc44NqXkv78BjIgzzw==
+sidebar_class_name: "put api-method"
+info_path: docs/api/docbox-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Update link"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"put"}
+  path={"/box/{scope}/link/{link_id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Updates a link, can be a name change, value change, a folder move, or all
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"scope","in":"path","description":"Scope the link resides within","required":true,"schema":{"type":"string"}},{"name":"link_id","in":"path","description":"ID of the link to request","required":true,"schema":{"type":"string","format":"uuid"}},{"name":"x-tenant-id","in":"header","description":"ID of the tenant you are targeting","required":true,"schema":{"type":"string"}},{"name":"x-tenant-env","in":"header","description":"Environment of the tenant you are targeting","required":true,"schema":{"type":"string"}},{"name":"x-user-id","in":"header","description":"Optional ID of the user if performed on behalf of a user","required":false,"schema":{"type":["string","null"]}},{"name":"x-user-name","in":"header","description":"Optional name of the user if performed on behalf of a user","required":false,"schema":{"type":["string","null"]}},{"name":"x-user-image-id","in":"header","description":"Optional image ID of the user if performed on behalf of a user","required":false,"schema":{"type":["string","null"]}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","description":"Request to rename a file","properties":{"folder_id":{"type":["string","null"],"format":"uuid","description":"New parent folder for the link"},"name":{"type":["string","null"],"description":"Name for the link","minLength":1},"value":{"type":["string","null"],"description":"Value for the link","minLength":1}},"title":"UpdateLinkRequest"}}},"required":true}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Updated link successfully"},"404":{"description":"Link not found","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}},"500":{"description":"Internal server error","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,72 @@
+---
+id: link-get-favicon
+title: "Get link favicon"
+description: "Obtain the favicon image for the website that"
+sidebar_label: "Get link favicon"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV8Fu2zgQ/RViTruAUnsX3YtuBRK0XhRN0KbowTUMWhpb08ikQo4cewX9+2IoWbZsb5x4e1rsKQ7Jmff4+DgcVcB64SEew0cyDzCJIEWfOCqYrIEYbmesySjOUM31ihJrFC31AtXcujD6hDNPjIozzd+NjORkHlRhybBXbCECW6DTkm+UQgwyPV0gT9t8EEGhnV4ioxMiFRi9RIjBJ7ZAiICER6E5g0NyX2SF6jAdekrRqyfijCSvw8eSHKYQsysxAp9kuNQQV8CbIkCwI7OAuo461ECP0mdxR9fKzne4bJUgoedXYEYwt26pGWIoS0p7HNZXjEYbvtrxyFCn6J5h0kSojS2VdqhYuwVyA3SJDB0FNKszHG7Mipw1SzT8U8lMZLEvrPHoZf734VD+nPInps1J7CyVWMNoWAJ0UeSUBAMOfniJqo5R7ewHJv3zG0OQPwgSwUrnJYZTy1N0jUMSh5oxnWre+2e2gQhy7Xm6tCnNqRmaRFA4uQhMzW72Yp/zRqoZr5gChf7Ov2XY3kvKUT1pr9qUUPfIxBVYg7fzcLVaHFPmOchp91N+9ejUU2a3mbr0EJ3T6Wh/lJ7a1wGeoccS1c7EpUcn9EOJme6nGO9yBPJHheqj9qy8XmHaFqjRdVejtmkbb1+SUiIP0tURMHGOrW5QT+p9d5y98Idod9rJDWoyqNF10OGCPK2olKJhsZ/reIeTrA/NuW/AE5K8wIlBJ5np23GLcAx5oSslSZf1f2++1pt9hH/a9yfJtve6Cbem9p0NDcv6sXtEpL/4RpzdrNlpqGuZezt8e1zSZaEyVq5CaVJlnTK2az7EWGH839T4Pt6H+/s7hc5Zp/78cvtJNY4Pinp0pHP6i8xC7d6ivsEcagE8Mlk7fuqV7TT5wFzcCPLnNnmryx+nnrqRYXRG58Jqha6h/B+WoY5giZxZaRoXyKFP5AxiGMzselCF9rAeiM8GVdu11YNdB0BmbgNsC3Jtk5ldq3d3o6Ott1NBgWY+pwSFR9w1ROEeoPNNxPDNb2+GMlRYz0tt9ha+Rz5sRnpo1e7Afkp33crKuOZBkWsyQqt0uSA1go1hZtcQQbztqMPdjCDe9bpbrpMIMutZYqpqpj1+dXldy/BjiW4D8Xgi5cCRnomo4wpS8vI7hXiuc4/PbPaXz61dflXnGveTe2oHtdl07VgMEMEDbrqvhfB6XMLouZb+AjZbZUPhbfvmi9V6UZN/kmRDpv850XG9WKvXNfwvIdZ8ZPSYNSveJQkWvDd3VOHkM6ErE+9v7qGu/wad0hpo
+sidebar_class_name: "get api-method"
+info_path: docs/api/docbox-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get link favicon"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/box/{scope}/link/{link_id}/favicon"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Obtain the favicon image for the website that
+the link points to
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"scope","in":"path","description":"Scope the link resides within","required":true,"schema":{"type":"string"}},{"name":"link_id","in":"path","description":"ID of the link to request","required":true,"schema":{"type":"string","format":"uuid"}},{"name":"x-tenant-id","in":"header","description":"ID of the tenant you are targeting","required":true,"schema":{"type":"string"}},{"name":"x-tenant-env","in":"header","description":"Environment of the tenant you are targeting","required":true,"schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Obtained link favicon","content":{"application/json":{"schema":{"type":"object","required":["id","name","value","folder_id","created_at","created_by","last_modified_by"],"properties":{"created_at":{"type":"string","format":"date-time","description":"When the file was created"},"created_by":{"oneOf":[{"type":"null"},{"description":"User who created the file","type":"object","required":["id"],"properties":{"id":{"type":"string","description":"Unique ID of the user"},"image_id":{"type":["string","null"],"description":"Last saved image ID for the user"},"name":{"type":["string","null"],"description":"Last saved name for the user"}},"title":"User"}]},"folder_id":{"type":"string","format":"uuid","description":"Parent folder ID"},"id":{"type":"string","format":"uuid","description":"Unique identifier for the file"},"last_modified_at":{"type":["string","null"],"format":"date-time","description":"Last time the file was modified"},"last_modified_by":{"oneOf":[{"type":"null"},{"description":"User who last modified the file","type":"object","required":["id"],"properties":{"id":{"type":"string","description":"Unique ID of the user"},"image_id":{"type":["string","null"],"description":"Last saved image ID for the user"},"name":{"type":["string","null"],"description":"Last saved name for the user"}},"title":"User"}]},"name":{"type":"string","description":"Name of the link"},"value":{"type":"string","description":"value of the link"}},"title":"LinkWithExtra"}}}},"404":{"description":"Link not found or no favicon was found","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}},"500":{"description":"Internal server error","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

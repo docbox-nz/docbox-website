@@ -1,0 +1,4512 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "Docbox API",
+        "description": "Docbox HTTP API",
+        "license": {
+            "name": ""
+        },
+        "version": "0.1.0"
+    },
+    "paths": {
+        "/admin/flush-db-cache": {
+            "post": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Flush database cache",
+                "description": "Empties all the database pool and credentials caches, you can use this endpoint\nif you rotate your database credentials to refresh the database pool without\nneeding to restart the server",
+                "operationId": "admin_flush_database_pool_cache",
+                "responses": {
+                    "204": {
+                        "description": "Database cache flushed"
+                    }
+                }
+            }
+        },
+        "/admin/purge-expired-presigned-tasks": {
+            "post": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Purge Presigned Tasks",
+                "description": "Purges all expired presigned tasks",
+                "operationId": "admin_purge_expired_presigned_tasks",
+                "responses": {
+                    "204": {
+                        "description": "Database cache flushed"
+                    },
+                    "500": {
+                        "description": "Failed to purge presigned cache",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/search": {
+            "post": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Admin Search",
+                "description": "Performs a search across multiple document box scopes. This\nis an administrator route as unlike other routes we cannot\nassert through the URL that the user has access to all the\nscopes",
+                "operationId": "admin_search_tenant",
+                "parameters": [
+                    {
+                        "name": "x-tenant-id",
+                        "in": "header",
+                        "description": "ID of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-env",
+                        "in": "header",
+                        "description": "Environment of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AdminSearchRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Searched successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AdminSearchResultResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Malformed or invalid request not meeting validation requirements",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Scope already exists",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/box": {
+            "post": {
+                "tags": [
+                    "Document Box"
+                ],
+                "summary": "Create document box",
+                "description": "Creates a new document box using the requested scope",
+                "operationId": "document_box_create",
+                "parameters": [
+                    {
+                        "name": "x-tenant-id",
+                        "in": "header",
+                        "description": "ID of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-env",
+                        "in": "header",
+                        "description": "Environment of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-user-id",
+                        "in": "header",
+                        "description": "Optional ID of the user if performed on behalf of a user",
+                        "required": false,
+                        "schema": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "x-user-name",
+                        "in": "header",
+                        "description": "Optional name of the user if performed on behalf of a user",
+                        "required": false,
+                        "schema": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "x-user-image-id",
+                        "in": "header",
+                        "description": "Optional image ID of the user if performed on behalf of a user",
+                        "required": false,
+                        "schema": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateDocumentBoxRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Document box created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DocumentBoxResponse"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Scope already exists",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/box/{scope}": {
+            "get": {
+                "tags": [
+                    "Document Box"
+                ],
+                "summary": "Get document box by scope",
+                "description": "Gets a specific document box and the root folder for the box\nalong with the resolved root folder children",
+                "operationId": "document_box_get",
+                "parameters": [
+                    {
+                        "name": "scope",
+                        "in": "path",
+                        "description": "Scope of the document box",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-id",
+                        "in": "header",
+                        "description": "ID of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-env",
+                        "in": "header",
+                        "description": "Environment of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Document box obtained successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DocumentBoxResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Document box not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Document Box"
+                ],
+                "summary": "Delete document box by scope",
+                "description": "Deletes a specific document box by scope and all its contents\n\nAccess control for this should probably be restricted\non other end to prevent users from deleting an entire\nbucket?",
+                "operationId": "document_box_delete",
+                "parameters": [
+                    {
+                        "name": "scope",
+                        "in": "path",
+                        "description": "Scope of the document box",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-id",
+                        "in": "header",
+                        "description": "ID of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-env",
+                        "in": "header",
+                        "description": "Environment of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Document box deleted successfully"
+                    },
+                    "404": {
+                        "description": "Document box not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/box/{scope}/file": {
+            "post": {
+                "tags": [
+                    "File"
+                ],
+                "summary": "Upload file",
+                "description": "Uploads a new document to the provided document box folder.\n\nIf the asynchronous option is specified a task will be returned\notherwise the completed file upload will be returned directly\n\nIn a browser environment its recommend to use the async option to\nprevent running into browser timeouts if the processing takes too long.\n\nIn a reverse proxy + browser situation prefer using the presigned file upload\nendpoint otherwise browsers may timeout while your server transfers the file\n\nSynchronous uploads return [UploadedFile]\nAsynchronous uploads return [UploadTaskResponse]",
+                "operationId": "file_upload",
+                "parameters": [
+                    {
+                        "name": "scope",
+                        "in": "path",
+                        "description": "Scope to create the file within",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-id",
+                        "in": "header",
+                        "description": "ID of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-env",
+                        "in": "header",
+                        "description": "Environment of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-user-id",
+                        "in": "header",
+                        "description": "Optional ID of the user if performed on behalf of a user",
+                        "required": false,
+                        "schema": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "x-user-name",
+                        "in": "header",
+                        "description": "Optional name of the user if performed on behalf of a user",
+                        "required": false,
+                        "schema": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "x-user-image-id",
+                        "in": "header",
+                        "description": "Optional image ID of the user if performed on behalf of a user",
+                        "required": false,
+                        "schema": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Multipart upload",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UploadFileRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Upload or task created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FileUploadResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Malformed or invalid request not meeting validation requirements",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Target folder could not be found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Fixed ID is already in use",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/box/{scope}/file/presigned": {
+            "post": {
+                "tags": [
+                    "File"
+                ],
+                "summary": "Create presigned file upload",
+                "description": "Creates a new \"presigned\" upload, where the file is uploaded\ndirectly to S3 [complete_presigned] is called by the client\nafter it has completed its upload",
+                "operationId": "file_create_presigned",
+                "parameters": [
+                    {
+                        "name": "scope",
+                        "in": "path",
+                        "description": "Scope to create the file within",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-id",
+                        "in": "header",
+                        "description": "ID of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-env",
+                        "in": "header",
+                        "description": "Environment of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-user-id",
+                        "in": "header",
+                        "description": "Optional ID of the user if performed on behalf of a user",
+                        "required": false,
+                        "schema": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "x-user-name",
+                        "in": "header",
+                        "description": "Optional name of the user if performed on behalf of a user",
+                        "required": false,
+                        "schema": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "x-user-image-id",
+                        "in": "header",
+                        "description": "Optional image ID of the user if performed on behalf of a user",
+                        "required": false,
+                        "schema": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreatePresignedRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created presigned upload successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PresignedUploadResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Malformed or invalid request not meeting validation requirements",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Target folder could not be found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/box/{scope}/file/presigned/{task_id}": {
+            "get": {
+                "tags": [
+                    "File"
+                ],
+                "summary": "Get presigned file upload",
+                "description": "Gets the current state of a presigned upload either pending or\ncomplete, when complete the uploaded file and generated files\nare returned",
+                "operationId": "file_get_presigned",
+                "parameters": [
+                    {
+                        "name": "scope",
+                        "in": "path",
+                        "description": "Scope to create the link within",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "task_id",
+                        "in": "path",
+                        "description": "ID of the task to query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-id",
+                        "in": "header",
+                        "description": "ID of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-env",
+                        "in": "header",
+                        "description": "Environment of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtained presigned upload successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PresignedStatusResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Presigned upload not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/box/{scope}/file/{file_id}": {
+            "get": {
+                "tags": [
+                    "File"
+                ],
+                "summary": "Get file by ID",
+                "description": "Gets a specific file details, metadata and associated\ngenerated files",
+                "operationId": "file_get",
+                "parameters": [
+                    {
+                        "name": "scope",
+                        "in": "path",
+                        "description": "Scope to create the link within",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "file_id",
+                        "in": "path",
+                        "description": "ID of the file to query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-id",
+                        "in": "header",
+                        "description": "ID of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-env",
+                        "in": "header",
+                        "description": "Environment of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtained file successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FileResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "File not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "File"
+                ],
+                "summary": "Update file",
+                "description": "Updates a file, can be a name change, a folder move, or both",
+                "operationId": "file_update",
+                "parameters": [
+                    {
+                        "name": "scope",
+                        "in": "path",
+                        "description": "Scope to create the link within",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "file_id",
+                        "in": "path",
+                        "description": "ID of the file to query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-id",
+                        "in": "header",
+                        "description": "ID of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-env",
+                        "in": "header",
+                        "description": "Environment of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-user-id",
+                        "in": "header",
+                        "description": "Optional ID of the user if performed on behalf of a user",
+                        "required": false,
+                        "schema": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "x-user-name",
+                        "in": "header",
+                        "description": "Optional name of the user if performed on behalf of a user",
+                        "required": false,
+                        "schema": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "x-user-image-id",
+                        "in": "header",
+                        "description": "Optional image ID of the user if performed on behalf of a user",
+                        "required": false,
+                        "schema": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateFileRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Obtained edit-history successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/EditHistory"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "File not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "File"
+                ],
+                "summary": "Delete file by ID",
+                "description": "Deletes the provided file",
+                "operationId": "file_delete",
+                "parameters": [
+                    {
+                        "name": "scope",
+                        "in": "path",
+                        "description": "Scope to create the link within",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "file_id",
+                        "in": "path",
+                        "description": "ID of the file to query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-id",
+                        "in": "header",
+                        "description": "ID of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-env",
+                        "in": "header",
+                        "description": "Environment of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted file successfully"
+                    },
+                    "404": {
+                        "description": "File not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/box/{scope}/file/{file_id}/children": {
+            "get": {
+                "tags": [
+                    "File"
+                ],
+                "summary": "Get file children",
+                "description": "Get all children for the provided file, this is things like\nattachments for processed emails",
+                "operationId": "file_get_children",
+                "parameters": [
+                    {
+                        "name": "scope",
+                        "in": "path",
+                        "description": "Scope to create the link within",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "file_id",
+                        "in": "path",
+                        "description": "ID of the file to query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-id",
+                        "in": "header",
+                        "description": "ID of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-env",
+                        "in": "header",
+                        "description": "Environment of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtained children successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/FileWithExtra"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "File not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/box/{scope}/file/{file_id}/edit-history": {
+            "get": {
+                "tags": [
+                    "File"
+                ],
+                "summary": "Get file edit history",
+                "description": "Gets the edit history for the provided file",
+                "operationId": "file_edit_history",
+                "parameters": [
+                    {
+                        "name": "scope",
+                        "in": "path",
+                        "description": "Scope to create the link within",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "file_id",
+                        "in": "path",
+                        "description": "ID of the file to query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-id",
+                        "in": "header",
+                        "description": "ID of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-env",
+                        "in": "header",
+                        "description": "Environment of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtained edit-history successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/EditHistory"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "File not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/box/{scope}/file/{file_id}/generated/{type}": {
+            "get": {
+                "tags": [
+                    "File"
+                ],
+                "summary": "Get generated file",
+                "description": "Requests metadata about a specific generated file type for\na file, will return the details about the generated file\nif it exists",
+                "operationId": "file_get_generated",
+                "parameters": [
+                    {
+                        "name": "scope",
+                        "in": "path",
+                        "description": "Scope to create the link within",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "file_id",
+                        "in": "path",
+                        "description": "ID of the file to query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "path",
+                        "description": "ID of the file to query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/GeneratedFileType"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-id",
+                        "in": "header",
+                        "description": "ID of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-env",
+                        "in": "header",
+                        "description": "Environment of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtained generated file successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GeneratedFile"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Generated file not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/box/{scope}/file/{file_id}/generated/{type}/raw": {
+            "get": {
+                "tags": [
+                    "File"
+                ],
+                "summary": "Get generated file raw",
+                "description": "Request the contents of a specific generated file type\nfor a file, will return the file contents",
+                "operationId": "file_get_generated_raw",
+                "parameters": [
+                    {
+                        "name": "scope",
+                        "in": "path",
+                        "description": "Scope to create the link within",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "file_id",
+                        "in": "path",
+                        "description": "ID of the file to query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "path",
+                        "description": "ID of the file to query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/GeneratedFileType"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-id",
+                        "in": "header",
+                        "description": "ID of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-env",
+                        "in": "header",
+                        "description": "Environment of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtained raw file successfully"
+                    },
+                    "404": {
+                        "description": "Generated file not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/box/{scope}/file/{file_id}/raw": {
+            "get": {
+                "tags": [
+                    "File"
+                ],
+                "summary": "Get file raw",
+                "description": "Requests the raw contents of a file, this is used for downloading\nthe file or viewing it in the browser or simply requesting its content",
+                "operationId": "file_get_raw",
+                "parameters": [
+                    {
+                        "name": "scope",
+                        "in": "path",
+                        "description": "Scope to create the link within",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "file_id",
+                        "in": "path",
+                        "description": "ID of the file to query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-id",
+                        "in": "header",
+                        "description": "ID of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-env",
+                        "in": "header",
+                        "description": "Environment of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtained raw file successfully"
+                    },
+                    "404": {
+                        "description": "File not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/box/{scope}/folder": {
+            "post": {
+                "tags": [
+                    "Folder"
+                ],
+                "summary": "Create folder",
+                "description": "Creates a new folder in the provided document box folder",
+                "operationId": "folder_create",
+                "parameters": [
+                    {
+                        "name": "scope",
+                        "in": "path",
+                        "description": "Scope to create the folder within",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-id",
+                        "in": "header",
+                        "description": "ID of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-env",
+                        "in": "header",
+                        "description": "Environment of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-user-id",
+                        "in": "header",
+                        "description": "Optional ID of the user if performed on behalf of a user",
+                        "required": false,
+                        "schema": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "x-user-name",
+                        "in": "header",
+                        "description": "Optional name of the user if performed on behalf of a user",
+                        "required": false,
+                        "schema": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "x-user-image-id",
+                        "in": "header",
+                        "description": "Optional image ID of the user if performed on behalf of a user",
+                        "required": false,
+                        "schema": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateFolderRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Folder created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FolderResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Destination folder not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/box/{scope}/folder/{folder_id}": {
+            "get": {
+                "tags": [
+                    "Folder"
+                ],
+                "summary": "Get folder by ID",
+                "description": "Requests a specific folder by ID. Will return the folder itself\nas well as the first resolved set of children for the folder",
+                "operationId": "folder_get",
+                "parameters": [
+                    {
+                        "name": "scope",
+                        "in": "path",
+                        "description": "Scope the folder resides within",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "folder_id",
+                        "in": "path",
+                        "description": "ID of the folder to request",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-id",
+                        "in": "header",
+                        "description": "ID of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-env",
+                        "in": "header",
+                        "description": "Environment of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Folder obtained successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FolderResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Folder not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Folder"
+                ],
+                "summary": "Update folder",
+                "description": "Updates a folder, can be a name change, a folder move, or both",
+                "operationId": "folder_update",
+                "parameters": [
+                    {
+                        "name": "scope",
+                        "in": "path",
+                        "description": "Scope the folder resides within",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "folder_id",
+                        "in": "path",
+                        "description": "ID of the folder to request",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-id",
+                        "in": "header",
+                        "description": "ID of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-env",
+                        "in": "header",
+                        "description": "Environment of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-user-id",
+                        "in": "header",
+                        "description": "Optional ID of the user if performed on behalf of a user",
+                        "required": false,
+                        "schema": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "x-user-name",
+                        "in": "header",
+                        "description": "Optional name of the user if performed on behalf of a user",
+                        "required": false,
+                        "schema": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "x-user-image-id",
+                        "in": "header",
+                        "description": "Optional image ID of the user if performed on behalf of a user",
+                        "required": false,
+                        "schema": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateFolderRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated folder successfully"
+                    },
+                    "400": {
+                        "description": "Attempted to move a root folder or a folder into itself",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Folder not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Folder"
+                ],
+                "summary": "Delete a folder by ID",
+                "description": "Deletes a document box folder and all its contents. This will\ntraverse the folder contents as a stack deleting all files and\nfolders within the folder before deleting itself",
+                "operationId": "folder_delete",
+                "parameters": [
+                    {
+                        "name": "scope",
+                        "in": "path",
+                        "description": "Scope the folder resides within",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "folder_id",
+                        "in": "path",
+                        "description": "ID of the folder to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-id",
+                        "in": "header",
+                        "description": "ID of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-env",
+                        "in": "header",
+                        "description": "Environment of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted folder successfully"
+                    },
+                    "404": {
+                        "description": "Folder not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/box/{scope}/folder/{folder_id}/edit-history": {
+            "get": {
+                "tags": [
+                    "Folder"
+                ],
+                "summary": "Get folder edit history",
+                "description": "Request the edit history for the provided folder",
+                "operationId": "folder_edit_history",
+                "parameters": [
+                    {
+                        "name": "scope",
+                        "in": "path",
+                        "description": "Scope the folder resides within",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "folder_id",
+                        "in": "path",
+                        "description": "ID of the folder to request",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-id",
+                        "in": "header",
+                        "description": "ID of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-env",
+                        "in": "header",
+                        "description": "Environment of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtained edit history",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/EditHistory"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Folder not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/box/{scope}/link": {
+            "post": {
+                "tags": [
+                    "Link"
+                ],
+                "summary": "Create link",
+                "description": "Creates a new link within the provided document box",
+                "operationId": "link_create",
+                "parameters": [
+                    {
+                        "name": "scope",
+                        "in": "path",
+                        "description": "Scope to create the link within",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-id",
+                        "in": "header",
+                        "description": "ID of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-env",
+                        "in": "header",
+                        "description": "Environment of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-user-id",
+                        "in": "header",
+                        "description": "Optional ID of the user if performed on behalf of a user",
+                        "required": false,
+                        "schema": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "x-user-name",
+                        "in": "header",
+                        "description": "Optional name of the user if performed on behalf of a user",
+                        "required": false,
+                        "schema": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "x-user-image-id",
+                        "in": "header",
+                        "description": "Optional image ID of the user if performed on behalf of a user",
+                        "required": false,
+                        "schema": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateLink"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Link created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LinkWithExtra"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Destination folder not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/box/{scope}/link/{link_id}": {
+            "get": {
+                "tags": [
+                    "Link"
+                ],
+                "summary": "Get link by ID",
+                "description": "Request a specific link by ID",
+                "operationId": "link_get",
+                "parameters": [
+                    {
+                        "name": "scope",
+                        "in": "path",
+                        "description": "Scope the link resides within",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "link_id",
+                        "in": "path",
+                        "description": "ID of the link to request",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-id",
+                        "in": "header",
+                        "description": "ID of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-env",
+                        "in": "header",
+                        "description": "Environment of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Link obtained successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LinkWithExtra"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Link not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Link"
+                ],
+                "summary": "Update link",
+                "description": "Updates a link, can be a name change, value change, a folder move, or all",
+                "operationId": "link_update",
+                "parameters": [
+                    {
+                        "name": "scope",
+                        "in": "path",
+                        "description": "Scope the link resides within",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "link_id",
+                        "in": "path",
+                        "description": "ID of the link to request",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-id",
+                        "in": "header",
+                        "description": "ID of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-env",
+                        "in": "header",
+                        "description": "Environment of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-user-id",
+                        "in": "header",
+                        "description": "Optional ID of the user if performed on behalf of a user",
+                        "required": false,
+                        "schema": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "x-user-name",
+                        "in": "header",
+                        "description": "Optional name of the user if performed on behalf of a user",
+                        "required": false,
+                        "schema": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "x-user-image-id",
+                        "in": "header",
+                        "description": "Optional image ID of the user if performed on behalf of a user",
+                        "required": false,
+                        "schema": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateLinkRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated link successfully"
+                    },
+                    "404": {
+                        "description": "Link not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Link"
+                ],
+                "summary": "Delete a link by ID",
+                "description": "Deletes a specific link using its ID",
+                "operationId": "link_delete",
+                "parameters": [
+                    {
+                        "name": "scope",
+                        "in": "path",
+                        "description": "Scope the link resides within",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "link_id",
+                        "in": "path",
+                        "description": "ID of the link to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-id",
+                        "in": "header",
+                        "description": "ID of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-env",
+                        "in": "header",
+                        "description": "Environment of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted link successfully"
+                    },
+                    "404": {
+                        "description": "Link not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/box/{scope}/link/{link_id}/edit-history": {
+            "get": {
+                "tags": [
+                    "Link"
+                ],
+                "summary": "Get link edit history",
+                "description": "Request the edit history for the provided link",
+                "operationId": "link_get_edit_history",
+                "parameters": [
+                    {
+                        "name": "scope",
+                        "in": "path",
+                        "description": "Scope the link resides within",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "link_id",
+                        "in": "path",
+                        "description": "ID of the link to request",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-id",
+                        "in": "header",
+                        "description": "ID of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-env",
+                        "in": "header",
+                        "description": "Environment of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtained edit history",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/EditHistory"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Link not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/box/{scope}/link/{link_id}/favicon": {
+            "get": {
+                "tags": [
+                    "Link"
+                ],
+                "summary": "Get link favicon",
+                "description": "Obtain the favicon image for the website that\nthe link points to",
+                "operationId": "link_get_favicon",
+                "parameters": [
+                    {
+                        "name": "scope",
+                        "in": "path",
+                        "description": "Scope the link resides within",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "link_id",
+                        "in": "path",
+                        "description": "ID of the link to request",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-id",
+                        "in": "header",
+                        "description": "ID of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-env",
+                        "in": "header",
+                        "description": "Environment of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtained link favicon",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LinkWithExtra"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Link not found or no favicon was found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/box/{scope}/link/{link_id}/image": {
+            "get": {
+                "tags": [
+                    "Link"
+                ],
+                "summary": "Get link social image",
+                "description": "Obtain the \"Social Image\" for the website, this resolves the website\nmetadata and finds the OGP metadata image responding with the image\ndirectly",
+                "operationId": "link_get_image",
+                "parameters": [
+                    {
+                        "name": "scope",
+                        "in": "path",
+                        "description": "Scope the link resides within",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "link_id",
+                        "in": "path",
+                        "description": "ID of the link to request",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-id",
+                        "in": "header",
+                        "description": "ID of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-env",
+                        "in": "header",
+                        "description": "Environment of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtained link social image",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LinkWithExtra"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Link not found or no image was found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/box/{scope}/link/{link_id}/metadata": {
+            "get": {
+                "tags": [
+                    "Link"
+                ],
+                "summary": "Get link website metadata",
+                "description": "Requests metadata for the link. This will make a request\nto the site at the link value to extract metadata from\nthe website itself such as title, and OGP metadata",
+                "operationId": "link_get_metadata",
+                "parameters": [
+                    {
+                        "name": "scope",
+                        "in": "path",
+                        "description": "Scope the link resides within",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "link_id",
+                        "in": "path",
+                        "description": "ID of the link to request",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-id",
+                        "in": "header",
+                        "description": "ID of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-env",
+                        "in": "header",
+                        "description": "Environment of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtained link metadata successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LinkWithExtra"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Link not found or failed to resolve metadata",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/box/{scope}/search": {
+            "post": {
+                "tags": [
+                    "Document Box"
+                ],
+                "summary": "Search document box",
+                "description": "Search within the document box",
+                "operationId": "document_box_search",
+                "parameters": [
+                    {
+                        "name": "scope",
+                        "in": "path",
+                        "description": "Scope of the document box",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-id",
+                        "in": "header",
+                        "description": "ID of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-env",
+                        "in": "header",
+                        "description": "Environment of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SearchRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Searched successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SearchResultResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Malformed or invalid request not meeting validation requirements",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Target folder not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/box/{scope}/stats": {
+            "get": {
+                "tags": [
+                    "Document Box"
+                ],
+                "summary": "Get document box stats by scope",
+                "description": "Requests stats about a document box using its scope. Provides stats such as:\n- Total files\n- Total links\n- Total folders",
+                "operationId": "document_box_stats",
+                "parameters": [
+                    {
+                        "name": "scope",
+                        "in": "path",
+                        "description": "Scope of the document box",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-id",
+                        "in": "header",
+                        "description": "ID of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-env",
+                        "in": "header",
+                        "description": "Environment of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Document box stats obtained successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DocumentBoxStats"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Document box not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/box/{scope}/task/{task_id}": {
+            "get": {
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Get task by ID",
+                "description": "Get the details about a specific task, used to poll\nthe current progress of a task",
+                "operationId": "task_get",
+                "parameters": [
+                    {
+                        "name": "scope",
+                        "in": "path",
+                        "description": "Scope the task is within",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "task_id",
+                        "in": "path",
+                        "description": "ID of the task to query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-id",
+                        "in": "header",
+                        "description": "ID of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "x-tenant-env",
+                        "in": "header",
+                        "description": "Environment of the tenant you are targeting",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Task found successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Task"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Task not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/options": {
+            "get": {
+                "tags": [
+                    "Utils"
+                ],
+                "summary": "Get options",
+                "description": "Requests options and settings from docbox",
+                "operationId": "options",
+                "responses": {
+                    "200": {
+                        "description": "Got settings successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DocumentBoxOptions"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AdminSearchRequest": {
+                "allOf": [
+                    {
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/SearchRequest"
+                            }
+                        ],
+                        "default": {
+                            "created_at": null,
+                            "created_by": null,
+                            "folder_id": null,
+                            "include_content": false,
+                            "include_name": false,
+                            "item_id": null,
+                            "max_fragment_size": null,
+                            "max_fragments": null,
+                            "max_pages": null,
+                            "mime": null,
+                            "modified": null,
+                            "neural": false,
+                            "offset": null,
+                            "pages_offset": null,
+                            "query": null,
+                            "size": null
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "scopes": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "default": []
+                            }
+                        }
+                    }
+                ],
+                "description": "Extended search request to search within multiple document\nboxes"
+            },
+            "AdminSearchResultResponse": {
+                "type": "object",
+                "required": [
+                    "total_hits",
+                    "results"
+                ],
+                "properties": {
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/WithScope_SearchResultItem"
+                        }
+                    },
+                    "total_hits": {
+                        "type": "integer",
+                        "format": "int64",
+                        "minimum": 0
+                    }
+                }
+            },
+            "CreateDocumentBoxRequest": {
+                "type": "object",
+                "description": "Request to create a document box",
+                "required": [
+                    "scope"
+                ],
+                "properties": {
+                    "scope": {
+                        "type": "string",
+                        "description": "Scope for the document box to use",
+                        "minLength": 1
+                    }
+                }
+            },
+            "CreateFolderRequest": {
+                "type": "object",
+                "description": "Request to create a folder",
+                "required": [
+                    "name",
+                    "folder_id"
+                ],
+                "properties": {
+                    "folder_id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Folder to store folder in"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name for the folder",
+                        "minLength": 1
+                    }
+                }
+            },
+            "CreateLink": {
+                "type": "object",
+                "description": "Request to create a document box",
+                "required": [
+                    "name",
+                    "value",
+                    "folder_id"
+                ],
+                "properties": {
+                    "folder_id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Folder to store link in"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name for the link",
+                        "minLength": 1
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "Link URL",
+                        "minLength": 1
+                    }
+                }
+            },
+            "CreatePresignedRequest": {
+                "type": "object",
+                "description": "Request to create a new presigned file upload",
+                "required": [
+                    "name",
+                    "folder_id",
+                    "size",
+                    "mime"
+                ],
+                "properties": {
+                    "folder_id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Folder to store the file in"
+                    },
+                    "mime": {
+                        "type": "string",
+                        "description": "Mime type of the file"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the file being uploaded",
+                        "minLength": 1
+                    },
+                    "parent_id": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "uuid",
+                        "description": "Optional parent file ID"
+                    },
+                    "processing_config": {
+                        "oneOf": [
+                            {
+                                "type": "null"
+                            },
+                            {
+                                "$ref": "#/components/schemas/ProcessingConfig",
+                                "description": "Optional processing config"
+                            }
+                        ]
+                    },
+                    "size": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Size of the file being uploaded",
+                        "minimum": 1
+                    }
+                }
+            },
+            "DocumentBox": {
+                "type": "object",
+                "required": [
+                    "scope",
+                    "created_at"
+                ],
+                "properties": {
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Date of creation for the document box"
+                    },
+                    "scope": {
+                        "$ref": "#/components/schemas/String",
+                        "description": "Scope for the document box"
+                    }
+                }
+            },
+            "DocumentBoxOptions": {
+                "type": "object",
+                "description": "Response to an options request",
+                "required": [
+                    "allowed_mime_types",
+                    "max_file_size"
+                ],
+                "properties": {
+                    "allowed_mime_types": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of allowed mime types for uploading"
+                    },
+                    "max_file_size": {
+                        "type": "integer",
+                        "description": "Max allowed upload file size in bytes",
+                        "minimum": 0
+                    }
+                }
+            },
+            "DocumentBoxResponse": {
+                "type": "object",
+                "description": "Response for requesting a document box",
+                "required": [
+                    "document_box",
+                    "root",
+                    "children"
+                ],
+                "properties": {
+                    "children": {
+                        "$ref": "#/components/schemas/ResolvedFolderWithExtra",
+                        "description": "Resolved contents of the root folder"
+                    },
+                    "document_box": {
+                        "$ref": "#/components/schemas/DocumentBox",
+                        "description": "The created document box"
+                    },
+                    "root": {
+                        "$ref": "#/components/schemas/FolderWithExtra",
+                        "description": "Root folder of the document box"
+                    }
+                }
+            },
+            "DocumentBoxStats": {
+                "type": "object",
+                "required": [
+                    "total_files",
+                    "total_links",
+                    "total_folders"
+                ],
+                "properties": {
+                    "total_files": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Total number of files within the document box"
+                    },
+                    "total_folders": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Total number of folders within the document box"
+                    },
+                    "total_links": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Total number of links within the document box"
+                    }
+                }
+            },
+            "EditHistory": {
+                "type": "object",
+                "required": [
+                    "id",
+                    "user",
+                    "type",
+                    "metadata",
+                    "created_at"
+                ],
+                "properties": {
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "When this change was made"
+                    },
+                    "file_id": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "uuid",
+                        "description": "ID of the file that was edited (If a file was edited)"
+                    },
+                    "folder_id": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "uuid",
+                        "description": "ID of the file that was edited (If a folder was edited)"
+                    },
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Unique identifier for this history entry"
+                    },
+                    "link_id": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "uuid",
+                        "description": "ID of the file that was edited (If a link was edited)"
+                    },
+                    "metadata": {
+                        "$ref": "#/components/schemas/EditHistoryMetadata",
+                        "description": "Metadata associated with the change"
+                    },
+                    "type": {
+                        "$ref": "#/components/schemas/EditHistoryType",
+                        "description": "The type of change that was made"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/EditHistoryUser",
+                        "description": "User that made the edit"
+                    }
+                }
+            },
+            "EditHistoryMetadata": {
+                "oneOf": [
+                    {
+                        "type": "object",
+                        "required": [
+                            "target_id",
+                            "type"
+                        ],
+                        "properties": {
+                            "original_id": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ],
+                                "format": "uuid",
+                                "description": "Folder moved from"
+                            },
+                            "target_id": {
+                                "type": "string",
+                                "format": "uuid",
+                                "description": "Folder moved to"
+                            },
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "MoveToFolder"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "required": [
+                            "original_name",
+                            "new_name",
+                            "type"
+                        ],
+                        "properties": {
+                            "new_name": {
+                                "type": "string",
+                                "description": "New name"
+                            },
+                            "original_name": {
+                                "type": "string",
+                                "description": "Previous name"
+                            },
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "Rename"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "required": [
+                            "previous_value",
+                            "new_value",
+                            "type"
+                        ],
+                        "properties": {
+                            "new_value": {
+                                "type": "string",
+                                "description": "New URL"
+                            },
+                            "previous_value": {
+                                "type": "string",
+                                "description": "Previous URL"
+                            },
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "LinkValue"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "description": "Metadata associated with an edit history"
+            },
+            "EditHistoryType": {
+                "type": "string",
+                "enum": [
+                    "MoveToFolder",
+                    "Rename",
+                    "LinkValue"
+                ]
+            },
+            "EditHistoryUser": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "Unique ID of the user"
+                    },
+                    "image_id": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "Last saved image ID for the user"
+                    },
+                    "name": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "Last saved name for the user"
+                    }
+                }
+            },
+            "EmailProcessingConfig": {
+                "type": "object",
+                "properties": {
+                    "skip_attachments": {
+                        "type": [
+                            "boolean",
+                            "null"
+                        ],
+                        "description": "Whether to skip extracting attachments when processing an email",
+                        "default": null
+                    }
+                }
+            },
+            "FileResponse": {
+                "type": "object",
+                "description": "Response for requesting a document box",
+                "required": [
+                    "file",
+                    "generated"
+                ],
+                "properties": {
+                    "file": {
+                        "$ref": "#/components/schemas/FileWithExtra",
+                        "description": "The file itself"
+                    },
+                    "generated": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/GeneratedFile"
+                        },
+                        "description": "Files generated from the file (thumbnails, pdf, etc)"
+                    }
+                }
+            },
+            "FileUploadResponse": {
+                "oneOf": [
+                    {
+                        "$ref": "#/components/schemas/UploadedFile"
+                    },
+                    {
+                        "$ref": "#/components/schemas/UploadTaskResponse"
+                    }
+                ]
+            },
+            "FileWithExtra": {
+                "type": "object",
+                "description": "File with the resolved creator and last modified data",
+                "required": [
+                    "id",
+                    "name",
+                    "mime",
+                    "folder_id",
+                    "hash",
+                    "size",
+                    "encrypted",
+                    "created_at",
+                    "created_by",
+                    "last_modified_by"
+                ],
+                "properties": {
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "When the file was created"
+                    },
+                    "created_by": {
+                        "oneOf": [
+                            {
+                                "type": "null"
+                            },
+                            {
+                                "$ref": "#/components/schemas/User",
+                                "description": "User who created the file"
+                            }
+                        ]
+                    },
+                    "encrypted": {
+                        "type": "boolean",
+                        "description": "Whether the file was determined to be encrypted when processing"
+                    },
+                    "folder_id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Parent folder ID"
+                    },
+                    "hash": {
+                        "type": "string",
+                        "description": "Hash of the file bytes stored in S3"
+                    },
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Unique identifier for the file"
+                    },
+                    "last_modified_at": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "date-time",
+                        "description": "Last time the file was modified"
+                    },
+                    "last_modified_by": {
+                        "oneOf": [
+                            {
+                                "type": "null"
+                            },
+                            {
+                                "$ref": "#/components/schemas/User",
+                                "description": "User who last modified the file"
+                            }
+                        ]
+                    },
+                    "mime": {
+                        "type": "string",
+                        "description": "Mime type of the file content"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the file"
+                    },
+                    "parent_id": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "uuid",
+                        "description": "Optional parent file if the file is a child"
+                    },
+                    "size": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Size of the file in bytes"
+                    }
+                }
+            },
+            "FolderPathSegment": {
+                "type": "object",
+                "required": [
+                    "id",
+                    "name"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            },
+            "FolderResponse": {
+                "type": "object",
+                "description": "Response for requesting a document box",
+                "required": [
+                    "folder",
+                    "children"
+                ],
+                "properties": {
+                    "children": {
+                        "$ref": "#/components/schemas/ResolvedFolderWithExtra",
+                        "description": "Resolved contents of the folder"
+                    },
+                    "folder": {
+                        "$ref": "#/components/schemas/FolderWithExtra",
+                        "description": "The folder itself"
+                    }
+                }
+            },
+            "FolderWithExtra": {
+                "type": "object",
+                "required": [
+                    "id",
+                    "name",
+                    "created_at",
+                    "created_by",
+                    "last_modified_by"
+                ],
+                "properties": {
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "When the folder was created"
+                    },
+                    "created_by": {
+                        "oneOf": [
+                            {
+                                "type": "null"
+                            },
+                            {
+                                "$ref": "#/components/schemas/User",
+                                "description": "User who created the folder"
+                            }
+                        ]
+                    },
+                    "folder_id": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "uuid",
+                        "description": "Parent folder ID if the folder is a child"
+                    },
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Unique identifier for the folder"
+                    },
+                    "last_modified_at": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "date-time",
+                        "description": "Last time the folder was modified"
+                    },
+                    "last_modified_by": {
+                        "oneOf": [
+                            {
+                                "type": "null"
+                            },
+                            {
+                                "$ref": "#/components/schemas/User",
+                                "description": "User who last modified the folder"
+                            }
+                        ]
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the file"
+                    }
+                }
+            },
+            "GeneratedFile": {
+                "type": "object",
+                "description": "File generated as an artifact of an uploaded file",
+                "required": [
+                    "id",
+                    "file_id",
+                    "mime",
+                    "type",
+                    "hash",
+                    "created_at"
+                ],
+                "properties": {
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "When the file was created"
+                    },
+                    "file_id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "File this generated file belongs  to"
+                    },
+                    "hash": {
+                        "type": "string",
+                        "description": "Hash of the file this was generated from"
+                    },
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Unique identifier for the file"
+                    },
+                    "mime": {
+                        "type": "string",
+                        "description": "Mime type of the generated file content"
+                    },
+                    "type": {
+                        "$ref": "#/components/schemas/GeneratedFileType",
+                        "description": "Type of the generated file"
+                    }
+                }
+            },
+            "GeneratedFileType": {
+                "type": "string",
+                "enum": [
+                    "Pdf",
+                    "CoverPage",
+                    "SmallThumbnail",
+                    "LargeThumbnail",
+                    "TextContent",
+                    "HtmlContent",
+                    "Metadata"
+                ]
+            },
+            "HttpErrorResponse": {
+                "type": "object",
+                "description": "HTTP error JSON format for serializing responses",
+                "required": [
+                    "reason"
+                ],
+                "properties": {
+                    "reason": {
+                        "type": "string"
+                    }
+                }
+            },
+            "LinkWithExtra": {
+                "type": "object",
+                "required": [
+                    "id",
+                    "name",
+                    "value",
+                    "folder_id",
+                    "created_at",
+                    "created_by",
+                    "last_modified_by"
+                ],
+                "properties": {
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "When the file was created"
+                    },
+                    "created_by": {
+                        "oneOf": [
+                            {
+                                "type": "null"
+                            },
+                            {
+                                "$ref": "#/components/schemas/User",
+                                "description": "User who created the file"
+                            }
+                        ]
+                    },
+                    "folder_id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Parent folder ID"
+                    },
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Unique identifier for the file"
+                    },
+                    "last_modified_at": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "date-time",
+                        "description": "Last time the file was modified"
+                    },
+                    "last_modified_by": {
+                        "oneOf": [
+                            {
+                                "type": "null"
+                            },
+                            {
+                                "$ref": "#/components/schemas/User",
+                                "description": "User who last modified the file"
+                            }
+                        ]
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the link"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "value of the link"
+                    }
+                }
+            },
+            "PageResult": {
+                "type": "object",
+                "required": [
+                    "page",
+                    "matches"
+                ],
+                "properties": {
+                    "matches": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "page": {
+                        "type": "integer",
+                        "format": "int64",
+                        "minimum": 0
+                    }
+                }
+            },
+            "PresignedStatusResponse": {
+                "oneOf": [
+                    {
+                        "type": "object",
+                        "required": [
+                            "status"
+                        ],
+                        "properties": {
+                            "status": {
+                                "type": "string",
+                                "enum": [
+                                    "Pending"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "required": [
+                            "file",
+                            "generated",
+                            "status"
+                        ],
+                        "properties": {
+                            "file": {
+                                "$ref": "#/components/schemas/FileWithExtra"
+                            },
+                            "generated": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/GeneratedFile"
+                                }
+                            },
+                            "status": {
+                                "type": "string",
+                                "enum": [
+                                    "Complete"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "required": [
+                            "error",
+                            "status"
+                        ],
+                        "properties": {
+                            "error": {
+                                "type": "string"
+                            },
+                            "status": {
+                                "type": "string",
+                                "enum": [
+                                    "Failed"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "PresignedUploadResponse": {
+                "type": "object",
+                "required": [
+                    "task_id",
+                    "method",
+                    "uri",
+                    "headers"
+                ],
+                "properties": {
+                    "headers": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "propertyNames": {
+                            "type": "string"
+                        }
+                    },
+                    "method": {
+                        "type": "string"
+                    },
+                    "task_id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "uri": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ProcessingConfig": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "oneOf": [
+                            {
+                                "type": "null"
+                            },
+                            {
+                                "$ref": "#/components/schemas/EmailProcessingConfig",
+                                "description": "Email specific processing configuration"
+                            }
+                        ],
+                        "default": null
+                    }
+                }
+            },
+            "ResolvedFolderWithExtra": {
+                "type": "object",
+                "description": "Folder with all the children resolved, children also\nresolve the user and last modified data",
+                "required": [
+                    "path",
+                    "folders",
+                    "files",
+                    "links"
+                ],
+                "properties": {
+                    "files": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/FileWithExtra"
+                        },
+                        "description": "List of files within the folder"
+                    },
+                    "folders": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/FolderWithExtra"
+                        },
+                        "description": "List of folders within the folder"
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/LinkWithExtra"
+                        },
+                        "description": "List of links within the folder"
+                    },
+                    "path": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/FolderPathSegment"
+                        },
+                        "description": "Path to the resolved folder"
+                    }
+                }
+            },
+            "SearchRange": {
+                "type": "object",
+                "properties": {
+                    "end": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "date-time"
+                    },
+                    "start": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "date-time"
+                    }
+                }
+            },
+            "SearchRequest": {
+                "type": "object",
+                "description": "Request to search within a document box",
+                "properties": {
+                    "created_at": {
+                        "oneOf": [
+                            {
+                                "type": "null"
+                            },
+                            {
+                                "$ref": "#/components/schemas/SearchRange",
+                                "description": "Creation date range search"
+                            }
+                        ],
+                        "default": null
+                    },
+                    "created_by": {
+                        "oneOf": [
+                            {
+                                "type": "null"
+                            },
+                            {
+                                "$ref": "#/components/schemas/String",
+                                "description": "Search by a created user"
+                            }
+                        ],
+                        "default": null
+                    },
+                    "folder_id": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "uuid",
+                        "description": "Enforce search to a specific folder, empty for all\nfolders",
+                        "default": null
+                    },
+                    "include_content": {
+                        "type": "boolean",
+                        "description": "Whether to include document content",
+                        "default": false
+                    },
+                    "include_name": {
+                        "type": "boolean",
+                        "description": "Whether to include document names",
+                        "default": false
+                    },
+                    "item_id": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "uuid",
+                        "description": "Enforce search to a specific file,link,folder",
+                        "default": null
+                    },
+                    "max_fragment_size": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "format": "int32",
+                        "description": "Maximum size of text fragments to extract when highlighting\ncontent (only works when \"include_content\" is true)",
+                        "default": null,
+                        "maximum": 150,
+                        "minimum": 0
+                    },
+                    "max_fragments": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "format": "int32",
+                        "description": "Max number of highlighted fragments to extract per page",
+                        "default": null,
+                        "maximum": 100,
+                        "minimum": 0
+                    },
+                    "max_pages": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "format": "int32",
+                        "description": "Maximum number of pages too return",
+                        "default": null,
+                        "maximum": 100,
+                        "minimum": 0
+                    },
+                    "mime": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "Search only include a specific mime type",
+                        "default": null
+                    },
+                    "modified": {
+                        "oneOf": [
+                            {
+                                "type": "null"
+                            },
+                            {
+                                "$ref": "#/components/schemas/SearchRange",
+                                "description": "Modified date range search"
+                            }
+                        ],
+                        "default": null
+                    },
+                    "neural": {
+                        "type": "boolean",
+                        "description": "Enable searching with AI",
+                        "default": false
+                    },
+                    "offset": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "format": "int64",
+                        "description": "Offset to start results from",
+                        "default": null,
+                        "minimum": 0
+                    },
+                    "pages_offset": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "format": "int64",
+                        "description": "Offset to start at when aggregating page results",
+                        "default": null,
+                        "minimum": 0
+                    },
+                    "query": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "The search query",
+                        "default": null,
+                        "minLength": 1
+                    },
+                    "size": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "format": "int32",
+                        "description": "Number of items to include in the response",
+                        "default": null,
+                        "minimum": 0
+                    }
+                }
+            },
+            "SearchResultData": {
+                "oneOf": [
+                    {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/FileWithExtra"
+                            },
+                            {
+                                "type": "object",
+                                "required": [
+                                    "type"
+                                ],
+                                "properties": {
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "File"
+                                        ]
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/FolderWithExtra"
+                            },
+                            {
+                                "type": "object",
+                                "required": [
+                                    "type"
+                                ],
+                                "properties": {
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "Folder"
+                                        ]
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/LinkWithExtra"
+                            },
+                            {
+                                "type": "object",
+                                "required": [
+                                    "type"
+                                ],
+                                "properties": {
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "Link"
+                                        ]
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            "SearchResultItem": {
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/SearchResultData",
+                        "description": "The item itself"
+                    },
+                    {
+                        "type": "object",
+                        "required": [
+                            "score",
+                            "path",
+                            "page_matches",
+                            "total_hits",
+                            "name_match",
+                            "content_match"
+                        ],
+                        "properties": {
+                            "content_match": {
+                                "type": "boolean"
+                            },
+                            "name_match": {
+                                "type": "boolean"
+                            },
+                            "page_matches": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/PageResult"
+                                }
+                            },
+                            "path": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/FolderPathSegment"
+                                },
+                                "description": "Path to the search result item"
+                            },
+                            "score": {
+                                "type": "number",
+                                "format": "float",
+                                "description": "The result score"
+                            },
+                            "total_hits": {
+                                "type": "integer",
+                                "format": "int64",
+                                "minimum": 0
+                            }
+                        }
+                    }
+                ]
+            },
+            "SearchResultResponse": {
+                "type": "object",
+                "required": [
+                    "total_hits",
+                    "results"
+                ],
+                "properties": {
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SearchResultItem"
+                        }
+                    },
+                    "total_hits": {
+                        "type": "integer",
+                        "format": "int64",
+                        "minimum": 0
+                    }
+                }
+            },
+            "String": {
+                "type": "string"
+            },
+            "Task": {
+                "type": "object",
+                "description": "Represents a stored asynchronous task progress",
+                "required": [
+                    "id",
+                    "document_box",
+                    "status",
+                    "created_at"
+                ],
+                "properties": {
+                    "completed_at": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "date-time"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "When the task was created"
+                    },
+                    "document_box": {
+                        "$ref": "#/components/schemas/String",
+                        "description": "ID of the document box the task belongs to"
+                    },
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Unique ID of the task"
+                    },
+                    "output_data": {
+                        "description": "Output data from the task completion"
+                    },
+                    "status": {
+                        "$ref": "#/components/schemas/TaskStatus",
+                        "description": "Status of the task"
+                    }
+                }
+            },
+            "TaskStatus": {
+                "type": "string",
+                "enum": [
+                    "Pending",
+                    "Completed",
+                    "Failed"
+                ]
+            },
+            "UpdateFileRequest": {
+                "type": "object",
+                "description": "Request to rename and or move a file",
+                "properties": {
+                    "folder_id": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "uuid",
+                        "description": "New parent folder for the folder"
+                    },
+                    "name": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "Name for the folder",
+                        "minLength": 1
+                    }
+                }
+            },
+            "UpdateFolderRequest": {
+                "type": "object",
+                "description": "Request to rename and or move a folder",
+                "properties": {
+                    "folder_id": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "uuid",
+                        "description": "New parent folder for the folder"
+                    },
+                    "name": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "Name for the folder",
+                        "minLength": 1
+                    }
+                }
+            },
+            "UpdateLinkRequest": {
+                "type": "object",
+                "description": "Request to rename a file",
+                "properties": {
+                    "folder_id": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "uuid",
+                        "description": "New parent folder for the link"
+                    },
+                    "name": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "Name for the link",
+                        "minLength": 1
+                    },
+                    "value": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "Value for the link",
+                        "minLength": 1
+                    }
+                }
+            },
+            "UploadFileRequest": {
+                "type": "object",
+                "required": [
+                    "name",
+                    "folder_id",
+                    "file"
+                ],
+                "properties": {
+                    "asynchronous": {
+                        "type": [
+                            "boolean",
+                            "null"
+                        ],
+                        "description": "Whether to process the file asynchronously returning a task\nresponse instead of waiting for the upload"
+                    },
+                    "file": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "binary",
+                            "minimum": 0
+                        },
+                        "description": "The actual file you are uploading, ensure the mime type for the file\nis set correctly"
+                    },
+                    "fixed_id": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "uuid",
+                        "description": "Fixed file ID the file must use. Should only be used for\nmigrating existing files and maintaining the same UUID.\n\nShould not be provided for general use"
+                    },
+                    "folder_id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Folder to store the file in"
+                    },
+                    "name": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "parent_id": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "uuid",
+                        "description": "Optional ID of a parent file (i.e for email attachments)"
+                    },
+                    "processing_config": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "JSON encoded processing config"
+                    }
+                }
+            },
+            "UploadTaskResponse": {
+                "type": "object",
+                "description": "Response from creating an upload",
+                "required": [
+                    "task_id",
+                    "created_at"
+                ],
+                "properties": {
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "task_id": {
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                }
+            },
+            "UploadedFile": {
+                "type": "object",
+                "required": [
+                    "file",
+                    "generated",
+                    "additional_files"
+                ],
+                "properties": {
+                    "additional_files": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/UploadedFile"
+                        },
+                        "description": "Additional files created and uploaded from processing the file"
+                    },
+                    "file": {
+                        "$ref": "#/components/schemas/FileWithExtra",
+                        "description": "The uploaded file itself"
+                    },
+                    "generated": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/GeneratedFile"
+                        },
+                        "description": "Generated data alongside the file"
+                    }
+                }
+            },
+            "User": {
+                "type": "object",
+                "required": [
+                    "id"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique ID of the user"
+                    },
+                    "image_id": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "Last saved image ID for the user"
+                    },
+                    "name": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "Last saved name for the user"
+                    }
+                }
+            },
+            "WithScope_SearchResultItem": {
+                "allOf": [
+                    {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/SearchResultData",
+                                "description": "The item itself"
+                            },
+                            {
+                                "type": "object",
+                                "required": [
+                                    "score",
+                                    "path",
+                                    "page_matches",
+                                    "total_hits",
+                                    "name_match",
+                                    "content_match"
+                                ],
+                                "properties": {
+                                    "content_match": {
+                                        "type": "boolean"
+                                    },
+                                    "name_match": {
+                                        "type": "boolean"
+                                    },
+                                    "page_matches": {
+                                        "type": "array",
+                                        "items": {
+                                            "$ref": "#/components/schemas/PageResult"
+                                        }
+                                    },
+                                    "path": {
+                                        "type": "array",
+                                        "items": {
+                                            "$ref": "#/components/schemas/FolderPathSegment"
+                                        },
+                                        "description": "Path to the search result item"
+                                    },
+                                    "score": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "description": "The result score"
+                                    },
+                                    "total_hits": {
+                                        "type": "integer",
+                                        "format": "int64",
+                                        "minimum": 0
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "type": "object",
+                        "required": [
+                            "scope"
+                        ],
+                        "properties": {
+                            "scope": {
+                                "$ref": "#/components/schemas/String"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Document Box",
+            "description": "Document box related APIs"
+        },
+        {
+            "name": "File",
+            "description": "File related APIs"
+        },
+        {
+            "name": "Link",
+            "description": "Link related APIs"
+        },
+        {
+            "name": "Folder",
+            "description": "Folder related APIs"
+        },
+        {
+            "name": "Task",
+            "description": "Background task related APIs"
+        },
+        {
+            "name": "Admin",
+            "description": "Administrator and higher privilege APIs"
+        },
+        {
+            "name": "Utils",
+            "description": "Utility APIs"
+        }
+    ]
+}

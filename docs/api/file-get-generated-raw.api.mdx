@@ -1,0 +1,72 @@
+---
+id: file-get-generated-raw
+title: "Get generated file raw"
+description: "Request the contents of a specific generated file type"
+sidebar_label: "Get generated file raw"
+hide_title: true
+hide_table_of_contents: true
+api: eJzdVVFv20YM/isHPq3AtfKG7kVvRZsmGbY1SLwnzwhoibKvPd0pd5RjT9B/HyjJsl1naWtsw7An2eQd+fEjj18DjMsI6QzeG0sw15BTzIKp2HgHKdzSQ02RFa9IZd4xOY7KFwpVrCgzhcnUkhwFZMpVYSwp3lb0uyt8UNgZtHo01qpAXAfXxemO7YKBBl/JfePddQ4piPd+SXw/xr0P+AgaKgxYElMQuA04LAlSiJmvCDQYQVshr+DzEu7khGKvskDI1EGwxn1Sj4ZXxoGGQA+1CZRDyqEmDTFbUYmQNiDFSBIOxi2hbfWYt4Np8mczX78TqsaS2auHmsL2GzJqKHwokSGFujb5EYLu5D+dnlxdynTc5AVoeOvXFG5wKXnvSrR2uqrLhUNjQcPPGJZ0aJjSht/2bQYNV1za/b9fiDFHRpk4Nmwl6eWu4TKKUwFyWO7mJZNDxy/3pK8IcwrP1N3fUFtfKwykWBByX9g5PR8hkFt/AcOFW5vgXUmO/1YwczkcK+8iRfH/MJnI5zj5hwWjcZSrgI9972OdZRRjUVu7hVbD68nr02uXxw/ZeVaFr53QPbxWuYNVZU3WvdfkY5SLzSlev/hIGZ+wcjWd3igKwQf1092HX1U/3PJRkYJBa/4wbqn2FR5SM4NAKAnnGqogS4NNT8Jgf6p343BdMVcXkvl2CA5tK/4fnyLw2jEFh1ZQrSn0kP/HNLQaSuKVl/27JO6WLa8ghWThN0nT7dg2kalImmHxtcm4n5NG8rVJv6aNK3yHYcj4zmcLv1Fvbq5PeBhcHR2935qMBFQ6vjmZ1jWF2N+YvPr+1URMlY9cojs4eEn8uRT1gI5yNvse/ivaNnSCacNJZdE4AV8HK0h6jmew8BvQkO6UTELI/73CjCjEPKx9qW2uYeUjS4ymWWCk34JtWzH3iz6dzTWsMRhcSCtmDeQmyu8c0gJtpGfI+e52mLgX6ssC+mSVgxGdKM4abd21U8Mn2o66Lcv1LEx/rW1nYNkx/d9A03nbeat32nJ2475KCJ9E2CM5ltwR6Nk0fZsofg2wXoiPkPUn3mQZVXzgO9nXIqXj0ru8mELb/glOIszW
+sidebar_class_name: "get api-method"
+info_path: docs/api/docbox-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get generated file raw"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/box/{scope}/file/{file_id}/generated/{type}/raw"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Request the contents of a specific generated file type
+for a file, will return the file contents
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"scope","in":"path","description":"Scope to create the link within","required":true,"schema":{"type":"string"}},{"name":"file_id","in":"path","description":"ID of the file to query","required":true,"schema":{"type":"string","format":"uuid"}},{"name":"type","in":"path","description":"ID of the file to query","required":true,"schema":{"type":"string","enum":["Pdf","CoverPage","SmallThumbnail","LargeThumbnail","TextContent","HtmlContent","Metadata"],"title":"GeneratedFileType"}},{"name":"x-tenant-id","in":"header","description":"ID of the tenant you are targeting","required":true,"schema":{"type":"string"}},{"name":"x-tenant-env","in":"header","description":"Environment of the tenant you are targeting","required":true,"schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Obtained raw file successfully"},"404":{"description":"Generated file not found","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}},"500":{"description":"Internal server error","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

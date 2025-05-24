@@ -130,10 +130,11 @@ const config: Config = {
         docsPluginId: "classic", // configured for preset-classic
         config: {
           petstore: {
-            specPath: "api/docbox.yml",
+            specPath: "api/docbox.json",
             outputDir: "docs/api",
             sidebarOptions: {
               groupPathsBy: "tag",
+              categoryLinkSource: "tag",
             },
           } satisfies OpenApiPlugin.Options,
         },

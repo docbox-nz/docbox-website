@@ -1,0 +1,72 @@
+---
+id: file-get-children
+title: "Get file children"
+description: "Get all children for the provided file, this is things like"
+sidebar_label: "Get file children"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV01v4zYQ/SvEnFpAWae724tuCyTdpGg3wSaLPbhGQItjixuaVMiRY8fQfy+GkmXLcuLEaC9Fc5EjivPefLwhZwUkpwHSIfymDcIoAYUh87og7Syk8BlJSGNElmujPFoxcV5QjqLwbq4VKjHRBhNBuQ5CB37aaRBG3+NfVhLJLJ+hpRD3Fd5lGAIqgTOpTYAEXIFeMtalghTY1t0U6W4NBwkU0ssZEnpmuQIrZwgphMwVCAloJllIymGX+Q1/IciJzKMkjKSNtvfiUTNJSMDjQ6k9KkjJl5hAyHKcSUhXQMsigpDXdgpVlbS4kaFWLyJfngk3iXj8NVN4KNEv34CYwMT5mSRIoSy16jBYnBBaaelkwyJHqdC/wKPeIZauFNKjIOmnSDXQMUFoKaCdH+BwbufaO8s18I+SGfHHoXA2YOD196en/OiCX41JaotqU72hzLgCJ6UxnI/MWUJLvFMWhdFZLMXBj8DbV3146b3kfZpwFrbeu/EPzKjnPEsqllv022NwZs5suCCdF9IqYWQgMXNKTzQqoSTJThiGELMc457ATMfHxBmFvq7CXAYuwKCfeAVt5pcFIa/UZa/uJG39M2b2jHm3xuRXowQKz0okXUdza+9Ltakk4QnVpLqef8/RbhTwKEOjQgVVh0y6AmfxahKl3eDY0hjgauua/BbQi8d8rWfVmoekl4adAPb802qfXzt4Vj+UKDYiKgN6pq9nchp7QGtiuLERyfe66B+c5SA5+XE3W1030rXZWlvHmOSdO+aqBEiTwSZuUI2q7erYOD92zqC0+xJIOfpuDhW34VlUFDkxRtFaFI+c8Ka/R4Vul+nB/raLfi09N4zagrg8Y3Ox0g9m7UKGvNN9x0vCIAI5z8G34uZDzOERpJqC0AotsXR8G/NYhdWusLbFsyedr1BRzDGvdNOwRuhDHqmobhP6X1dv1FVsywf9/jPmcVlgpzzXJ1CP6HNmvjCpLQu8s4hyORS6l6v7Kv6QRhSN9pid3mKqg5D1QcqQ8cDZkNWWcBqP/xZFW/rwvn8r00/dAGhbS7QTWz44v2vKzxfkJVT8l8DH04/9Iz4esdZxryitOuJIf+bovri9vRbovfPi95urL6J2K1ZDQK+l0U/aTsXmDtIVh0fJgD2BNO/33a5a5y+IinNG/toYh9r/X/ddcS4toee0BfRz9DXl/3AYWG5IueNpYYoU5wPKIYXB2C0GqzgWVAOurMGquatXg61pQtuJi7gNypnLxm4hPl1f9nxvlmII6nWjM2QiaXsTZinM0Yd6x+m7X96dRkG6QDNptz7kOaoW/IZLB261Sdm/PnQ1QSdc0KAwUlvmXHrDLOpwDmHsFpBAup6zmgMh3cw/rSOjBHIXiDetVmMZ8Js3VcWv67EnHY4SmEuv5ZhDPlyB0oF/K0gn0gR8IRI/fW2q6WdxeJ7b69b65m755juXpoxpS+Ael+0YGY/GYzg9P+kdwWUd2nimNOPU0dF61ey3l2RNpjtltlyPjtTb5sDXEKtnzw6z+otPWYYFba31GiBPj20X+Xx+C1X1N+D93l0=
+sidebar_class_name: "get api-method"
+info_path: docs/api/docbox-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get file children"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/box/{scope}/file/{file_id}/children"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get all children for the provided file, this is things like
+attachments for processed emails
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"scope","in":"path","description":"Scope to create the link within","required":true,"schema":{"type":"string"}},{"name":"file_id","in":"path","description":"ID of the file to query","required":true,"schema":{"type":"string","format":"uuid"}},{"name":"x-tenant-id","in":"header","description":"ID of the tenant you are targeting","required":true,"schema":{"type":"string"}},{"name":"x-tenant-env","in":"header","description":"Environment of the tenant you are targeting","required":true,"schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Obtained children successfully","content":{"application/json":{"schema":{"type":"array","items":{"type":"object","description":"File with the resolved creator and last modified data","required":["id","name","mime","folder_id","hash","size","encrypted","created_at","created_by","last_modified_by"],"properties":{"created_at":{"type":"string","format":"date-time","description":"When the file was created"},"created_by":{"oneOf":[{"type":"null"},{"description":"User who created the file","type":"object","required":["id"],"properties":{"id":{"type":"string","description":"Unique ID of the user"},"image_id":{"type":["string","null"],"description":"Last saved image ID for the user"},"name":{"type":["string","null"],"description":"Last saved name for the user"}},"title":"User"}]},"encrypted":{"type":"boolean","description":"Whether the file was determined to be encrypted when processing"},"folder_id":{"type":"string","format":"uuid","description":"Parent folder ID"},"hash":{"type":"string","description":"Hash of the file bytes stored in S3"},"id":{"type":"string","format":"uuid","description":"Unique identifier for the file"},"last_modified_at":{"type":["string","null"],"format":"date-time","description":"Last time the file was modified"},"last_modified_by":{"oneOf":[{"type":"null"},{"description":"User who last modified the file","type":"object","required":["id"],"properties":{"id":{"type":"string","description":"Unique ID of the user"},"image_id":{"type":["string","null"],"description":"Last saved image ID for the user"},"name":{"type":["string","null"],"description":"Last saved name for the user"}},"title":"User"}]},"mime":{"type":"string","description":"Mime type of the file content"},"name":{"type":"string","description":"Name of the file"},"parent_id":{"type":["string","null"],"format":"uuid","description":"Optional parent file if the file is a child"},"size":{"type":"integer","format":"int32","description":"Size of the file in bytes"}},"title":"FileWithExtra"}}}}},"404":{"description":"File not found","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}},"500":{"description":"Internal server error","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

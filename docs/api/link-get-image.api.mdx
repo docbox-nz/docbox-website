@@ -1,0 +1,73 @@
+---
+id: link-get-image
+title: "Get link social image"
+description: "Obtain the 'Social Image' for the website, this resolves the website"
+sidebar_label: "Get link social image"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV1Fv2zYQ/ivEPW2AUntD96K3AglSD0UTNCn64BgGLZ4tNjKpkCfHnqD/Phwly5LtxYnbh2HYUxwded93dx+PxxJILjzEY/ikzSNMIlDoE6dz0tZADDczktoISlE8wJ1NtMzEaCkX+ABibl0wPOPMa8JIUKq9cOhttkLfNT2YJZJUkqSQRom5Nqq231zfitak2S/vz61R2izEs6Y0LAuWB6O0w4SyDURgc3SSOY4UxJBp8zhdIE3DQoggl04ukdBxaCUYuUSIwSc2Z6vmyHJJKeyHe8crAiS7ZC5aoQ9EtIEIHD4V2qGCmFyBEfgkxaWEuATa5AGCnDYLqKqoRQ3ktHoRd3Qp7HyHS1YwEnp6A2YEc+uWkiCGotCqx2F9QWikoYsdjxSlQvcCk3qH2NhCSIeCpFsg1UDnpKGlgGZ1gsOVWWlnzRIN/VQyE17M6vLo2f77cMh/jikeVV0JX0t+q6vEGkJDvEvmeaaToMHBd89by0NoO/uOSb+IYwg1CFmJYCWzAkPpMoWulkniUBKqqaTOPzNWfSY9TZdW6bmuP00iyB2fBdJ1SJ29LwlEScIL0oFCP/xvKdbHfa4zFM/Si8YlVD0ycQnW4M08nK8GxxRZBlzyvsuvHp14Tu3WU+seolN5OohPq2Nx7eEZ/VSg2Cm58OiYfqjitOtivPMRyB/0v0/Sk/ByhappT6PLtu9t3dYCP8cl79xzV0VAmjJs8gbVpOqq4+Sp30e7lY6PUe1BjC5DHs7w0yRVKzTE8nMt71DJal+cXQEeSckrlBjyxJa+HLcIh5BnqpKdtF7/1+ZbtdlH+Ke4P7O3zhXH3Ored3JrWNbf2yHCY8s3TenVmpyEqmLb++H7w77OC4WxfBQKo4R1wtgmbyyr8PVHOnwf7eP9/a1A56wTf97dfBa13kM+PTotM/0XTzi766gvL4eSAQ8k1nw/dtG2GflIlF8x8pfGeZOVP47ddiND6IzMmNUKXU35P5yGKoIlUmp5alwghVGRUohhMLPrQRkmxGrAKhuUzeBWDba3vzZzG0AbiEubzOxafLgdHQTemEL8tT3TCTKLuJ2IwhlA5+sdw3e/vRvyp9x6WkrTWXiNdHQa6UGWu5r9a6f2plqEaxrkmdSG4y1cxuzrOoxhZtcQQbyd1cOBjyDuTNEh+kkEqfXEO8pyJj1+dVlV8eenAt0G4vGEO4zTcsa1GpegtOffCuK5zDy+kL5fvjQa/FWcehAcjaj5KM2mnfBigAgecdO+QsKFdA6jl54KZ7DZ5jX08mYePztbr3o8HCVZk+k/U1quZ+fqbQ+J1xCrHy89ZvWKD0mCOXVsB22Tnx9t77m+uoeq+hv+I1bw
+sidebar_class_name: "get api-method"
+info_path: docs/api/docbox-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get link social image"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/box/{scope}/link/{link_id}/image"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Obtain the "Social Image" for the website, this resolves the website
+metadata and finds the OGP metadata image responding with the image
+directly
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"scope","in":"path","description":"Scope the link resides within","required":true,"schema":{"type":"string"}},{"name":"link_id","in":"path","description":"ID of the link to request","required":true,"schema":{"type":"string","format":"uuid"}},{"name":"x-tenant-id","in":"header","description":"ID of the tenant you are targeting","required":true,"schema":{"type":"string"}},{"name":"x-tenant-env","in":"header","description":"Environment of the tenant you are targeting","required":true,"schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Obtained link social image","content":{"application/json":{"schema":{"type":"object","required":["id","name","value","folder_id","created_at","created_by","last_modified_by"],"properties":{"created_at":{"type":"string","format":"date-time","description":"When the file was created"},"created_by":{"oneOf":[{"type":"null"},{"description":"User who created the file","type":"object","required":["id"],"properties":{"id":{"type":"string","description":"Unique ID of the user"},"image_id":{"type":["string","null"],"description":"Last saved image ID for the user"},"name":{"type":["string","null"],"description":"Last saved name for the user"}},"title":"User"}]},"folder_id":{"type":"string","format":"uuid","description":"Parent folder ID"},"id":{"type":"string","format":"uuid","description":"Unique identifier for the file"},"last_modified_at":{"type":["string","null"],"format":"date-time","description":"Last time the file was modified"},"last_modified_by":{"oneOf":[{"type":"null"},{"description":"User who last modified the file","type":"object","required":["id"],"properties":{"id":{"type":"string","description":"Unique ID of the user"},"image_id":{"type":["string","null"],"description":"Last saved image ID for the user"},"name":{"type":["string","null"],"description":"Last saved name for the user"}},"title":"User"}]},"name":{"type":"string","description":"Name of the link"},"value":{"type":"string","description":"value of the link"}},"title":"LinkWithExtra"}}}},"404":{"description":"Link not found or no image was found","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}},"500":{"description":"Internal server error","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

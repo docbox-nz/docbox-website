@@ -1,0 +1,72 @@
+---
+id: task-get
+title: "Get task by ID"
+description: "Get the details about a specific task, used to poll"
+sidebar_label: "Get task by ID"
+hide_title: true
+hide_table_of_contents: true
+api: eJzdVktvGzcQ/ivEnBpgHalFetlbUDuJemgM20EPqmBQ3JGWMZekyaFidbH/vZh9SFlLVlM1vfS0i+HMfN+8yKmB5DpCPoc7GR9gkUGBUQXtSTsLObxHElSiKJCkNlHIpUskpIgelV5pJUjGh0ykiIUgJ7wz5g/LBiqFgJaED24dMEbhVkK22pCB8xgkI8wKyIGF92skyMDLICskDEypBisrhByich4hA82MvKQSntO8ZY2WKDsTOoovmkptIYOAj0kHLCCnkDCDqEqsJOQ10Na33ilou4amyXaALSNdnIScXXJIO0hy4jFh2J6J+HRBaKWliz1qibLAcAq3tRBbl4QMTCOskdjxv6SAdvM3HK7sRgdnKy7w9ySzYOXonY0Y+fyn6ZQ/Y3BuVLFyyRYiJqUwxlUyhhOvnCW0xCbSe6NV22OTz5Ht6kNct/yMig6iu0EfMKKlyI1OLmAhZNxaVQZnXYpdwYfGHgU4h7Z+hVOJk3O/dE+QQSRJiRVVQElY3EviSfOB54B0F6tylTfYn+44zofkZGCTMWy2cqFiFSgk4QXpCqEZuT5I7FGb51H/XqLdt/MXGUXvkr2PAjrinzQZFtwOgpd6dnAklu5pj7ZE4+w6CnIMpouTIaTU5XiE8Mnqx4RiPJTszCXyie4LSfKwlT62h4IPxSq4as+orwarNbsCHtjftvIRZHZAHG2quJDXaItO8stQasjgndQGC67rkEPu784xj+dIDE3DojfTNy+MhXXUjcb3m4YPd3fXAkNwQfx6+/E30dWBPyJi0NLoP7Vdi/3cjuchoGTAg3bv5cdupF3IH4j8FSPf9M77+H8+di3MLGGw0jCrDYaO8v84DU0GFVLp+AUdHk8qIYfJ0j1N6vbNbCbck5O6f8+a9lpfuRaud37pFI/i2+vZQcj9URt5d260QsbPd48GT8cGQ+wspq9/fD1lkXeRKmm/UmwXiXbWt2J2+Ryr3pfpP1o5+vQSPtHEG6nbuU7BMHaXuDl0t3U+rBu9ZT5sA4sMSheJNet6KSN+CqZpWNy9/Pl8kcFGBi2XnNp5DYWO/F9AvpIm4omgf7jpm+WVOLHLHA2iF0rLT+BGmtTWJYMH3O52J37mzyLz8pZzBpchkc2iyYbV4uw0fdMedJRkR2a8ce24np2pf7YTfQuxbg8bMes03iqFnr46O7jYeJPa3Q7vr+6gaf4CAKob9g==
+sidebar_class_name: "get api-method"
+info_path: docs/api/docbox-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get task by ID"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/box/{scope}/task/{task_id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get the details about a specific task, used to poll
+the current progress of a task
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"scope","in":"path","description":"Scope the task is within","required":true,"schema":{"type":"string"}},{"name":"task_id","in":"path","description":"ID of the task to query","required":true,"schema":{"type":"string"}},{"name":"x-tenant-id","in":"header","description":"ID of the tenant you are targeting","required":true,"schema":{"type":"string"}},{"name":"x-tenant-env","in":"header","description":"Environment of the tenant you are targeting","required":true,"schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Task found successfully","content":{"application/json":{"schema":{"type":"object","description":"Represents a stored asynchronous task progress","required":["id","document_box","status","created_at"],"properties":{"completed_at":{"type":["string","null"],"format":"date-time"},"created_at":{"type":"string","format":"date-time","description":"When the task was created"},"document_box":{"type":"string","title":"String","description":"ID of the document box the task belongs to"},"id":{"type":"string","format":"uuid","description":"Unique ID of the task"},"output_data":{"description":"Output data from the task completion"},"status":{"description":"Status of the task","type":"string","enum":["Pending","Completed","Failed"],"title":"TaskStatus"}},"title":"Task"}}}},"404":{"description":"Task not found","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}},"500":{"description":"Internal server error","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

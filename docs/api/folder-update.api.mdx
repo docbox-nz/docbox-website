@@ -1,0 +1,71 @@
+---
+id: folder-update
+title: "Update folder"
+description: "Updates a folder, can be a name change, a folder move, or both"
+sidebar_label: "Update folder"
+hide_title: true
+hide_table_of_contents: true
+api: eJzdVttu3DYQ/RVinlqAzjpF+qI3p3ERF0ViOPbTYlFwpdGKqUQq5Gi9W0H/Xgyplfbm27oXIH6xlhzOnDkkD08LpBYekin8assMHcwkZOhTp2vS1kACd3WmCL1QIg8RUqTKiDkKJYyqUKSFMguUw7yo7BKlsE7MLRUgwdboFCe7yiCBGPRHE7KChFo5VSGhYxAtcEpIwKe25lnNCGoV8uzC+sIRggrclHXodYZe3GsqtAEJDr812mEGCbkGJfi0wEpB0gKt61CEnDYL6Do51O3R6ezR2lcfhM23a5MVXA09vaCuhNy6ShEk0DQ628GxOiM0ytDZiKRAxfvzMJa4QqxtI5RDQcotkGKhU6gYIKBZPoHh0iy1s6ZCQ/8amMaje5qNz+FDlWKkhRcKnYsaHfONmbB8fAtV5hyiQsAOrFyV/giu6bhxpilLmB0BGH49E2K4Pf8HSF2pBb6AyxD/HzE6i8vQ03ubrTk0tYbQEH+qui51GrRk8tUzyPbw9Nj5V0zpoJubmDVe1UC9MhmrFMvVIF4sSI4FizR6TjoKwsOo9y/yfulPeC9q5fh29HqRW7clH9DJfoceKbGXkhvYyyKh0uZ3NAsqIHnbdRJIU4mDhEeB73mAjgN2r2IY8LU1Pvb+0/k5/zv2HGSbTnyTpuh93pTlmvt4d2zNBRFWNa8iu+HbWTvQYd34emhDVmjyWOYg/6nN/3h7ey3QOevEb18+fxJxvwKBHp1Wpf5Lm4UYu9+mZgoOFRec7R+OfvyYcg3cfySqL7nyTZ+cmQ9EvTskKm6RMIGaxmTfNQM/HzsqV4bQseh4dEt0EfJ3TEMnoUIqLFujuqFgiPj+wmRuV5M2+KBuEu/GpB3UqAMJ3PvNqJWXK1XVXKntWNdzG+D0xT/YdG5X4uL66oCSfiowE+dLnSLjS4aHg2/2Ep2PK87fvH1zzkO19VQpsxUY1WFUpJ1SW1r+elfZE024okldKm0YUONKLhMpnMLcrkBCsjGTA6pkVPWZhMJ64ui2nSuPd67sOh7+1qBbQzKdSVgqp9WciZy2kGnP3+Or9mCPP9z0R+dH8bRbPdpPP6jMGhhF2YTNkPAnrgeTzO/7SZged7En4BlZ7Wad3NiKkzl7lrM9CjPC2fXQA9qT+XqZy30OsOisT0T2Cqv7KLbRaL8W2CkG92lovcV+LbhTTe0zuBvt9Q7IGPRLhHJ2u6632zh41MYVF2mKNT0aO9t6Ra7vbkHCvHfPlc14iVP3/JSp+3hfbWAhPl081kKpzKJRC46NKfnvb2tmjK4=
+sidebar_class_name: "put api-method"
+info_path: docs/api/docbox-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Update folder"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"put"}
+  path={"/box/{scope}/folder/{folder_id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Updates a folder, can be a name change, a folder move, or both
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"scope","in":"path","description":"Scope the folder resides within","required":true,"schema":{"type":"string"}},{"name":"folder_id","in":"path","description":"ID of the folder to request","required":true,"schema":{"type":"string","format":"uuid"}},{"name":"x-tenant-id","in":"header","description":"ID of the tenant you are targeting","required":true,"schema":{"type":"string"}},{"name":"x-tenant-env","in":"header","description":"Environment of the tenant you are targeting","required":true,"schema":{"type":"string"}},{"name":"x-user-id","in":"header","description":"Optional ID of the user if performed on behalf of a user","required":false,"schema":{"type":["string","null"]}},{"name":"x-user-name","in":"header","description":"Optional name of the user if performed on behalf of a user","required":false,"schema":{"type":["string","null"]}},{"name":"x-user-image-id","in":"header","description":"Optional image ID of the user if performed on behalf of a user","required":false,"schema":{"type":["string","null"]}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","description":"Request to rename and or move a folder","properties":{"folder_id":{"type":["string","null"],"format":"uuid","description":"New parent folder for the folder"},"name":{"type":["string","null"],"description":"Name for the folder","minLength":1}},"title":"UpdateFolderRequest"}}},"required":true}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Updated folder successfully"},"400":{"description":"Attempted to move a root folder or a folder into itself","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}},"404":{"description":"Folder not found","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}},"500":{"description":"Internal server error","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

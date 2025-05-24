@@ -1,0 +1,73 @@
+---
+id: file-get-generated
+title: "Get generated file"
+description: "Requests metadata about a specific generated file type for"
+sidebar_label: "Get generated file"
+hide_title: true
+hide_table_of_contents: true
+api: eJzdVk1v20YQ/SuLObUAHblFeuEtSFzbRdMYtoIeFMEYkUNxk+UuvTuU5RL878WQFCVaip0IKWD0ZHlnOe/N574aGJcB4hn8rg3BPIKUQuJ1ydpZiOGa7ioKHFRBjCkyKly4ihWqUFKiM52oJVnyyJSqTBtS/FCSypz/ZLE9iNS9NkZ54spbxTmplBi1Cb0nORm7+GR1pjQrWuvAASJwpVi1s5cpxCBXbpfEt8NXEEGJHgti8hJLDRYLghhC4kqCCLSEUiLn8Di+G7mh2KnEEzK1bIy2X9S95lxbiMDTXaU9pRCzryiCkORUIMQ1SKQCwl7bJTRNNOC2FHX6JPLlO+WyFq9Lm1N3FfmH70CMIHO+QIYYqkqnIwbtzf8anmxVSOtcpRlE8NatyF/hUnBvCjRmmlfFwqI2EMGf6Je0ezClNb91lskyRHDBhdn+977vNWlH1mwE9HxTbOnTqRDZDXd9wmTR8sk26TlhSv6JuLsv1IOrFHpSLAy5C+yYmg8UyK6e4XBmV9o7W5DlH0pmLpdD6WygIPZfT0/lzxj8w4JRW0ofz22okoRCyCpjpAuSvhpxDViWRiftAE4+B3FS75Nwi8+U8F6oUq0dJAwKrULPOsOkDR6tqkrjMO15jAKeQVvP7TgVupAbfXfnGKSxu9FNb5GlYUov64J1l4Id21PzkyLTCXfOxwH8nZPdjsk9hn5TpNBsiT07mgfTwrkOj6uwIOPsMijFTgDaCA94H3u7wJCPp1k8C9cd794V4vEYth+tvqtI6ZQs60yTl/0+oInXti7P8nyvi/596Mk+Cn7Tc01f4b3enX71201TvKTtdNgKTSO216ev9+M7H+fDOlaZq2z64+bxYjq9UuS98+qPmw9/qa7wbT0DeY1G/6PtUm3XyHgcPaEA7o1Zf35oQQ5ZuGAuzwT5unfeZ+K3Q1vq0jJ5i0ZYrch3lP/HaZAZIs6dCJwlcatoOIcYJgu3ntStkGkm0hWTut86zWQYgUkteE377GSuxe/R3rlk4dbqzdXlXg56U5uKzm50QkIoHh41GcUV+dB9cfrql1enclS6wAXanYvnxPsTOcKrt7V7GaqyLxHTmielQW0lssobodolfwYLt4YI4o2O7OOKtw/SrgaNW4/zCHIXWL6u6wUG+uhN08hxJ7Di2TyCFXqNC6nQrIZUB/mdQpyhCfRE3n667pvwZ/W8cD0YX3+IVt74FZqqrXIEX+hh0Msiao7i9HVNeQSXTY5fBpvW2szlSe403dGF+yYBepBhx2QsdQeiR6fp+8TotxDrBPCIWXfjTZJQyTu2vRUuEnbYg+dnU2iafwGcNwuj
+sidebar_class_name: "get api-method"
+info_path: docs/api/docbox-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get generated file"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/box/{scope}/file/{file_id}/generated/{type}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Requests metadata about a specific generated file type for
+a file, will return the details about the generated file
+if it exists
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"scope","in":"path","description":"Scope to create the link within","required":true,"schema":{"type":"string"}},{"name":"file_id","in":"path","description":"ID of the file to query","required":true,"schema":{"type":"string","format":"uuid"}},{"name":"type","in":"path","description":"ID of the file to query","required":true,"schema":{"type":"string","enum":["Pdf","CoverPage","SmallThumbnail","LargeThumbnail","TextContent","HtmlContent","Metadata"],"title":"GeneratedFileType"}},{"name":"x-tenant-id","in":"header","description":"ID of the tenant you are targeting","required":true,"schema":{"type":"string"}},{"name":"x-tenant-env","in":"header","description":"Environment of the tenant you are targeting","required":true,"schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Obtained generated file successfully","content":{"application/json":{"schema":{"type":"object","description":"File generated as an artifact of an uploaded file","required":["id","file_id","mime","type","hash","created_at"],"properties":{"created_at":{"type":"string","format":"date-time","description":"When the file was created"},"file_id":{"type":"string","format":"uuid","description":"File this generated file belongs  to"},"hash":{"type":"string","description":"Hash of the file this was generated from"},"id":{"type":"string","format":"uuid","description":"Unique identifier for the file"},"mime":{"type":"string","description":"Mime type of the generated file content"},"type":{"description":"Type of the generated file","type":"string","enum":["Pdf","CoverPage","SmallThumbnail","LargeThumbnail","TextContent","HtmlContent","Metadata"],"title":"GeneratedFileType"}},"title":"GeneratedFile"}}}},"404":{"description":"Generated file not found","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}},"500":{"description":"Internal server error","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      
