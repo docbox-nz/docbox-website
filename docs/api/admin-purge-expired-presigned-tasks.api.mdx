@@ -1,0 +1,64 @@
+---
+id: admin-purge-expired-presigned-tasks
+title: "Flush database cache"
+description: "Administrative endpoint, runs the cleanup logic to clear presigned file upload tasks that have expired. This task is automatically run in the background internally this  endpoint just allows manually triggering it"
+sidebar_label: "Flush database cache"
+hide_title: true
+hide_table_of_contents: true
+api: eJzdks+OEzEMxl/F8nn6B8RpbishpJ6oxHIqVeVm3BmzGSckTmlVzbujTJcK9sADcIrk2P758+cbdpxdkmgSFFt86kZRyZbI5MzA2sUgag2kohlsYHCeSUsEH3pxYGEOJIiJs/TKHZzEM5ToA3VglF9qGRkMVPtdoiTulvA8SJ5/QTJQsTCSiSPvr5UEojPrSO6lT6FoB6LGSecEq7WP0eB7yQbkffiZYSQt95wkfc9JtAexb4oNhshVVNBNhy1S1XmIJfV8eB3q8JBwmMfGBhPnGDRzxvaG79cf6vP3vj75kgfIxTnO+VQ8TlODI9sQKiWGbNhgJBuwxdUMXc3QxSt08YAufkNFT6GCTMwztvgxuGO4wNN2gw2eOeU7+d1yvVxj89a/7QZyZCcncbNaOIUE3dwCp2aeaCSt/ZVGfijoyOhImcGRG/ht2xu6oMZq//WF2DXWhRhfbBU9idaFleSr/ruFu/vdVEv/aeK+waFa3+7wdqtr/Zr8NNXwj8Lpiu1u3+CZktCxWrzb/3k0289fnnGafgEZNUuR
+sidebar_class_name: "post api-method"
+info_path: docs/api/docbox-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Flush database cache"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/admin/purge-expired-presigned-tasks"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Administrative endpoint, runs the cleanup logic to clear presigned file upload tasks that have expired. This task is automatically run in the background internally this  endpoint just allows manually triggering it
+
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"204":{"description":"Flush successful"}}}
+>
+  
+</StatusCodes>
+
+
+      

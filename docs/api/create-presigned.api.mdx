@@ -1,0 +1,72 @@
+---
+id: create-presigned
+title: "Create a presigned upload"
+description: "Creates a presigned upload task to allow uploading a file directly to S3"
+sidebar_label: "Create a presigned upload"
+hide_title: true
+hide_table_of_contents: true
+api: eJy9V9tu2zgQ/RVinlpAqm+x09Vbelmsge42SJwnb1BQ0shmQ5EKSSV2Df/7YijJsmMncYJs/WKbGg7PzJyZQ61AF2i4E1qNU4ggMcgd/igMWjFTmEIAKdrEiIJMIILP3sAyzjY2rCyk5ilz3N4wpxmXUt/Xi0LNGGeZkMhSYTBxckkml4N/FQRg8LZE6z7pdAnRyv8VBlOInCkxgEQrh8rRI14UUiQeZ+enJSQrsMkcc06/3LJAiEDHPzFxEEBhKCon0NJTxXPcsrLOCDWDAHKhvqGauTlEvXUAmZYpmh8i9edJ+T2DaLq/K9Mm5w4iKEuxn57xF6Yzitg7gwCccJL2/+kXximsg9XBPW6O9S5KkHXaYLVGuRMK1tfrAKz4tR2KKvPYn7Lr8FL8wo1L2u7m3LF7ISWLsS4MEhLIxeHU7Pr7W+TY+VwVg5HpMc79h0psC61sVYl+t0dfhxiVHmAUvBkFiJp7lX2sCo8Su9BSskwblui8kOg3Bs8SpGHAeeP2ynudcHtDdKCy5ujmOn2+EH9NJuesMvZ40NBhh0HXvcXuhZtTqUsjnj/g6uKbZx+q9GmvTpPPOfIUjT2U/12/Z2rJauOKL3lpHfFFqESWKaZMKH9g7R8q6jTjYArENAiqVt5u1euaZgU3PEfnwUyblodF6FBx5UJUdxCAICgVjD2EX9WdMFrlnuKaVVMRffaEshDsDac96tUpXVODPzzfE+Gp41v2VTu2k8GEJda9AMOxU6o6a4ujE79AtNyJorRoXhID2TfsJAWgtY3OsHfjrHmIKYuXjPsN73cCzLi0T0Z4OCJytBXPla1m7iui+Yfn+PviOYQw5zM8Iutkxn5n7rex2kQX2CAsuJu/iKUPho8StyUy79KPWc5SnZS+JWO9eKDYAeCC0xgmkls0ET/tDbv9DMOk2x+GJ7w7CjkO03DQG/SGgyH/2B+cRht9ajnypT7jk15c+mjW6+t2JEOhrdcTii2CTqwXnZWHuO7QUOpsX5VIli7aO83XBmCbrrY/N5cNGGT84zAbnYTD095peDIc9cN4kCVhP/ljNMhGI57xETTa321Ee1MNSn6mfXrbiGK9YGfnYwjgDo2t8tv70P3Q3R/N52NmC0xEVourT33qXZBzij/naiuISrAP6/WO71Ur3297b6x55HDhOoXkdDsigZN0ZFWoKVSMiRqC1gLSVus6gDmVNprCahVzi1dGrte0fFuiWUI0vQ7gjhvBY0oq3ReEpd9tgzwa7LuLugXes8fQ1otcLalGXJb0DwK4weWmrfzdoG77VwN4VtgOwqtgPNDPDUx/h30NmONk7hhEfi6+EtAbDMsnIbYC80qAb6I9/y/EN5OdI2C2QrgDtjKq30vCydL3eWOx97bQ7jhLEizck7bbAnD+/XICAcT1S2quU9pj+D1JHb+v2lb7FPmbsF9bgeRqVvIZ2VY+6fMfiuNIQA==
+sidebar_class_name: "post api-method"
+info_path: docs/api/docbox-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create a presigned upload"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/box/{scope}/file/presigned"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Creates a presigned upload task to allow uploading a file directly to S3
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"x-tenant-env","in":"header","description":"Environment to operate withins","required":true,"schema":{"type":"string"}},{"name":"x-tenant-id","in":"header","description":"ID of the tenant the request is for","required":true,"schema":{"type":"string","format":"uuid","description":"ID of a tenant","title":"TenantId"}},{"name":"x-user-id","in":"header","description":"ID of the user performing the operation (If performed by a user)","required":false,"schema":{"type":"string","description":"ID of a user","title":"UserId"}},{"name":"x-user-id","in":"header","description":"Name of the user performing the operation (If performed by a user)","required":false,"schema":{"type":"string"}},{"name":"x-user-image-id","in":"header","description":"Image ID of the user performing the operation (If performed by a user)","required":false,"schema":{"type":"string"}},{"name":"scope","in":"path","required":true,"schema":{"type":"string","description":"Unique scope for a document box","minLength":1,"example":"user:a71502fe-c025-4a06-ae5d-3131535a8237:uploaded","title":"DocumentBoxScope"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"name":{"type":"string","minLength":1},"folder_id":{"allOf":[{"type":"string","format":"uuid","description":"ID of a folder","title":"FolderId"},{"description":"ID of the folder to store the file in"}]},"size":{"type":"number","description":"Size of the file that will be uploaded"},"mime":{"type":"string","description":"Mime/Content type of the file that will be uploaded"}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Created a presigned upload","content":{"application/json":{"schema":{"type":"object","properties":{"task_id":{"allOf":[{"description":"ID of the presigned upload task to poll for completion","type":"string","format":"uuid","title":"PresignedUploadTaskId"}]},"method":{"type":"string","description":"HTTP method to perform the presigned upload request with"},"uri":{"type":"string","description":"URL to send the presigned upload request to"},"headers":{"type":"object","description":"Any headers that must be included in the request"}},"required":["file","name","folder_id"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

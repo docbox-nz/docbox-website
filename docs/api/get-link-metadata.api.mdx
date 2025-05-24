@@ -1,0 +1,72 @@
+---
+id: get-link-metadata
+title: "Get link metadata"
+description: "Get website metadata from the website at the link location"
+sidebar_label: "Get link metadata"
+hide_title: true
+hide_table_of_contents: true
+api: eJy9Vttu20gM/ZUBnxJArp2Ltwu9ZZEgMFBsgzbBPqRBQEmUNY00o8yMXBuG/r3gSLLl2GmdNJsnW3PhOYfkkFyCLsmgk1pNEghhSu4+l+rhviCHCTqEABKysZEln4EQLsmJHxRZ6Uh0h0RqdCFcRqsddP6TTYlcxx7gm4IADNlSK0sWwiUcj0b8swnwie+sLBtyRtKMEmGrOCZr0yrPFxBArJUj5fg+lmUuG4zhd8tGlmDjjArkf25REoSgo+8UOwigNCzZyYaCky6n3jHrjFRTCEBVeY4R7zlT0VMv/Nfq9NcFzZ3B2FGy7YiVkINrf9Th9BDqAPT0/v2gP19edaAbtrahd0P1VvcB3JJQB5DiTMYbmJHWOaHaBs3IZWQ2LGdoBYrORh2ALHBKf2Ts8+WVaKzUNaflYyUNJRDetinRC9GW49ZyOiZ3dc1mTkenzyS00k6kulIJsx/vyvuJcmQU5sKSmZERZIw2b5fohtDuE/Pz7mvGAbUWpyRS3XgwxsqS0Kn/aPjVAUQYP3BO7MzlTeNfG2mrGxu2AqFVvhClIUvKCal85chFQlE1nUo1FYm0nFSJJ1QanVSxz0lDOaEl+035YLYPCy7Y6pe24EDdhKhEgwU5MhbC2yUoLPjofOBIoXIDUjMOKpPNCBMyWxou1EwarQrm6LRo6ieJH9JlUlno51LzfLci1DqnroNtfJn8Bn5y3jmtueH/MiRZJ6Rl17yAQwCpNgU6CKGqPPYuNGyxYO3ba78wSZ6oqCyZl2jg86Ikwyw4wry26kjiYJJ2m5SIaCHQXzjcEJhibn+pcLciNtTTc2PJvFLNv1jQ++nZxZBL0B5e52PiPX3f52pjXVLHsESXvShLN5XcKPlYkfAmfS1Akei48k8y0nMIoJDqE6mpyyA8CoDmWJQ+zCwhxI9H49FxSoN4dDwenOLorwHSOBmcHJ0cjU/G+PfxycewKnONCSW9HDlvMf7R869eTV+fn5rWMXixwv3eIaP0GHFr8Vl7F0BBLtPtDMfVnwmEMIz0fLj0nqqHfHu4bJnWw16/lirVvXGIpUZ6Ls6uJhDAjIxtaBx9GH0YbZE7u5oIW1Is07Y5+Zgk3gQ3iFJbV6DvPa2zeIjM+3PeU5vLddv704mzdbSjuRuWOUo/P1QmZ5DGSbfQJE3Y5Wjr5XAd0xXPuwAybR1fWi4jtHRj8rrm5ceKzALC27sAZmhkM/3cLqFrWqvX8qzQgy9tthyK53i3i6h4BJ5hXvEXBPBAi9Ub46R8R9DOSfVdHXSl59W6f9tcdxJsiDzp4Suir/bHfq12H0Y+h15J6A0K9i8prpvcKwm+Sf/7fym+Wevbg+a6GW+QbQ6dxTGVrre3NdJvlPLLi2uo65//4WJ7
+sidebar_class_name: "get api-method"
+info_path: docs/api/docbox-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get link metadata"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/box/{scope}/link/{link_id}/metadata"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get website metadata from the website at the link location
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"x-tenant-env","in":"header","description":"Environment to operate withins","required":true,"schema":{"type":"string"}},{"name":"x-tenant-id","in":"header","description":"ID of the tenant the request is for","required":true,"schema":{"type":"string","format":"uuid","description":"ID of a tenant","title":"TenantId"}},{"name":"x-user-id","in":"header","description":"ID of the user performing the operation (If performed by a user)","required":false,"schema":{"type":"string","description":"ID of a user","title":"UserId"}},{"name":"x-user-id","in":"header","description":"Name of the user performing the operation (If performed by a user)","required":false,"schema":{"type":"string"}},{"name":"x-user-image-id","in":"header","description":"Image ID of the user performing the operation (If performed by a user)","required":false,"schema":{"type":"string"}},{"name":"scope","in":"path","required":true,"schema":{"type":"string","description":"Unique scope for a document box","minLength":1,"example":"user:a71502fe-c025-4a06-ae5d-3131535a8237:uploaded","title":"DocumentBoxScope"}},{"name":"link_id","in":"path","required":true,"schema":{"type":"string","format":"uuid","description":"ID of a link","title":"LinkId"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Link metadata retrieved successfully","content":{"application/json":{"schema":{"type":"object","properties":{"title":{"type":"string","nullable":true,"description":"Website title extracted from the website metadata (Title tag)"},"og_title":{"type":"string","nullable":true,"description":"Website title extracted from the website metadata (OGP)"},"og_description":{"type":"string","description":"Website description extracted from the website metadata","nullable":true},"favicon":{"type":"boolean","description":"Whether the website has a favicon"},"image":{"type":"boolean","description":"Whether the website has a OGP image"}},"required":["title","og_title","og_description","favicon","image"]}}}},"404":{"description":"Link not found"},"500":{"description":"Internal server error","content":{"application/json":{"schema":{"type":"object","properties":{"reason":{"type":"string","description":"Descriptive message for the cause of the error"},"backtrace":{"type":"string","description":"Server backtrace of the error, only present in local debugging disabled for production releases\n"}},"title":"ErrorResponse"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

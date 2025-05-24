@@ -1,0 +1,72 @@
+---
+id: get-generated-file
+title: "Get generated file details"
+description: "Gets the details about a specific generated file"
+sidebar_label: "Get generated file details"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNV9tu2zgQ/RVinhpArp2L24Xesk2aNdDdDZoE+5AGwVgcW2wlUiEp14ahf18MJduynaubDfbJNk0ennNmOEPOwRRk0SujBxJiGJO/HZPmIZK3I5URRCDJJVYVPAliOCPvhE9JSPKoMidwaEovULiCEjVSiVgCCAb4piECS64w2pGDeA4HvR5/bMK2FwlL3iqakBSuTBJyblRm2QwiSIz2pD0DYFFkKgnku98do8zBJSnlyN/8rCCIwQy/U+K3VHzmTVZEsZZkSp+YnIQZicIa3lbpsUBtfEpWqBzHFOhFIjFlJsWQBIrE6AnZJXNjBQqflvlQo8qaRZIK0pLBjA47MbvgTGE5Al7V1ijZou68VXoMVQQMfFv/h1n29wji681ZEYyMzdFDDGWp5JbgwQmrQtHE1CufUePDQEIVbcajns9Ugyqfohc+VU78RNeOsDU5VDdVBLnKaZv8Jo0/VV6LX6CvJwuLrQGeArp8EEO8Oz/5HLVCQD7ZgwhIlznE13AuRxDBJzMhe45jNuMixyy7XMyHCL6gHVN74JKm/lOTeTcr95ZJyzYyI+afokuf5n/xx/FB/4PgyQ/IaDLdMWZiKZxI9PchLyMv0VPHcyA2t/snJb2KJsewgYSq4uN5VypLku0JubNIuCasTVAabWt0HnIDqoqRj3pHT551bbwYmVJzGkL/vuIw0J6sxkw4shOygqw19leKwfqps4TNisdjdrL4NSGRk3OhHBgbfE2wdMuErPlVEQwx+eEtJs9I6Ita2nLFGlYkjM5morDkSHuhtMhMgpmQNCzHY64rUjkcZmypsVy8ZJkwsLCUETpy33SI9CJWp4z6tanKIVZVBAVazMmTdaHAaOQTDdOOJ43ad0hPIALFZFNCSXZLw6meKGt0zhy9EXVvIfFT+VRpB+1E87akaDtCi5rHBWlz/5CPj22/qln1ivCVtyTnhXJszQs4PLei1nu1auplGBjIDRWlI/sSDTxfFGSZBUc4NKhFtxbvBqPFnyTFcCYwLNhbEzjCzD2q8H5FDNTSc+XI7qjmL8zp7fTcx5Db7zNcD136Lb1vc3WJCdU1MCzQpy/K0nUlV1rdlSQCZKgFKKRJynAkh2YaKrr+QnrsU4j3I6Ap5kUIM0uI8eN+v3cwok7SO+h3jrD3oYPUl53D/cP9/mEffzs4/BiXRWZQkmzlyEmzx+9mehHUtPWtusluCn/pZtPisbrZNu3sNQz/v15EqpsIcvKpae713PVYaQzdoZl25yFDqi4T7c6bCFXdpYLufN2tKtg1MsGQVdCHZiqOzwcQwYSsqx3Zf99739vy6fh8sHwi1MeIs1MGCG6VhXE+x9CFm3Cdkd90tHlzbILPVzeB3d4nTYg9TX23yFBpZlTajKFr166hPj3x4rA26RavknuJy8MbuXYTQWqcZ5z5fIiOrmxWVTx8V5KdQXx9E8EEreImHrrvoqEvK8mDit99bVJ3TzwkpRlEzU+oCWYl/4IIftBsWX/CG+DtNl349sbbbsQlPF2aprCz609ee+7lWfPZuF0t+e5sy/MuQc9hFJJ6R0Kv0Eofpbi6fuxI8FVuJv8txVe7lDyD5uqatEa2nnScJFT41n9bj621ZnN2eglV9S9Gi0ou
+sidebar_class_name: "get api-method"
+info_path: docs/api/docbox-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get generated file details"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/box/{scope}/file/{file_id}/generated/{generated_type}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Gets the details about a specific generated file
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"x-tenant-env","in":"header","description":"Environment to operate withins","required":true,"schema":{"type":"string"}},{"name":"x-tenant-id","in":"header","description":"ID of the tenant the request is for","required":true,"schema":{"type":"string","format":"uuid","description":"ID of a tenant","title":"TenantId"}},{"name":"x-user-id","in":"header","description":"ID of the user performing the operation (If performed by a user)","required":false,"schema":{"type":"string","description":"ID of a user","title":"UserId"}},{"name":"x-user-id","in":"header","description":"Name of the user performing the operation (If performed by a user)","required":false,"schema":{"type":"string"}},{"name":"x-user-image-id","in":"header","description":"Image ID of the user performing the operation (If performed by a user)","required":false,"schema":{"type":"string"}},{"name":"scope","in":"path","required":true,"schema":{"type":"string","description":"Unique scope for a document box","minLength":1,"example":"user:a71502fe-c025-4a06-ae5d-3131535a8237:uploaded","title":"DocumentBoxScope"}},{"name":"file_id","in":"path","required":true,"schema":{"type":"string","format":"uuid","description":"ID of a file","title":"FileId"}},{"name":"generated_type","in":"path","required":true,"schema":{"type":"string","description":"Type of the generated file (PDF, thumbnail etc)","enum":["Pdf","CoverPage","SmallThumbnail","LargeThumbnail","TextContent"],"title":"GeneratedFileType"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Generated file retrieved successfully","content":{"application/json":{"schema":{"type":"object","description":"File generated as the outcome of processing another image file, could be a converted file or a thumbnail image depending on the type\n","properties":{"id":{"type":"string"},"file_id":{"allOf":[{"type":"string","format":"uuid","description":"ID of a file","title":"FileId"},{"description":"ID of the file that this was generated from"}]},"mime":{"type":"string","description":"Mime type of the generated file"},"type":{"type":"string","description":"Type of the generated file (PDF, thumbnail etc)","enum":["Pdf","CoverPage","SmallThumbnail","LargeThumbnail","TextContent"],"title":"GeneratedFileType"},"hash":{"type":"string","description":"SHA256 hash of the generated file contents"},"created_at":{"type":"string","format":"date-time","description":"When the file was created"}},"required":["id","file_id","mime","type","hash","created_at"],"title":"GeneratedFile"}}}},"404":{"description":"Generated file not found"},"500":{"description":"Internal server error","content":{"application/json":{"schema":{"type":"object","properties":{"reason":{"type":"string","description":"Descriptive message for the cause of the error"},"backtrace":{"type":"string","description":"Server backtrace of the error, only present in local debugging disabled for production releases\n"}},"title":"ErrorResponse"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

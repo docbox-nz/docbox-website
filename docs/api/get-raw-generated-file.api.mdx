@@ -1,0 +1,73 @@
+---
+id: get-raw-generated-file
+title: "Get raw generated file content"
+description: "Retrieves and responds with the raw contents of a specific generated file. This should be used when serving the file up from the browser."
+sidebar_label: "Get raw generated file content"
+hide_title: true
+hide_table_of_contents: true
+api: eJzlV9tu2zgQ/ZXBPLWAHDu37UJv3aYtDASLIHGekiAYiSOLrUQqJOULDP17QUq+xmmTIJuXfUpEUTPnnDlDjheoKzbkpFZDgTGO2d0bmt6PWfllFveZLBgjFGxTIyu/EWO8ZGckT9gCKQGGbaWVsDCVLgeXMxiaQqqVY+Us6AwIbMWpzGQKq8jgIx/AKJcWbK7rQkDCUFsWMM1ZgWUzkWoc4vmtUFeQGV2GhcToqWVzcKuu2Nmw9KXN1zuTttJWeqSQMwk24DQIaauC5utoUhVSMVgNLicHzsO4vjyHlNQKh1RQiQwmkqds7MGtwghbspYtxgs8Ggz8nx1xaLrDcqkFmE43AbZOU7Y2q4tiHuJ2W3w4qqpCpqEofZ06dj3rDFPp39k055L8f25eMcZonZFqjBFm2pTkMMZEKjJzbJqmifBkcPIY4fdtdEo7yHStBDYRnu6jNFSOjaIiFIUNsDHaPA36h/Vf7QGrkx+cOoywMt53TrYyGqbui11S2zDOlk8ThpKtpTFDpk0oakq1Ze81/9DiayJMKP3pDKX85+BXLbXVF1uxItCqmENl2Po6SgWFTqkAwUk9HnubCmkpKbyk2kBltKjTYEHDBZNle6vQ18NJV3gQX33Uy85LoVZNhBUZKtmxsRjfLFBR6bfOeo4VKddjNcEIpQfbGvsRh69qIo1WpcfoNLS9zaEvpbLBvQ+1NCwwdqbm6Ek7NU30OL8Uf0g/PFuK1n7RngX8ULN1IK2X5gUYNixd1yH3vmzU5cK1tqOwMBQ7LGrL5iUc/H6o2HgUy4NodVrCh2G2fMkCkjlQ+ODjFsGMCvtbhvsZ+UAbfK4tm1ey+ZdKfj8++xCWNOZnqO63wXtqv4nVprriJcKKXP4il24zuVbyoWYIIcNZQCB0WoeWTPQMIyylOmc1djnGhxHyjMoqlNlTiOnT4engKONeOjg67Z3Q4K8e8anoHR8eH54en9LfR8ef4roqNAkWGx4563L8o2dXgc0mP3/K369r8GKGz+vDblJYIvomC95x7XqqCBneRvDRvFpZfOfa/XBx9i0Cl9dlokgWwC71HmFVlxjf4IXIMMIvesLmgsYez1VJRTFa7scIz8mMeXNhxDPXTRp4tya7ulE9a48Im+YuwpJdrru5yt96nmmM/UTP+ovgkKbvgfYXXYWa/opBf7GtVtM3NA2SZTqIsi58omfw+WKIEU7Y2FaVw4PBweCRVp8vhqtJrG0l71ARQvjrstLWlRRu4q5k39mFaW7/QLObYLGeCP7PM2JnWMcz168KksprW5vCC9R64AbbsyBeHj1d88TrVl2J4JcfdY43w12EubbOR1ssErJ8bYqm8csPNZs5xjd3EU7ISD+YhIliOaSsTscnq/fhsmvHj/AUoW6R1Nw7j4raP2GEP3m+OlN9879j0qV675x2pzrNXRMtL7pXq/7HUW4vzhbPzsS4wvtqWZ432D0HUbD2KwG9wXjwW4jrkeqVAN9k2vpvIb7ZoPUMmOvRbwtsu+lzmnLlNt49+at36yL9/nWETfMLFGrC+A==
+sidebar_class_name: "get api-method"
+info_path: docs/api/docbox-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get raw generated file content"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/box/{scope}/file/{file_id}/generated/{generated_type}/raw"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Retrieves and responds with the raw contents of a specific generated file. This should be used when serving the file up from the browser.
+Sets the Content-Disposition header to display the file inline so that this URL can be used in pdf viewers.
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"x-tenant-env","in":"header","description":"Environment to operate withins","required":true,"schema":{"type":"string"}},{"name":"x-tenant-id","in":"header","description":"ID of the tenant the request is for","required":true,"schema":{"type":"string","format":"uuid","description":"ID of a tenant","title":"TenantId"}},{"name":"x-user-id","in":"header","description":"ID of the user performing the operation (If performed by a user)","required":false,"schema":{"type":"string","description":"ID of a user","title":"UserId"}},{"name":"x-user-id","in":"header","description":"Name of the user performing the operation (If performed by a user)","required":false,"schema":{"type":"string"}},{"name":"x-user-image-id","in":"header","description":"Image ID of the user performing the operation (If performed by a user)","required":false,"schema":{"type":"string"}},{"name":"scope","in":"path","required":true,"schema":{"type":"string","description":"Unique scope for a document box","minLength":1,"example":"user:a71502fe-c025-4a06-ae5d-3131535a8237:uploaded","title":"DocumentBoxScope"}},{"name":"file_id","in":"path","required":true,"schema":{"type":"string","format":"uuid","description":"ID of a file","title":"FileId"}},{"name":"generated_type","in":"path","required":true,"schema":{"type":"string","description":"Type of the generated file (PDF, thumbnail etc)","enum":["Pdf","CoverPage","SmallThumbnail","LargeThumbnail","TextContent"],"title":"GeneratedFileType"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Raw generated file content retrieved successfully\n","content":{"application/octet-stream":{"schema":{"type":"string","format":"binary"}}}},"404":{"description":"Generated file not found"},"500":{"description":"Internal server error","content":{"application/json":{"schema":{"type":"object","properties":{"reason":{"type":"string","description":"Descriptive message for the cause of the error"},"backtrace":{"type":"string","description":"Server backtrace of the error, only present in local debugging disabled for production releases\n"}},"title":"ErrorResponse"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

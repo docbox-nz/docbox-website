@@ -1,0 +1,72 @@
+---
+id: update-folder
+title: "Update a folder"
+description: "Update a folder, allows changing the folder name and parent folder."
+sidebar_label: "Update a folder"
+hide_title: true
+hide_table_of_contents: true
+api: eJy9V9tu2zgQ/RVinlpAjm+x09VbsskCBhaLoE2e0qAYiSObrUQqJJXYMPTvBUnJ92QTbzZ6sUUOZ86ZK7UEVZJGK5SccIihKjla+pGpnJOGCDiZVIvS7UMMt36XIQv7EcM8V0+GpTOUUyGnzM6o2WMSC2IoOStRk7TN8sl3CRFoeqjI2AvFFxAv/avQxCG2uqIIUiUtSeu2sCxzkXp83Z/GgViCSWdUoPtnFyVBDCr5SamFCErt2FhBxu06BBtSxmohpxCBrPIck5xac4WQf5Oc2hnE/TqCAPSH4IfOZkoXaJ2jKsH3/DO5ZCpbuQcisMI6O/CXX5jwPeu1f5xHTKmkCcAHvZ772dYdVLAQIM5MlaZkTFbl+QLqCE4PnblAzhpfR6w1wRLFF8z5GIU0PmSktdKsIGNwSrARALA0t90yRyGDkdNngUnlYlxJzpRmFvWU2pizVFU59wIJBRmnbHQI8URa0hJzZkg/kg7I4N1SQhM2J3YDuw3jsn17pNYtLHO8ZsRSrAy5OK8859gkmP6yGtODGbet/FugtjqxpStiSuYLVmoyrmqEZLlKMWeckmrqa4wL4/KHe0ClVrxKnWKmKSc0ZL5LcBnVpt6V0/q1iT006VaixoIsaQPxXVspMO9Ykihth+QjRCAc2BnhoU5wJR+FVrJwGK1ioYkQexJ2JqRpSnyzpvci1DinrqN9+760XjIfCs05LZzwf5tMZ8I417wBw2vLOtjaKOsbvzDhOywqQ/otHJw8K0k7FG0XXbVl9mmStZvEWbJg6A983iKYYW5eZHiYkVO0wefW+CZ1DJt/XLv/MD6HEBY4pVd43Ymxj/T9JlaTqpJahCXa2ZuydGcYS/FQEfMqfS9AxlVa+ZJM1By2B1sENMei9GF2FGI86496g4w6aW8w6pxib9xBGvHOsD/sj4Yj/DIYnsVVmSvkxDdy5LKxcaHm3zybTX7r2Xksx/86YOv6PoKC7Ey560xZ+RngQMTQTdS8u/T+qrtBQ3e5QlxDBG6cfF3fTa5aj63jt4a5uiTAMMMvo2x82hmd9c86p6PxoJMMs7QzSP8YD7PxGDMcuxEhZKY85bUnEzVn59cTiOCRtAkc+ye9k94e8/PrCTMlpSJrZp8POfcqnPJSGVug3MC6c1nb1bjcmPLvda9rgrl9aah07qyFINxBSM24rYQVuHjt0vsIZspYJ71cJmjoVud17ZYfKtILiO/uI3hELcI96m4J7UxcFeOzVD99bVLxM3sOcLOIcuHignnl3iCCX7RYlbDL+Q80uvZNfV9HbW87mvm/Tu+DEAOUnUvCCurRHnndLH8NIt8wjgT0DhPhRYjrKXokwHcZsP8vxHebra+AuZ72W2CD0J8BUudm4XtMK7H35bA+cZ6mVNoN2R5sDZLr2xuIIGk+WAvFnYzGJzfb8CmUqvIuCd8Zbm0JOcpp5T6pYgj23PMbBMtHfw==
+sidebar_class_name: "put api-method"
+info_path: docs/api/docbox-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Update a folder"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"put"}
+  path={"/box/{scope}/folder/{folder_id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Update a folder, allows changing the folder name and parent folder.
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"x-tenant-env","in":"header","description":"Environment to operate withins","required":true,"schema":{"type":"string"}},{"name":"x-tenant-id","in":"header","description":"ID of the tenant the request is for","required":true,"schema":{"type":"string","format":"uuid","description":"ID of a tenant","title":"TenantId"}},{"name":"x-user-id","in":"header","description":"ID of the user performing the operation (If performed by a user)","required":false,"schema":{"type":"string","description":"ID of a user","title":"UserId"}},{"name":"x-user-id","in":"header","description":"Name of the user performing the operation (If performed by a user)","required":false,"schema":{"type":"string"}},{"name":"x-user-image-id","in":"header","description":"Image ID of the user performing the operation (If performed by a user)","required":false,"schema":{"type":"string"}},{"name":"scope","in":"path","required":true,"schema":{"type":"string","description":"Unique scope for a document box","minLength":1,"example":"user:a71502fe-c025-4a06-ae5d-3131535a8237:uploaded","title":"DocumentBoxScope"}},{"name":"folder_id","in":"path","required":true,"schema":{"type":"string","format":"uuid","description":"ID of a folder","title":"FolderId"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"name":{"type":"string","nullable":true,"minLength":1},"folder_id":{"type":"string","format":"uuid","description":"ID of a folder","title":"FolderId","nullable":true}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Folder updated successfully"},"400":{"description":"Bad request, response body contains the error message","content":"text/plain"},"404":{"description":"Folder not found or target folder could not be found"},"500":{"description":"Internal server error","content":{"application/json":{"schema":{"type":"object","properties":{"reason":{"type":"string","description":"Descriptive message for the cause of the error"},"backtrace":{"type":"string","description":"Server backtrace of the error, only present in local debugging disabled for production releases\n"}},"title":"ErrorResponse"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

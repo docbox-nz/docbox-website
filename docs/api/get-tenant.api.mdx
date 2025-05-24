@@ -1,0 +1,72 @@
+---
+id: get-tenant
+title: "Get a tenant"
+description: "Administrative endpoint to request the details of a tenant. Provides the details of the tenant itself along with a list of all the document boxes  within the tenant"
+sidebar_label: "Get a tenant"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV01v20YQ/SuLObUA/dEmvfDmxEYgtGgMO0UPtiGMuCNp4+UusztUJAj878FwKVoUVbsxcilQXwxRw3kzb9+8HW3BVxSQjXcTDTksiKdMDh1DBppiEUwlX0IOF7o0zkSW6BUpcrryxrFirwJ9qSmy4iUpTYzGRuXnClVKdaqug18ZTfEwQj6mGGU4kp0rtN4t1FfDS4XKmshtImvTm76oS3KsZn5NUbVhxu1luXeQQYUBS2IKEfK7LTgsCXJYn6SQE3IryMBIS0tCTWHU6ZVbmeBdi8ReJYaoQ4uQgfRrAmnIOdSUQSyWVCLkW+BNJWCRg3ELaJqsx0/oU6N34BXycgQ9uVQfB7SwVwvi78DMYO5DiQw51LXR0DQP8nKsvIsUJf7X83P5NwT+lOBobSKT1Fh4x+RYIrGqrClakZx9jhK+HcP72WcqpNAqCGFsElgnJsli7cd5eyKHbwwree/d3CzqJMpeLDjzNfeKGsEY/TITR7jeEylkwIYt9VxMNDQZ6Nk0HeA4+zDbn1jSTtIaGWcYaf8ga2E/JYxUBOJX5L34+1all5UcDxpn3GKIWATS5NigbdHim1fA3L5Rs7p4JFaRfdhBdH0IkmT2cWqcpvX35ieZJxcJQ7FUbYbDXg6AZF5fTD8Y2T1Tid3UnqrfaUM6GcvkUsYKrfVf2+AotaWHrf53vlLWlk1lSWkzn1OQ3PSEE0/Ve1+W3qkV2ppirk7UPVzSiqyvJOAe2ifXweu6kDrv4d6JJ+zN8h0kYXYqG8nj6QQPGU/EPByqFsRynhuouQ9t051nk97pv3kQdXYOO20ddo93DAE3I9r/2DPoA3PGFRqLM0tq4NDifkxlPOYcw9zvMJpiNP/7KCMXiIWvjmixyaAIhEx6ivysT2hkOmFT0uiYUupBoj3uL7uq3vk1NOkvg7fnb8c+e0PR16GQu4yicr6z3B9nuIGwe+P5ibncfVqRKilGXFCvjQLr2LsBheCDcDjD4pEDFv9i2m8prCio/o1Brkx5ZzeqChTlII1T1hdolaZZvViIC2gTRTm6Lajq50cFsoSRYjdGO/avJOtNd8VBIv+3Y5fcxDEFh1bFVF9q7X/qfyT1TQYl8dJ322S7j/EScjhDWSDPkg2cbft9qGkXorlvW3uap5lfq4vrCWSwohBTb7+cnp+ejxfT64mKFRVm3h1cW7tuUwh5lY9cYnsu3S72gQarxCDd9kkN/52Vt5ME05rPKovGSd91sNJOov8OWvoldtd2/rSSPmSw9JElbLuVPeKvYJtGHn+pKWwgv3vIYIXBiDbaHW6nE8jnaCM9Q+JPN52N/qz+ebs92sDu6nFy8bSXLOQAGTzSZrBQtzdXt8u/urYXl/6jJaZSDn5b9KXKXZwiLoqCKt77buQzsqb3g/Ph6hM0zTfkTcZx
+sidebar_class_name: "get api-method"
+info_path: docs/api/docbox-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get a tenant"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/admin/tenant/{tenant_id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Administrative endpoint to request the details of a tenant. Provides the details of the tenant itself along with a list of all the document boxes  within the tenant
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"x-tenant-env","in":"header","description":"Environment to operate withins","required":true,"schema":{"type":"string"}},{"name":"tenant_id","in":"path","description":"ID Of the tenant to get","required":true,"schema":{"type":"string","format":"uuid"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Tenant existed","content":{"application/json":{"schema":{"type":"object","properties":{"tenant":{"allOf":[{"type":"object","description":"Configuration details about a tenant","properties":{"id":{"type":"string","format":"uuid","description":"ID of a tenant","title":"TenantId"},"db_name":{"type":"string","description":"Name of the database the tenant uses"},"db_secret_name":{"type":"string","description":"Name of the AWS secret containing the database credentials"},"s3_name":{"type":"string","description":"Name of the S3 bucket storing the tenant data"},"os_index_name":{"type":"string","description":"Name of te opensearch index containing the tenant data"},"env":{"type":"string","description":"Environment the tenant is within. Keyed with ID to allow the same ID to exist within multiple different environments. Common values: - \"Development\" - \"Production\"\n"}},"required":["id","db_name","db_secret_name","s3_name","os_index_name","env"],"title":"Tenant"},{"description":"Configuration for the requested tenant"}]},"document_boxes":{"type":"array","description":"List of all document boxes available in the tenant","items":{"type":"object","description":"Basic details about a document box","properties":{"scope":{"type":"string"},"created_at":{"type":"string","format":"date-time"}},"required":["scope","created_at"],"title":"DocumentBox"}}}}}}},"404":{"description":"Resource does not exist","content":{"application/json":{"schema":{"type":"object","properties":{"reason":{"type":"string","description":"Descriptive message for the cause of the error"},"backtrace":{"type":"string","description":"Server backtrace of the error, only present in local debugging disabled for production releases\n"}},"title":"ErrorResponse"}}}},"500":{"description":"Internal server error","content":{"application/json":{"schema":{"type":"object","properties":{"reason":{"type":"string","description":"Descriptive message for the cause of the error"},"backtrace":{"type":"string","description":"Server backtrace of the error, only present in local debugging disabled for production releases\n"}},"title":"ErrorResponse"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      
