@@ -129,7 +129,9 @@ const config: Config = {
         id: "api", // plugin id
         docsPluginId: "classic", // configured for preset-classic
         config: {
-          petstore: {
+          docbox: {
+            downloadUrl:
+              "https://raw.githubusercontent.com/docbox-nz/docbox-website/refs/heads/main/api/docbox.json",
             specPath: "api/docbox.json",
             outputDir: "docs/api",
             sidebarOptions: {

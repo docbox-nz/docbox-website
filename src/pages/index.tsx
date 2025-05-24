@@ -27,7 +27,7 @@ function HomepageHeader() {
 
           <Link
             className="button button--secondary button--lg"
-            to="/docs/api/docbox-api"
+            to="/docs/api/docbox"
           >
             API
           </Link>
