@@ -169,6 +169,7 @@ OPENSEARCH_MODEL_ID={OPENSEARCH_MODEL_ID}
 
 # URL for the HTTP proxy server to use for scraping
 HTTP_PROXY=http://{PROXY SERVER IP}:3128/
+HTTPS_PROXY=http://{PROXY SERVER IP}:3128/
 
 # AWS region for AWS services to use
 AWS_REGION=ap-southeast-2
