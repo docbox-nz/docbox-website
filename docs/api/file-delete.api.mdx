@@ -5,7 +5,7 @@ description: "Deletes the provided file"
 sidebar_label: "Delete file by ID"
 hide_title: true
 hide_table_of_contents: true
-api: eJzdVU1v2zAM/SsCTxugNtnQXXwrkAzNMGxF252CYFBsJlarSKpEZ8kM//eBlpN+JEvbYKedbJCU3uMT9VQDqXmEbAyftUGYSCgw5kF70s5CBgM0SBgFlSh8cEtdYCFmXCrBeQyK60YFZMDBn0VbDhK8CmqBhIH3rsGqBUIGMXees5q39opKeI53zRWCnMgDKsIW12h7J35pKrUFCQHvKx2wgIxChRJiXuJCQVYDrX0LQkHbOTSN3OK23HRxEHk0EG7W4nE1U7ivMKzfgChh5sJCEWRQVbp4wmB1QmiVpZMHFiWqAsMBHmmFWLtKqICCVJgjJaBjRNhSQLt8gcPQLnVwdoGW/imZCRdH72zEyPmP/TP+7Bu5NGUiVnmOMc4qY9bQSDjbt4JHV1hHYuYqy/rmzhJa4krlvdF5O6a928jl9S5BN73FnHZkuLi5uRQYggviy/X3byIdL39ExKCV0b+1nYuHlh5rMYaAigEnEnzgu0I6dd3F9x0WkCbDoQsiP2Tkq25zaBrOf+r3d/sfWcJglWFWSwyJ8n8sQyNhgVQ6tp1HjkMlZNCbulWvbo2m6fEI9eru9jft0M9ci9jtP3D51K3E+eVop+su1Taf8kbnyBSy7ZXiiVxiiGlF//TDaZ9D3kVaKPuoMM10GunpWowGz+Hqh8M66LmdVIQr6nmjtGW8KhjeISkwhqlbgYRsY7bdymxjghMJpYvElXU9VRF/BNM0HE6Gl40nEpYqaDVljcY1FDryfwHZTJmIB6i/u+oO/r142cn39tIFlWXnXSpTtTpLuMP19gFhUzuK0989/gguGz2bSSM3Rnq0Wq9y/b0kE5mn78uW69FKve0FeA2x9Oo8YZYqzvMcPT3K7XgVvxvbCz8Yfh3eDKFp/gAnRP2b
+api: eJzdVUtv2zAM/isCTxvgxtnQXXwblgzN0HVF252CYJBtOlZnS6pEp0kN//eBtvNoE6RdsNNOlkmK30eKjxpIzj1EU/iqCoRZACn6xClLymiIYIQFEnpBOQrrzEKlmIqMTQMwFp1ku0kKEbDwV9qaQwBWOlkioWPfNWhZIkTgE2NZq9i1lZTDS7xbtmjR2J9w6FWKXjwqypWGABw+VMphChG5CgPwSY6lhKgGWtkWgpzSc2iaYIPaMlPpUdzJSJhsi0tGbEJ5K2QAmXGlJIigqlT6jMLyjFBLTWdbGjnKFN0RIt0NsTKVkA4FSTdH6oBOycKGAurFKxzGeqGc0SVq+qdkZmzsrdEePes/Ds/5c6jiuiITvkoS9D6rimIFTQDnh25w5QptSGSm0pzfxGhCTWwprS1U0lZpeO/ZvN4naOJ7TGgvDRd3d9cCnTNOfLv9cSW65+WP8OiULNST0nOxDWk3F1NwKBlwFoB13Cqkuqh7+aHHAlJUsOiCyI4Z+aZ3Dk3D+k/D4X78E03otCyY1QJdR/k/TkMTQImUG546OwOHcoggjM0yrNs504RcQmHdt3/TFn1mWsTe/8gksVmKz9eTvah7VRt8py9Ugkwh2rTU98kdBFC5gluJyPooDJ18HMwV5VVceXT9EwwSU4Zp6/FMP/Wn0GHmQ25BH5ZS6fBy8mV8dTselCmX+gKd76gMBx8GQxZZ46mUeodB1yxdr8QrMRm9jKPeVsHRWd6/AeGSQltIpRmvjazuUzuF2CwhgGg9xPub0Xq8zgLIjSe2rOtYevzpiqZh8UOFbgXRdBbAQjolY07+tIZUeT6nEGWy8HiE+rubvqLei9c2xMFIeqHUK2AORcV/EMBvXG3WEs/Kkxgd2R0nkFmns5k1wXpAn5ysN22TgyQ7Ms/31obryan6u83yFmLdNnvGrLP4nCRoaUe3NwN5H20GyWh8Ob4bQ9P8AVn+HJk=
 sidebar_class_name: "delete api-method"
 info_path: docs/api/docbox-api
 custom_edit_url: null
@@ -47,7 +47,7 @@ Deletes the provided file
 </Heading>
 
 <ParamsDetails
-  parameters={[{"name":"scope","in":"path","description":"Scope to create the link within","required":true,"schema":{"type":"string"}},{"name":"file_id","in":"path","description":"ID of the file to query","required":true,"schema":{"type":"string","format":"uuid"}},{"name":"x-tenant-id","in":"header","description":"ID of the tenant you are targeting","required":true,"schema":{"type":"string"}},{"name":"x-tenant-env","in":"header","description":"Environment of the tenant you are targeting","required":true,"schema":{"type":"string"}}]}
+  parameters={[{"name":"scope","in":"path","description":"Scope the file resides within","required":true,"schema":{"type":"string"}},{"name":"file_id","in":"path","description":"ID of the file to delete","required":true,"schema":{"type":"string","format":"uuid"}},{"name":"x-tenant-id","in":"header","description":"ID of the tenant you are targeting","required":true,"schema":{"type":"string"}},{"name":"x-tenant-env","in":"header","description":"Environment of the tenant you are targeting","required":true,"schema":{"type":"string"}}]}
 >
   
 </ParamsDetails>

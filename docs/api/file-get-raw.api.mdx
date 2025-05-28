@@ -5,7 +5,7 @@ description: "Requests the raw contents of a file, this is used for downloading"
 sidebar_label: "Get file raw"
 hide_title: true
 hide_table_of_contents: true
-api: eJzdVU1vEzEQ/SvWnEBySUBw2RtSSwkHitpyClHl7E6yLo69Hc/mg9X+dzTrfDQkFIg4IE7Z2GO/N2/GbxpgM42QDeGddQgjDQXGnGzFNnjI4BofaowcFZeoyCxUHjyj56jCRBk1sQ614tJGZaOqIxZqEkgVYeFdMIX10y9eTkqcCqTmFhfWT5VlZX1355jCIiLJZrSzyq0UJcgUFjeAoCFUSEZ4DQrIQK68myLfkVmAhsqQmSEjSTINeDNDyCDmoULQYCWXynAJPyZ4IxGKg8oJDWPHyVn/VS0sl9aDBuFjCQvImGrUEPMSZwayBnhVdSBM1k+hbfUWtyNniyeRB+ei4VYdDuqhRlr9AaKGSaCZYcigrm2xx2B5xuiN57MdixJNgfQEj3RCrUKtDKFiQ1PkBHSKCFsK6Oe/4HDh55aCn6Hnv0pmJMGxCj5ilP1X/b787INfjdlYj0XX310tYp3nGOOkdm4FrYbX/deHx+TBKB9YTULtReRNp2YNmKpyNu+atXcfJbw5ZBnG95jzgRbvb28/KSQKpD7cXH1Uqcbdu4pI1jj7Td7GLq/HggyB0AjgSENF8mLYptTX68cqBmzZydJ75upCkK/Xl0Pbyv6bY7INPCN544TVHClR/o9laDXMkMsg5jNF7jyHS8igNw7LXtNZTduT/uk16/ff9pI5WT8JHeQa4Dzk47BUbz8NDtJeb3XZp31ncxQO2fZhSUvOkWI60X/x8kVflqoQeWb8o8BL5NTQicYeUrMr1D/l8uuyMC65VzljvaRWkxPGSfAhjMMSNGQbdxdc+b9zXcl3pKEMkSW+acYm4mdybSvLyWez4UjD3JA1YynKsIHCRvkuIJsYF/EJwZ5dr1vtufr1ADma0XrReDH8uXF1V1gNX3G1nVvipSdx+vloOYHLRtV21OqNf5+s1m8Nm6MkE5n9sbblerJSfzZ4fodYGnZ7zFLE2zzHih/tHbijjKutxVxe3ELbfgfQfVK5
+api: eJzdVUuPm0gQ/iutOmWlHuOskgu3KHEmXuWlmcnJa0UNFKaz0E2qCz+C+O9RAfaM15NJxtrDKiegq+jvq+fXAptVgHgBr22JsNSQYUjJ1my9gxiu8GuDgYPiAhWZjUq9Y3QclM+VUbktUSsubFA2qCZgpnJPKvMbV3qTWbf628mf4qc8qbXFjXUrZVlZ19+ZkN8EJDEGW9XlTtEAObiFPSBo8DWSEV7zDGKQKz+vkD+T2YCG2pCpkJEkmBacqRBiCKmvETRYiaU2XMC/A7wWD3XgSBhshkFtLBfWgQZhYwkziJka1BDSAisDcQu8q3sIJutW0HX6gNpTs9mDuPNXksEDLnv1tUHaPQJRQ+6pMgwxNI3NjhhsLxidcXxxy6JAkyE9wGP4Q+18owyhYkMr5AHonCQcKKBb/4TDzK0teVeh4/+UzFKcQ+1dwCD2P6dTeRyDf0jYWIdZ3919LUKTphhC3pTlDjoNz6bPTn+TcVHOs8p94yTJ+z6NWzB1Xdq0b9XoSxD39pSlT75gyie5eHNz81EhkSf11/WH92qocT9VAcma0n6TybiN625CFkBoBHCpoSaZF7ZD6OP5fRUDtlzK0RvmeibIV+Pl0HVif35f2uaOkZwphdUaaaD8G6eh01AhF15Wzwq53zhcQAxR4rdR2y+aLpL+idpx/rtoWE3W5b6HHAFe+TTxW/Xi4/wk7NHURz/YS5uicIgPg/VufgMaGiploJjrEEcCNFlZLpqkCUhjDSapr6Ksv/HCfRvfIsI8RDKIIaqMddHb+cvZ++vZpMqk19dIYaAynTydTOWo9oEr4+4wuEQet2Uf31EI7W0H/K/EY6w345ajujTWSWh9EtuxkgtI/BY0xHvREFz5vl3nEu9SQ+EDi3/bJibgJyq7To6HBR4vlhrWhqxJpNqLFjIb5D2DODdlwAcS9uRq7OE/1M906d54xkPjREfWpmzkCzT8g7uDGMqKPovRjxXrDC77nHbLTu9l4exc/ZKG3UtyIHOslgeuZ2fqcXr2K8QGDT1iNni8SFOs+Y7tZOmKCh421+XsBrruO3aMcS4=
 sidebar_class_name: "get api-method"
 info_path: docs/api/docbox-api
 custom_edit_url: null
@@ -48,7 +48,7 @@ the file or viewing it in the browser or simply requesting its content
 </Heading>
 
 <ParamsDetails
-  parameters={[{"name":"scope","in":"path","description":"Scope to create the link within","required":true,"schema":{"type":"string"}},{"name":"file_id","in":"path","description":"ID of the file to query","required":true,"schema":{"type":"string","format":"uuid"}},{"name":"x-tenant-id","in":"header","description":"ID of the tenant you are targeting","required":true,"schema":{"type":"string"}},{"name":"x-tenant-env","in":"header","description":"Environment of the tenant you are targeting","required":true,"schema":{"type":"string"}}]}
+  parameters={[{"name":"scope","in":"path","description":"Scope the file resides within","required":true,"schema":{"type":"string"}},{"name":"file_id","in":"path","description":"ID of the file to query","required":true,"schema":{"type":"string","format":"uuid"}},{"name":"x-tenant-id","in":"header","description":"ID of the tenant you are targeting","required":true,"schema":{"type":"string"}},{"name":"x-tenant-env","in":"header","description":"Environment of the tenant you are targeting","required":true,"schema":{"type":"string"}}]}
 >
   
 </ParamsDetails>
