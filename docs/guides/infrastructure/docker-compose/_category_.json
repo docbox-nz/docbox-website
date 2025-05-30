@@ -1,0 +1,8 @@
+{
+  "label": "Docker Compose",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Setting up the infrastructure using docker compose"
+  }
+}

@@ -1,0 +1,36 @@
+# Building with cross
+
+## Prerequisites
+
+- Rust & Cargo (Install through rustup) https://www.rust-lang.org/learn/get-started
+- Docker https://www.docker.com/
+- Cross https://github.com/cross-rs/cross
+
+This is the quickest no-hassle method for building the server
+
+### Install cross
+
+You will need to install cross, you can do this using the following command:
+
+```sh
+cargo install cross --git https://github.com/cross-rs/cross
+```
+
+:::note
+The command above will build and install cross from source. Cross also has other installation
+methods such as pre-compiled binaries, see the [Github](https://github.com/cross-rs/cross) for
+more details
+:::
+
+## Building
+
+You can now build the server with the following command:
+
+```sh
+cross build -p docbox --target x86_64-unknown-linux-musl --release
+```
+
+:::info
+Docker must be running for this command to work. Cross will spin up a temporary
+container to perform your build
+:::

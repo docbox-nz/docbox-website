@@ -1,0 +1,8 @@
+{
+  "label": "Developing",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Resources for developing Docbox locally"
+  }
+}
