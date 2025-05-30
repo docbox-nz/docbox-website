@@ -120,6 +120,12 @@ const sidebar: SidebarsConfig = {
           label: "Get file raw",
           className: "api-method get",
         },
+        {
+          type: "doc",
+          id: "api/file-search",
+          label: "Search",
+          className: "api-method post",
+        },
       ],
     },
     {
