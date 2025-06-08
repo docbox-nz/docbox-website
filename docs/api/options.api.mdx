@@ -5,7 +5,7 @@ description: "Requests options and settings from docbox"
 sidebar_label: "Get options"
 hide_title: true
 hide_table_of_contents: true
-api: eJyVU01vm0AQ/SurOVPj9sgtbaPUUtJGrXOyLGtZBrPpfpCdIbGL+O/VAAr56KVcQLO8N++9me2B9ZGg2MEdW0ewz6BCMsm2bGOAAn7iQ4fEpOJYIaVDpQiZbTiSqlP0qoqmjCfIILaYtPy1qaCAGQAZJKQ2BkKCoodP67W8Xne5iryQUmcMEtWdc2fIwMTAGFhAum2dNWOL/J4E2QOZBr2WLz63KH3LezQM741MIhRHpcOznTT5G1U+dDZhJWFo5+ITVgdvPR6EV2x4fTrU1uGB7B+UpNokjtlOxv6BWUTplLSYsYz+ZZ042XCE4a3aa0usYq1mUiWkaiRVdUyqa13U1Yx8rWvhtoHxiOldEjf69Mw7ESmBK4ErG1R55smvDdZ3Hor1MGTAlp2wfo2m8xj4czz9mCc8yJOBR26iTP6IkmeruYEC8mUPbKjjqG+hKuNJXdxu3mmcj75tt7fzubMGA43+gvYCv9lsIYMuOSigYW6pyPOkn1ZHy01XdoRpXp2ViT6ftvRD+DN/5QlryhvUFeVe25Bfb75cfv91ufKVhPqIiSYp69XH1VpKbST2OrxQcIWsFnuvHPTL3v7XHZpnx3jivHXaBuk8euznRHfPN2ufQROJpdT3pSa8S24YpPzQYTpDsdtn8KiT1aXkvdsPGYhhTFDseviNZyjgwhhsZV6P2nXjqr69ZMP+xWyvLrcwDH8BAJB5KA==
+api: eJyVUktv2kAQ/iurObuY9uhb2iKK1LRRS04IRev1gDfdFztjArH836sBKwRxii+7mvU332OmB9ZbgmoFj2wdwbqABslkm9jGABX8wV2HxKTiqUJKh0YRMtuwJbXJ0asmmjoeoICYMGv5a9FABSMACshIKQZCgqqHL9OpHNcs88iXptQZg0SbzrkjFGBiYAwsIJ2Ss+ZEUT6TIHsg06LXcuNjQuGtn9Ew3Bo5i1AclQ5vdvLZ30nlrrMZGwnD68PTxjp8IvuKEkrKYo7t2cP184XaBsYt5hvue31Q2rn4go3qkou6UQJXAlc2qPrIKEF5G6zvPFTTYSiALTvp+j2azmPgr/Hwe8x0kK8Aj9xGyXqL4iBpbqGC8pK8DZt40ndpVceDuntY3Ggcn34slw/ju7MGA538Be0Ffr9YQgFddlBBy5yoKsusXyZby21Xd4R5HNbERF+e9+JTeB1vZcYNlS3qhkqvbSh/Lr7Nfv2dTXwDQwF7zHSWMp18nkyllCKx1+Gdgjmyuti7ctBfNuVDWzvOjvHAZXLaBmE+eezHRFdvu7wuoI3EUur7WhM+ZjcMUt51mI9QrdYF7HW2upa8V+uhADGMGapVD//wCBXcGYNJ5rXXrhPqm7Ue1u9mO58tYRj+A60hRfw=
 sidebar_class_name: "get api-method"
 info_path: docs/api/docbox-api
 custom_edit_url: null
@@ -54,7 +54,7 @@ Requests options and settings from docbox
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{"200":{"description":"Got settings successfully","content":{"application/json":{"schema":{"type":"object","description":"Response to an options request","required":["allowed_mime_types","max_file_size"],"properties":{"allowed_mime_types":{"type":"array","items":{"type":"string"},"description":"List of allowed mime types for uploading"},"max_file_size":{"type":"integer","description":"Max allowed upload file size in bytes","minimum":0}},"title":"DocumentBoxOptions"}}}}}}
+  responses={{"200":{"description":"Got settings successfully","content":{"application/json":{"schema":{"type":"object","description":"Response to an options request","required":["max_file_size"],"properties":{"max_file_size":{"type":"integer","description":"Max allowed upload file size in bytes","minimum":0}},"title":"DocumentBoxOptions"}}}}}}
 >
   
 </StatusCodes>
