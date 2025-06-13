@@ -18,32 +18,14 @@ ssh_public_key_path  = "~/.ssh/docbox.pub"
 ssh_private_key_path = "~/.ssh/docbox"
 ```
 
-## 2. Create opensearch role
-
-For first time setup with AWS to setup open search you must run the following command to create
-a linked role:
-
-```sh
-aws iam create-service-linked-role --aws-service-name es.amazonaws.com --profile <your-aws-profile>
-```
-
-> You only need to do this the first time you setup
-
-
-## 3. Setup API AMI
-
-Our Debian image needs to have libreoffice and a few other dependencies installed which we can't get while on the private subnet without allocating an EIP and NAT so instead we can create a public EC2 instance -> setup our deps with internet access -> create an AMI image and then use that for our private container.
-
-To setup the instructions for doing this are [Here](/docs/guides/infrastructure/aws/setup-ami)
-
-## 4. Terraform State
+## 2. Terraform State
 
 > [!IMPORTANT]
 > Terraform uses a state file to track the currently deployed infrastructure. In order to keep this in sync and backed up we will be using the S3 "backend" for terraform which will allow it to store the state in an S3 bucket so we don't have to manually share the state file.
 
 You will need to follow [Setup Terraform S3](/docs/guides/infrastructure/aws/setup-terraform-s3) to setup a bucket to store the state. The same bucket can be reused for multiple infrastructures as long as the key used in the terraform config is different
 
-## 5. Initialize Terraform
+## 3. Initialize Terraform
 
 Run the init command
 
@@ -51,7 +33,7 @@ Run the init command
 terraform -chdir=./terraform init -backend-config=s3.tfbackend
 ```
 
-## 6. Terraform config
+## 4. Terraform config
 
 You will need a terraform config file named `terraform.tfvars` and it should be placed in the `terraform` folder.
 It should include the following:
@@ -152,9 +134,6 @@ You will need to create a `.env.production` file in the project root. It should 
 ```sh
 # Logging configuration
 RUST_LOG=debug,docbox_core::notifications::sqs=info
-
-# Address to bind the server on
-SERVER_ADDRESS=0.0.0.0:8080
 
 # URL for the office converter server (This should be running on the same server)
 CONVERT_SERVER_ADDRESS=http://127.0.0.1:8081
