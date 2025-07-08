@@ -116,8 +116,32 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
+          id: "api/file-get-generated-raw-presigned",
+          label: "Get generated file raw presigned",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/file-get-generated-raw-named",
+          label: "Get generated file raw named",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
           id: "api/file-get-raw",
           label: "Get file raw",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/file-get-raw-presigned",
+          label: "Get file raw presigned",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/file-get-raw-named",
+          label: "Get file raw named",
           className: "api-method get",
         },
         {

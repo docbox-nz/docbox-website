@@ -1,0 +1,73 @@
+---
+id: file-get-generated-raw-presigned
+title: "Get generated file raw presigned"
+description: "Requests the raw contents of a generated file as a presigned URL,"
+sidebar_label: "Get generated file raw presigned"
+hide_title: true
+hide_table_of_contents: true
+api: eJzdVm1v20YM/isHfskGyJE7dAOqT0vbrE3RrkHibsBcI6AlWr5OulPvKL9U0H8feJLf4ixtgw7Y5g+2TPHIh8/xrQHG3EMyhl90QTCJICOfOl2xtgYSuKKPNXn2iuekHC5Vag2TYa/sTKHKyZBDpkzNdEEKvUJVOfI6N5Spd1evo/em9vLaOlUQszZ5MJUWmgyrTDtKuVirzC5NYTFT2FmaOVuqs9+v3xttPBNm4m+j1Blxts7nwZgntyCn0GQqR6YlriECWwkybc1FBgmI0Zuc+GaL+Mbh8maLFSKo0GFJTE7oaMBgSZCAT21FEIEWNirkOdym6Fo0Ao6AXCxm5NVS81wbiMDRx1o7yiBhV1MEPp1TiZA0wOsquGCnTX5k9zcsdKYym9alUDW1KxXAqE4/UmXtWU0pUWeDPyKFg0+RGg6eROokOYnUyUC+buTr9AQioBWWVSHuak8ueZQIWA8RsOYgft47empXISJo22jLQqBPZ/fycPFc7mjLA1v1sSa3/ioGZtaVyAKy1tkBgqD5T7snU5dSC5fZDCJ4ZhfkLjEXv9clFsVoXpdTg7qACF6jy2lfMKIVP+uKAyJ4yWWx+/eGGDNklPra8P1ik4hSeKP1LcJXAyaDhgc70ueEGbl74u5OqLWtFTpSLAi5C+xLKbgTApnFZzCcm4V21oQ8/ZZgJp0yeX5qs7Vo9O1HHrGqCp2GEo8/eMHRHJuy0w+U8hHgvq1JljiSeEPzsE6VdkF9D5KW4KSLsCYvJmlVaUf+BnnnYAzaMOWBE1MXhdzwNom14Z8eH5MlZtaKdUlKG+UptSbzoUMKcQftMxyeYV0wJE+Gw7bdzx++3Kj24UArCof0BoGvrPFdED8Mh/JzCOntlFGLS+nwoXx8nabk/awuijW0ETwePj4+9uKw+xvLamZrIxn7je7p5Wh0qcg569Sr67e/qo7awJUnp7HQn2QY7CLcD38MjlAcTm7fZC+/K/23/L5krs7F81VvXNhtI/jxLgIvDJMzWGxGUYD8P6ahjaAknlsZrZX1HMYnzyGBeGpXcRMGVRtLWsRNPzzaeDt740YctrHD5WB/BAsvV7uCP9/MrKaV/jOzAepuXslIPLu8OKKrfxVY697LPWAa7qHvbq8wtVN2hOKXSunhCXzYCn/ORXSa2lKyv9ApSei7428uRhBB7eTUnLnySSzRnOaa5/VURmx/9WIizgKggfnUP8WOZj6WZurjErWJX188O//1+vy0zMTdgpzvIhmePjodikhILtHsIXhBfHv9kurdp/OAlb3e+R/e6vpEZVpxXBWojZATrqHpM3AMU7uCCJLN5tb38mS3w2zjE3G/WBym4iSCuaR1MoammaKnd65oWxF3S0UynkSwQKdxKsk4biDTXp4zSGZYeLqH/O+u+tL8Xn1udbwz2l6IRvhYYFHLP4jgT1pv91UZ4w9C9Pdb1AOwbBj/d6AJb9tJG222mAdf2xetXHci7JAcLndboA+m6evWry8B1q18B8g6jX6nHYy6qtloHA233YmzNKWK79Wd7E2Ty7fX0lmn/b5X2kzOOFx2NdpdqA18dDNMZA0UaPJaVvUEOpvy+QsSCyFR
+sidebar_class_name: "post api-method"
+info_path: docs/api/docbox-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get generated file raw presigned"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/box/{scope}/file/{file_id}/generated/{type}/raw-presigned"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Requests the raw contents of a generated file as a presigned URL,
+used for letting the client directly download a file from AWS
+instead of downloading through the server and gateway
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"scope","in":"path","description":"Scope the file resides within","required":true,"schema":{"type":"string","description":"Valid document box scope string, must be: A-Z, a-z, 0-9, ':', '-', '_', '.'","example":"user:1:files","title":"DocumentBoxScope"}},{"name":"file_id","in":"path","description":"ID of the file to query","required":true,"schema":{"type":"string","format":"uuid"}},{"name":"type","in":"path","description":"ID of the file to query","required":true,"schema":{"type":"string","enum":["Pdf","CoverPage","SmallThumbnail","LargeThumbnail","TextContent","HtmlContent","Metadata"],"title":"GeneratedFileType"}},{"name":"x-tenant-id","in":"header","description":"ID of the tenant you are targeting","required":true,"schema":{"type":"string"}},{"name":"x-tenant-env","in":"header","description":"Environment of the tenant you are targeting","required":true,"schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","description":"Request to rename and or move a file","properties":{"expires_at":{"type":["integer","null"],"format":"int64","description":"Expiry time in seconds for the presigned URL","default":900}},"title":"GetPresignedRequest"}}},"required":true}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Obtained raw file successfully"},"404":{"description":"Generated file not found","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}},"500":{"description":"Internal server error","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      
