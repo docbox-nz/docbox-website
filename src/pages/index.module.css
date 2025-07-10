@@ -9,6 +9,7 @@
   position: relative;
   overflow: hidden;
   height: calc(70vh - 4rem);
+  min-height: 500px;
   /* background: linear-gradient(30deg, #0c1927, #040432); */
   background: linear-gradient(120deg, #111, #1d2232);
   border-bottom: 3px solid #1d2232;
@@ -36,6 +37,7 @@
   justify-content: space-between;
   max-width: 70rem;
   margin: 1rem auto;
+  align-items: center;
 }
 
 .heroSubtitle {
