@@ -19,3 +19,13 @@
 .fileTypes {
   opacity: 0.65;
 }
+
+@media screen and (max-width: 1125px) {
+  .feature {
+    flex-flow: column;
+  }
+
+  .featureImage {
+    height: 200px;
+  }
+}

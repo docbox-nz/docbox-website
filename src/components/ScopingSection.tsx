@@ -6,7 +6,12 @@ export default function ScopingSection(): ReactNode {
   return (
     <section className={styles.section}>
       <div className={clsx("container", styles.feature)}>
-        <img src="/undraw_file-analysis_dg81.svg" height={300} alt="" />
+        <img
+          src="/undraw_file-analysis_dg81.svg"
+          height={300}
+          alt=""
+          className={styles.featureImage}
+        />
         <div className={clsx("card", styles.content)}>
           <h1>Document Box Scopes</h1>
           <p>
@@ -16,13 +21,15 @@ export default function ScopingSection(): ReactNode {
             <br />
             See an example scope below:
           </p>
-          <pre>
-            <code>user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:files</code>
-          </pre>
-          This scope can be used to represent files that belong to a specific
-          user. Scopes are provided in the URL when querying docbox which makes
-          it quick and easy to check access control rules without having to
-          inspect the payload itself.
+          <code className={styles.exampleScope}>
+            user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:files
+          </code>
+          <p>
+            This scope can be used to represent files that belong to a specific
+            user. Scopes are provided in the URL when querying docbox which
+            makes it quick and easy to check access control rules without having
+            to inspect the payload itself.
+          </p>
         </div>
       </div>
     </section>

@@ -6,7 +6,12 @@ export default function FileProcessingSection(): ReactNode {
   return (
     <section className={styles.section}>
       <div className={clsx("container", styles.feature)}>
-        <img src="/undraw_my-files_yynz.svg" height={300} alt="" />
+        <img
+          src="/undraw_my-files_yynz.svg"
+          height={300}
+          alt=""
+          className={styles.featureImage}
+        />
         <div className={clsx("card", styles.content)}>
           <h1>File Processing</h1>
           <p style={{ marginBottom: "1rem" }}>

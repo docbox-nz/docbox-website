@@ -56,7 +56,7 @@ function HomepageHeader() {
           </div>
 
           <div className={styles.heroRight}>
-            <div style={{ position: "relative", width: 300, height: 300 }}>
+            <div className={styles.docArea}>
               {/* Central icon (anchor) */}
               <img
                 src="/document.svg"
@@ -64,8 +64,8 @@ function HomepageHeader() {
                 height={92}
                 style={{
                   position: "absolute",
-                  left: 104,
-                  top: 104,
+                  left: "34.67%",
+                  top: "34.67%",
                   zIndex: 3,
                   transform: "rotate(-5deg)",
                 }}
@@ -78,8 +78,8 @@ function HomepageHeader() {
                 height={92}
                 style={{
                   position: "absolute",
-                  left: 40,
-                  top: 15,
+                  left: "13.33%",
+                  top: "5%",
                   zIndex: 2,
                   transform: "rotate(-25deg)",
                 }}
@@ -92,8 +92,8 @@ function HomepageHeader() {
                 height={92}
                 style={{
                   position: "absolute",
-                  left: 170,
-                  top: 15,
+                  left: "56.67%",
+                  top: "5%",
                   zIndex: 2,
                   transform: "rotate(15deg)",
                 }}
@@ -106,8 +106,8 @@ function HomepageHeader() {
                 height={92}
                 style={{
                   position: "absolute",
-                  left: 50,
-                  top: 190,
+                  left: "16.67%",
+                  top: "63.33%",
                   zIndex: 1,
                   transform: "rotate(-40deg)",
                 }}
@@ -120,8 +120,8 @@ function HomepageHeader() {
                 height={92}
                 style={{
                   position: "absolute",
-                  left: 180,
-                  top: 190,
+                  left: "60%",
+                  top: "63.33%",
                   zIndex: 1,
                   transform: "rotate(25deg)",
                 }}
@@ -134,8 +134,8 @@ function HomepageHeader() {
                 height={92}
                 style={{
                   position: "absolute",
-                  left: 10,
-                  top: 100,
+                  left: "3.33%",
+                  top: "33.33%",
                   zIndex: 2,
                   transform: "rotate(-10deg)",
                 }}
@@ -148,8 +148,8 @@ function HomepageHeader() {
                 height={92}
                 style={{
                   position: "absolute",
-                  left: 200,
-                  top: 90,
+                  left: "66.67%",
+                  top: "30%",
                   zIndex: 2,
                   transform: "rotate(10deg)",
                 }}

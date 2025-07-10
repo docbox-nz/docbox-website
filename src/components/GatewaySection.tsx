@@ -6,7 +6,12 @@ export default function GatewaySection(): ReactNode {
   return (
     <section className={styles.section}>
       <div className={clsx("container", styles.feature)}>
-        <img src="/undraw_server-status_f685.svg" height={300} alt="" />
+        <img
+          src="/undraw_server-status_f685.svg"
+          height={300}
+          alt=""
+          className={styles.featureImage}
+        />
         <div className={clsx("card", styles.content)}>
           <h1>Gateway</h1>
           <p>
