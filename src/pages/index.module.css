@@ -87,11 +87,16 @@
     text-align: center;
 
     padding: 1rem;
+    padding-top: 3rem;
+  }
+
+  .logo {
+    padding: 0 1rem;
   }
 
   .headingSplit {
     margin: 0;
     flex-flow: column;
-    gap: 4rem;
+    gap: 2rem;
   }
 }
