@@ -47,6 +47,17 @@
   height: 300px;
 }
 
+[data-theme="light"] {
+  .heroBanner {
+    background: linear-gradient(120deg, #f5eded, #ffffff);
+    border-bottom: 3px solid #eeee;
+  }
+
+  .heroSubtitle {
+    color: #666;
+  }
+}
+
 @media screen and (max-width: 1300px) {
   .headingSplit {
     margin: 1rem 5rem;

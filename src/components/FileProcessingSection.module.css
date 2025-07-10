@@ -1,0 +1,21 @@
+.feature {
+  display: flex;
+  flex-flow: row-reverse;
+  gap: 3rem;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.section {
+  margin: 8rem auto;
+  max-width: 85rem;
+}
+
+.content {
+  max-width: 40rem;
+  padding: 2rem;
+}
+
+.fileTypes {
+  opacity: 0.65;
+}

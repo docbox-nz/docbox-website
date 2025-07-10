@@ -69,7 +69,8 @@ const config: Config = {
     navbar: {
       logo: {
         alt: "Docbox",
-        src: "logo.svg",
+        src: "logo-dark.svg",
+        srcDark: "logo-light.svg",
         width: 120,
       },
       items: [

@@ -5,12 +5,18 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 // import HomepageFeatures from "@site/src/components/HomepageFeatures";
 import Heading from "@theme/Heading";
+import { useColorMode } from "@docusaurus/theme-common";
 
 import styles from "./index.module.css";
 import HomepageFeatures from "../components/HomepageFeatures";
+import ScopingSection from "../components/ScopingSection";
+import GatewaySection from "../components/GatewaySection";
+import FileProcessingSection from "../components/FileProcessingSection";
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
+  const { colorMode } = useColorMode();
+
   return (
     <header className={clsx("hero hero--primary", styles.heroBanner)}>
       <div className="container">
@@ -19,7 +25,13 @@ function HomepageHeader() {
             <Heading as="h1" className="hero__title">
               <span className={styles.srOnly}> {siteConfig.title}</span>
 
-              <img src="/logo.svg" width={480} className={styles.logo} />
+              <img
+                src={
+                  colorMode === "dark" ? "/logo-light.svg" : "/logo-dark.svg"
+                }
+                width={480}
+                className={styles.logo}
+              />
             </Heading>
 
             <p className={clsx("hero__subtitle", styles.heroSubtitle)}>
@@ -160,6 +172,11 @@ export default function Home(): ReactNode {
       <HomepageHeader />
       <main>
         <HomepageFeatures />
+
+        <FileProcessingSection />
+        <ScopingSection />
+
+        <GatewaySection />
       </main>
     </Layout>
   );
