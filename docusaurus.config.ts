@@ -7,7 +7,7 @@ import type * as OpenApiPlugin from "docusaurus-plugin-openapi-docs";
 
 const config: Config = {
   title: "Docbox",
-  tagline: "File management and processing solution",
+  tagline: "Multi-tenant file management, processing, and search platform",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
@@ -67,11 +67,11 @@ const config: Config = {
     // Replace with your project's social card
     image: "img/docusaurus-social-card.jpg",
     navbar: {
-      title: "Docbox",
-      // logo: {
-      // alt: "Docbox",
-      // src: "img/logo.svg",
-      // },
+      logo: {
+        alt: "Docbox",
+        src: "logo.svg",
+        width: 120,
+      },
       items: [
         {
           type: "docSidebar",
