@@ -14,10 +14,9 @@
   border-bottom: 3px solid #1d2232;
 }
 
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
+.logo {
+  max-width: 400px;
+  width: 100%;
 }
 
 .buttons {
@@ -46,4 +45,38 @@
   position: relative;
   width: 300px;
   height: 300px;
+}
+
+@media screen and (max-width: 1300px) {
+  .headingSplit {
+    margin: 1rem 5rem;
+  }
+
+  .heroBanner {
+    padding: 12rem 0;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .heroBanner {
+    padding: 2rem;
+  }
+
+  .heroRight {
+    margin: 0 auto;
+  }
+
+  .buttons {
+    justify-content: center;
+  }
+
+  .heroBanner {
+    height: auto;
+    text-align: center;
+  }
+
+  .headingSplit {
+    flex-flow: column;
+    gap: 4rem;
+  }
 }
