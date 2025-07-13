@@ -1,8 +1,0 @@
-{
-  "label": "Infrastructure",
-  "position": 2,
-  "link": {
-    "type": "generated-index",
-    "description": "Overview of the required infrastructure and how to set it up"
-  }
-}
