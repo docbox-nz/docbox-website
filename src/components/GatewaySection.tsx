@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import clsx from "clsx";
 import styles from "./GatewaySection.module.css";
+import Heading from "@theme/Heading";
 
 export default function GatewaySection(): ReactNode {
   return (
@@ -13,7 +14,7 @@ export default function GatewaySection(): ReactNode {
           className={styles.featureImage}
         />
         <div className={clsx("card", styles.content)}>
-          <h1>Gateway</h1>
+          <Heading as="h3">Gateway</Heading>
           <p>
             Gateways sit between your frontend app and Docbox, authenticating
             incoming traffic and enforcing access rules. With Docbox’s

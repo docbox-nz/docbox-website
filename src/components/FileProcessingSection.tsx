@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import clsx from "clsx";
 import styles from "./FileProcessingSection.module.css";
+import Heading from "@theme/Heading";
 
 export default function FileProcessingSection(): ReactNode {
   return (
@@ -13,7 +14,7 @@ export default function FileProcessingSection(): ReactNode {
           className={styles.featureImage}
         />
         <div className={clsx("card", styles.content)}>
-          <h1>File Processing</h1>
+          <Heading as="h3">File Processing</Heading>
           <p style={{ marginBottom: "1rem" }}>
             <b>Docbox</b> has powerful file processing capabilities it can
             handle all sorts of files. Integrations with software like{" "}

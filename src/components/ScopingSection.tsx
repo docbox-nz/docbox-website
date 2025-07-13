@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import clsx from "clsx";
 import styles from "./ScopingSection.module.css";
+import Heading from "@theme/Heading";
 
 export default function ScopingSection(): ReactNode {
   return (
@@ -13,7 +14,8 @@ export default function ScopingSection(): ReactNode {
           className={styles.featureImage}
         />
         <div className={clsx("card", styles.content)}>
-          <h1>Document Box Scopes</h1>
+          <Heading as="h3">Document Box Scopes</Heading>
+
           <p>
             Document box scopes are a concept for organizing collections and
             allows easy separation and access control over files by dividing

@@ -12,6 +12,7 @@ import HomepageFeatures from "../components/HomepageFeatures";
 import ScopingSection from "../components/ScopingSection";
 import GatewaySection from "../components/GatewaySection";
 import FileProcessingSection from "../components/FileProcessingSection";
+import UsersSection from "../components/UsersSection";
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
@@ -177,6 +178,7 @@ export default function Home(): ReactNode {
         <ScopingSection />
 
         <GatewaySection />
+        <UsersSection />
       </main>
     </Layout>
   );
