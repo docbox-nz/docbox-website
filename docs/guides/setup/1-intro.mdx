@@ -1,0 +1,49 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# Introduction
+
+## Prerequisites
+
+- Docbox CLI (See below)
+
+Install the docbox cli, this tool is used to setup and manage docbox
+
+### Docbox CLI
+
+In order to manage and setup Docbox and its tenants you will need to install the `docbox-cli` ensure that you always have
+the latest version of the `docbox-cli` installed to ensure the latest changes and migrations are applied.
+
+Use one of the commands below to install docbox-cli:
+
+<Tabs>
+<TabItem value="npm" label="npm">
+
+```sh
+npm install @docbox-nz/docbox-cli --global
+```
+
+</TabItem>
+<TabItem value="powershell" label="Powershell">
+
+```sh
+powershell -ExecutionPolicy Bypass -c "irm https://github.com/docbox-nz/docbox-cli/releases/latest/download/docbox-cli-installer.ps1 | iex
+```
+
+</TabItem>
+<TabItem value="bash" label="Bash">
+
+```sh
+curl --proto '=https' --tlsv1.2 -LsSf https://github.com/docbox-nz/docbox-cli/releases/latest/download/docbox-cli-installer.sh | sh
+```
+
+</TabItem>
+
+<TabItem value="cargo" label="Cargo">
+
+```sh
+cargo install docbox-cli
+```
+
+</TabItem>
+</Tabs>
