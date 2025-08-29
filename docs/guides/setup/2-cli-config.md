@@ -35,6 +35,7 @@ tenants when performing the tenant commands
     },
     // Storage provider and credentials
     "storage": {
+        "__description": "Storage bucket provider",
         "provider": "s3",
         "endpoint": {
             "type": "custom",
@@ -52,15 +53,17 @@ If you are developing locally you can use the following "secrets" configuration:
 {
     // ...
     "secrets": {
-        "provider": "memory",
-        "default": "{\"username\": \"docbox\", \"password\": \"test\"}"
+        "__description": "Secrets manager configurations",
+        "provider": "json",
+        "path": "D:\\absolute\\path\\to\\your\\secrets.json.age",
+        "key": "YOUR_ENCRYPTION_KEY"
     }
     // ...
 }
 ```
 
 :::info
-The above snippet will create a fake secrets manager to provide the secrets
+The above snippet will create a local secrets manager using an encrypted JSON file using [age](https://github.com/FiloSottile/age) encryption
 :::
 
 
