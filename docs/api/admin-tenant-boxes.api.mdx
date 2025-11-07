@@ -1,0 +1,71 @@
+---
+id: admin-tenant-boxes
+title: "Admin Boxes"
+description: "Requests a list of document boxes within the tenant"
+sidebar_label: "Admin Boxes"
+hide_title: true
+hide_table_of_contents: true
+api: eJzdVlFP4zgQ/ivWPN1JgfT2uHvI08GCtF3dAoLeU1WhaTJpzSV2sCeFUuW/r8YJpG0QcOw+XV8a2eOZb75v7JkNMC48JFM4zkptYBZBRj51umJtDSRwRXc1efYKVaE9K5urzKZ1SYbV3D6QV/eal9ooXpJiMmgYIrAVORQP4wwSQHF9027ehEMQQYUOS2JyEn0DBkuCBB4OWrMDnUEEWhAsCTNysA9sfCpY+qhqbWuFjhSjWxBrs4AIHN3V2lEGCbuaIvDpkkqEZAO8riSeZyeWTRMNIZBZvYHhzKy0syaQ8TPBzFpj8nxis7VYpNYwGZZPrKpCp4Hd+NYLjs3QlZ3fUipKVE60YE1edm2ee+LebgraMC1CaqYuCtE/t65EhkS2/jwa5HwRXCi2yjM6Vo58XbBXubNlMM6xLhgScRdBqY0u6xKSURPBXU1uvR28S7iPvRcqfGChwsEQktCly/0KnK/3AzcReP1I70/090+DRM/rck5OdNVMpZfw2qRFnZHqyt2Rr6zx9GraTQSsuRBRJqE2TjvwJ4K9u17QiN1ugYSFNkDQ7tPoN/nbBXkdCKFM+TpNyfu8Lgph48P10mOYQictRMCWMXC2W05PBr0fdA4lfqDsLf8+tZWQlzpCpuwGeRhia29wUbYkzJDpgHVJAxlPkUlEDI60NSq3Lqi3XUQgBRPQDBmW5ZcPRQM8T0pfPz8rz0tbsrfrgdI+p74+9y7gmxXUFWETauhoNBrm8A0LcUqZsk5ps8JCZ6p7YZSxrEoKj5QKOy1NnVASx/9IQe0i+TKZXCpyzjr19friXLW5Bno9OY2FfhQcfeHvVyRKwBcKETsgg3f9mbsvzNWZRN5j7I+XGBsbJidPjye3ItdC/h/T0ERQEi+ttOvK+tA5kJeQQBy6d/zUtiXTq743nT1gWYnfTSOtMrcheF/yc/ugji/Hw1vZbgUe2n1hFtPAbNeIv2Jq5+wIZRSgEnUBCdw+L/61kKXD1JZyewudkiTTH/82nkAEtZNTS+bKJ3Hs8P5woXlZz2tPrhNTXMRZAHRgHruv2FHuY+n7Pi5Rm/jv8eez8+uzwzKTcCtyvs1kdHh0OJIloa1Es4UgjFTqpGNuh4Ctjv7BEatTmOmB46pAbQRDyHbTSTdtBy+IoBVvFsFSpE2msNnM0dM/rmgaWe4a83QWwQqdxrnIN5010dPgIxNapr1sZJDkWHh6JaFfrrpa/VW9a0p7MZV/aT2YB1dY1GIJMq59CM9/m9jeA6ydEneQtRaf2/gHk3Vock8Wg2ejP3GcplTxq7azrXt6eXE9CeK2I2JpMznj8F5eC7wXNDKJy+n2dZC1DRRoFjUuxLb1Kb/vIrwwWw==
+sidebar_class_name: "post api-method"
+info_path: docs/api/docbox-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Admin Boxes"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/admin/boxes"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Requests a list of document boxes within the tenant
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"x-tenant-id","in":"header","description":"ID of the tenant you are targeting","required":true,"schema":{"type":"string"}},{"name":"x-tenant-env","in":"header","description":"Environment of the tenant you are targeting","required":true,"schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"offset":{"type":["integer","null"],"format":"int64","description":"Offset to start results from","default":null,"minimum":0},"query":{"type":["string","null"],"description":"Optional query to search document boxes by","default":null},"size":{"type":["integer","null"],"format":"int32","description":"Number of items to include in the response","default":null,"minimum":0}},"title":"TenantDocumentBoxesRequest"}}},"required":true}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Searched successfully","content":{"application/json":{"schema":{"type":"object","required":["results","total"],"properties":{"results":{"type":"array","items":{"type":"object","required":["scope","created_at"],"properties":{"created_at":{"type":"string","format":"date-time","description":"Date of creation for the document box"},"scope":{"description":"Scope for the document box","type":"string","title":"String"}},"title":"DocumentBox"}},"total":{"type":"integer","format":"int64"}},"title":"TenantDocumentBoxesResponse"}}}},"400":{"description":"Malformed or invalid request not meeting validation requirements","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}},"500":{"description":"Internal server error","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

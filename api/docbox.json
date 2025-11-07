@@ -11,9 +11,81 @@
       "name": "MIT",
       "url": "https://raw.githubusercontent.com/docbox-nz/docbox/refs/heads/main/LICENSE.md"
     },
-    "version": "0.1.0"
+    "version": "0.4.0"
   },
   "paths": {
+    "/admin/boxes": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "summary": "Admin Boxes",
+        "description": "Requests a list of document boxes within the tenant",
+        "operationId": "admin_tenant_boxes",
+        "parameters": [
+          {
+            "name": "x-tenant-id",
+            "in": "header",
+            "description": "ID of the tenant you are targeting",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-tenant-env",
+            "in": "header",
+            "description": "Environment of the tenant you are targeting",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TenantDocumentBoxesRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Searched successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TenantDocumentBoxesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Malformed or invalid request not meeting validation requirements",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HttpErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HttpErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/flush-db-cache": {
       "post": {
         "tags": [
@@ -25,6 +97,21 @@
         "responses": {
           "204": {
             "description": "Database cache flushed"
+          }
+        }
+      }
+    },
+    "/admin/flush-tenant-cache": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "summary": "Flush tenant cache",
+        "description": "Clears the tenant cache, you can use this endpoint if you've updated the\ntenant configuration and want it to be applied immediately without\nrestarting the server",
+        "operationId": "admin_flush_tenant_cache",
+        "responses": {
+          "204": {
+            "description": "Tenant cache flushed"
           }
         }
       }
@@ -43,6 +130,110 @@
           },
           "500": {
             "description": "Failed to purge presigned cache",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HttpErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/rebuild-search-index": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "summary": "Rebuild search index",
+        "description": "Rebuild the tenant search index from the data stored in the database\nand in storage",
+        "operationId": "admin_rebuild_search_index",
+        "parameters": [
+          {
+            "name": "x-tenant-id",
+            "in": "header",
+            "description": "ID of the tenant you are targeting",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-tenant-env",
+            "in": "header",
+            "description": "Environment of the tenant you are targeting",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Rebuilt successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminSearchResultResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HttpErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/reprocess-octet-stream-files": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "summary": "Reprocess octet-stream files",
+        "description": "Useful if a files were previously accepted into the tenant with some unknown\nfile type (or ingested through a source that was unable to get the correct mime).\n\nWill reprocess files that have this unknown file type mime to see if a different\ntype can be obtained",
+        "operationId": "admin_reprocess_octet_stream_files",
+        "parameters": [
+          {
+            "name": "x-tenant-id",
+            "in": "header",
+            "description": "ID of the tenant you are targeting",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-tenant-env",
+            "in": "header",
+            "description": "Environment of the tenant you are targeting",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Reprocessed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminSearchResultResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
             "content": {
               "application/json": {
                 "schema": {
@@ -113,12 +304,54 @@
               }
             }
           },
-          "409": {
-            "description": "Scope already exists",
+          "500": {
+            "description": "Internal server error",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/HttpErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/tenant-stats": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "summary": "Admin Stats",
+        "description": "Requests stats about a tenant",
+        "operationId": "admin_tenant_stats",
+        "parameters": [
+          {
+            "name": "x-tenant-id",
+            "in": "header",
+            "description": "ID of the tenant you are targeting",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-tenant-env",
+            "in": "header",
+            "description": "Environment of the tenant you are targeting",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Got stats successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TenantStatsResponse"
                 }
               }
             }
@@ -521,7 +754,7 @@
           "File"
         ],
         "summary": "Create presigned file upload",
-        "description": "Creates a new \"presigned\" upload, where the file is uploaded\ndirectly to S3 [complete_presigned] is called by the client\nafter it has completed its upload",
+        "description": "Creates a new \"presigned\" upload, where the file is uploaded\ndirectly to storage [complete_presigned] is called by the client\nafter it has completed its upload",
         "operationId": "file_create_presigned",
         "parameters": [
           {
@@ -3148,7 +3381,7 @@
           "Document Box"
         ],
         "summary": "Get document box stats by scope",
-        "description": "Requests stats about a document box using its scope. Provides stats such as:\n- Total files\n- Total links\n- Total folders",
+        "description": "Requests stats about a document box using its scope. Provides stats such as:\n- Total files\n- Total links\n- Total folders\n- Size of all files",
         "operationId": "document_box_stats",
         "parameters": [
           {
@@ -3293,6 +3526,21 @@
         }
       }
     },
+    "/health": {
+      "get": {
+        "tags": [
+          "Utils"
+        ],
+        "summary": "Health check",
+        "description": "Check that the server is running using this endpoint",
+        "operationId": "health",
+        "responses": {
+          "200": {
+            "description": "Health check success"
+          }
+        }
+      }
+    },
     "/options": {
       "get": {
         "tags": [
@@ -3308,6 +3556,28 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/DocumentBoxOptions"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/server-details": {
+      "get": {
+        "tags": [
+          "Utils"
+        ],
+        "summary": "Server status",
+        "description": "Request basic details about the server",
+        "operationId": "server_details",
+        "responses": {
+          "200": {
+            "description": "Got server details successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocboxServerResponse"
                 }
               }
             }
@@ -3497,6 +3767,17 @@
           }
         }
       },
+      "DocboxServerResponse": {
+        "type": "object",
+        "required": [
+          "version"
+        ],
+        "properties": {
+          "version": {
+            "type": "string"
+          }
+        }
+      },
       "DocumentBox": {
         "type": "object",
         "required": [
@@ -3524,8 +3805,8 @@
         "properties": {
           "max_file_size": {
             "type": "integer",
-            "description": "Max allowed upload file size in bytes",
-            "minimum": 0
+            "format": "int32",
+            "description": "Max allowed upload file size in bytes"
           }
         }
       },
@@ -3562,9 +3843,15 @@
         "required": [
           "total_files",
           "total_links",
-          "total_folders"
+          "total_folders",
+          "file_size"
         ],
         "properties": {
+          "file_size": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Total size of the files contained within the document box"
+          },
           "total_files": {
             "type": "integer",
             "format": "int64",
@@ -3715,6 +4002,28 @@
                 ]
               }
             }
+          },
+          {
+            "type": "object",
+            "required": [
+              "previous_value",
+              "new_value",
+              "type"
+            ],
+            "properties": {
+              "new_value": {
+                "type": "boolean"
+              },
+              "previous_value": {
+                "type": "boolean"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "ChangePinned"
+                ]
+              }
+            }
           }
         ],
         "description": "Metadata associated with an edit history"
@@ -3724,7 +4033,8 @@
         "enum": [
           "MoveToFolder",
           "Rename",
-          "LinkValue"
+          "LinkValue",
+          "ChangePinned"
         ]
       },
       "EditHistoryUser": {
@@ -3862,6 +4172,7 @@
           "hash",
           "size",
           "encrypted",
+          "pinned",
           "created_at",
           "created_by",
           "last_modified_by"
@@ -3936,6 +4247,10 @@
             "format": "uuid",
             "description": "Optional parent file if the file is a child"
           },
+          "pinned": {
+            "type": "boolean",
+            "description": "Whether the file is marked as pinned"
+          },
           "size": {
             "type": "integer",
             "format": "int32",
@@ -3982,6 +4297,7 @@
         "required": [
           "id",
           "name",
+          "pinned",
           "created_at",
           "created_by",
           "last_modified_by"
@@ -4038,6 +4354,10 @@
           "name": {
             "type": "string",
             "description": "Name of the file"
+          },
+          "pinned": {
+            "type": "boolean",
+            "description": "Whether the folder is marked as pinned"
           }
         }
       },
@@ -4127,6 +4447,7 @@
           "id",
           "name",
           "value",
+          "pinned",
           "folder_id",
           "created_at",
           "created_by",
@@ -4181,6 +4502,10 @@
           "name": {
             "type": "string",
             "description": "Name of the link"
+          },
+          "pinned": {
+            "type": "boolean",
+            "description": "Whether the link is pinned"
           },
           "value": {
             "type": "string",
@@ -4313,6 +4638,15 @@
               }
             ],
             "default": null
+          },
+          "max_unpack_iterations": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "Maximum number of times to unpack a file. When unpacking\nthings like email attachments, these are recursively this\nlimits the number of nested unpacking that can occur.\n\nDefault: 1 (Unpack Only the immediate children)",
+            "default": null,
+            "minimum": 0
           }
         }
       },
@@ -4633,7 +4967,7 @@
           {
             "type": "number",
             "format": "float",
-            "description": "OpenSearch uses float scoring"
+            "description": "OpenSearch and database use float scoring"
           }
         ]
       },
@@ -4688,6 +5022,89 @@
           "Failed"
         ]
       },
+      "TenantDocumentBoxesRequest": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "format": "int64",
+            "description": "Offset to start results from",
+            "default": null,
+            "minimum": 0
+          },
+          "query": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Optional query to search document boxes by",
+            "default": null
+          },
+          "size": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "format": "int32",
+            "description": "Number of items to include in the response",
+            "default": null,
+            "minimum": 0
+          }
+        }
+      },
+      "TenantDocumentBoxesResponse": {
+        "type": "object",
+        "required": [
+          "results",
+          "total"
+        ],
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DocumentBox"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "TenantStatsResponse": {
+        "type": "object",
+        "required": [
+          "total_files",
+          "total_links",
+          "total_folders",
+          "file_size"
+        ],
+        "properties": {
+          "file_size": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Total size of all files within the tenant"
+          },
+          "total_files": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Total number of files within the document box"
+          },
+          "total_folders": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Total number of folders within the document box"
+          },
+          "total_links": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Total number of links within the document box"
+          }
+        }
+      },
       "UpdateFileRequest": {
         "type": "object",
         "description": "Request to rename and or move a file",
@@ -4708,6 +5125,13 @@
             "description": "Name for the folder",
             "maxLength": 255,
             "minLength": 1
+          },
+          "pinned": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Whether to pin the file"
           }
         }
       },
@@ -4731,6 +5155,13 @@
             "description": "Name for the folder",
             "maxLength": 255,
             "minLength": 1
+          },
+          "pinned": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Whether to pin the folder"
           }
         }
       },
@@ -4754,6 +5185,13 @@
             "description": "Name for the link",
             "maxLength": 255,
             "minLength": 1
+          },
+          "pinned": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Whether to pin the link"
           },
           "value": {
             "type": [

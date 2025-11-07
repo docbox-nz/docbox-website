@@ -276,8 +276,20 @@ const sidebar: SidebarsConfig = {
       items: [
         {
           type: "doc",
+          id: "api/admin-tenant-boxes",
+          label: "Admin Boxes",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
           id: "api/admin-flush-database-pool-cache",
           label: "Flush database cache",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/admin-flush-tenant-cache",
+          label: "Flush tenant cache",
           className: "api-method post",
         },
         {
@@ -288,9 +300,27 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
+          id: "api/admin-rebuild-search-index",
+          label: "Rebuild search index",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/admin-reprocess-octet-stream-files",
+          label: "Reprocess octet-stream files",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
           id: "api/admin-search-tenant",
           label: "Admin Search",
           className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/admin-tenant-stats",
+          label: "Admin Stats",
+          className: "api-method get",
         },
       ],
     },
@@ -304,8 +334,20 @@ const sidebar: SidebarsConfig = {
       items: [
         {
           type: "doc",
+          id: "api/health",
+          label: "Health check",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
           id: "api/options",
           label: "Get options",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/server-details",
+          label: "Server status",
           className: "api-method get",
         },
       ],
