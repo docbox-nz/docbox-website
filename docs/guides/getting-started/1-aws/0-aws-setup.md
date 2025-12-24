@@ -22,6 +22,7 @@ The following EC2 instances are provisioned:
 - [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) AWS CLI 
 - [Docbox AWS Infra Repository](https://github.com/docbox-nz/docbox-aws-infra) 
   - You must download a copy of the docbox terraform infrastructure from git
+- [Docker](https://www.docker.com/get-started/) Required to briefly pull the container image used by the file conversion lambda
 
 :::note 
 This guide contains shell scripts on windows use git-bash to run the shell scripts.
