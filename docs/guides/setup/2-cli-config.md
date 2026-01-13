@@ -3,8 +3,6 @@
 Before the CLI can access anything you must create a configuration file for the cli to use, the information in the config file will be used to setup the root and any 
 tenants when performing the tenant commands
 
-
-
 ```json title="cli-config.json"
 {
     // Database credentials
@@ -47,26 +45,6 @@ tenants when performing the tenant commands
     }
 }
 ```
-
-If you are developing locally you can use the following "secrets" configuration:
-
-```json title="cli-config.json"
-{
-    // ...
-    "secrets": {
-        "__description": "Secrets manager configurations",
-        "provider": "json",
-        "path": "D:\\absolute\\path\\to\\your\\secrets.json.age",
-        "key": "YOUR_ENCRYPTION_KEY"
-    }
-    // ...
-}
-```
-
-:::info
-The above snippet will create a local secrets manager using an encrypted JSON file using [age](https://github.com/FiloSottile/age) encryption
-:::
-
 
 :::note 
 If you are deploying to AWS ensure you have the following environment variables set, you
