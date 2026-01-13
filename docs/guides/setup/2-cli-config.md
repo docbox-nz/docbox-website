@@ -1,10 +1,14 @@
 # CLI Config
 
 Before the CLI can access anything you must create a configuration file for the cli to use, the information in the config file will be used to setup the root and any 
-tenants when performing the tenant commands
+tenants when performing the tenant commands.
 
 ```json title="cli-config.json"
 {
+    // URL for the local API server
+    "api": {
+        "url": "http://localhost:8080"
+    },
     // Database credentials
     "database": {
         "__description": "Database details and credentials",
@@ -45,6 +49,46 @@ tenants when performing the tenant commands
     }
 }
 ```
+
+Documentation on config options coming soon... the sample config below with minor edits (according to your infra) can be used with the official supported docbox
+AWS automated infra:
+```json title="cli-config.json"
+{
+    "api": {
+        "url": "http://<YOUR DOCBOX SERVER IP AND PORT>"
+    },
+    "database": {
+        "host": "<YOUR DATABASE HOST>",
+        "port": 5432,
+        "root_secret_name": "postgres/docbox/config",
+        "setup_user": {
+            "username": "<YOUR SETUP DB USERNAME>",
+            "password": "<YOUR SETUP DB USER PASSWORD>"
+        }
+    },
+    "secrets": {
+        "provider": "aws",
+    },
+    "search": {
+        "provider": "typesense",
+        "url": "http://<YOUR TYPESENSE SERVER IP AND PORT>",
+        "api_key_secret_name": "typesense/credentials/docbox"
+    },
+    "storage": {
+        "provider": "s3",
+        "endpoint": {
+            "type": "aws"
+        }
+    }
+}
+```
+
+
+:::tip
+Using AWS Secret Manager? You can store your cli configuration file as an AWS secret instead of a 
+local file. Create a secret using config JSON and specify the `--aws-config-secret <YOUR_SECRET_NAME>` or `-a <YOUR_SECRET_NAME>` 
+argument when using docbox-cli
+:::
 
 :::note 
 If you are deploying to AWS ensure you have the following environment variables set, you
