@@ -3,54 +3,7 @@
 Before the CLI can access anything you must create a configuration file for the cli to use, the information in the config file will be used to setup the root and any 
 tenants when performing the tenant commands.
 
-```json title="cli-config.json"
-{
-    // URL for the local API server
-    "api": {
-        "url": "http://localhost:8080"
-    },
-    // Database credentials
-    "database": {
-        "__description": "Database details and credentials",
-        "host": "localhost",
-        "port": 5432,
-        "root_secret_name": "postgres/docbox/config",
-        "setup_user": {
-            "__description": "User to use when migrating and setting up database, should have higher permissions",
-            "username": "docbox",
-            "password": "test"
-        },
-        // Optional: (As of 0.3.0) Alternative to "setup_user" the name of a secret that contains the username and password
-        // in JSON format, will be loaded at runtime instead of being baked into the config
-        "setup_user_secret_name": "pg-master"
-    },
-    // Secrets provider
-    "secrets": {
-        "__description": "Secrets manager configurations",
-        "provider": "aws",
-    },
-    // Search provider and credentials
-    "search": {
-        "__description": "Search index factory configuration",
-        "provider": "typesense",
-        "url": "http://localhost:8108",
-        "api_key": "typesensedev"
-    },
-    // Storage provider and credentials
-    "storage": {
-        "__description": "Storage bucket provider",
-        "provider": "s3",
-        "endpoint": {
-            "type": "custom",
-            "endpoint": "http://localhost:9090",
-            "access_key_id": "minioadmin",
-            "access_key_secret": "minioadmin"
-        }
-    }
-}
-```
-
-Documentation on config options coming soon... the sample config below with minor edits (according to your infra) can be used with the official supported docbox
+The sample config below with minor edits (according to your infra) can be used with the official supported docbox
 AWS automated infra:
 ```json title="cli-config.json"
 {
@@ -83,6 +36,7 @@ AWS automated infra:
 }
 ```
 
+You can find the full documentation for CLI configuration [Here](/docs/guides/config/cli)
 
 :::tip
 Using AWS Secret Manager? You can store your cli configuration file as an AWS secret instead of a 
