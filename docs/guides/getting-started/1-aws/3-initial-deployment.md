@@ -63,11 +63,6 @@ To monitor installation progress for Docbox:
 sh ./scripts/ssh.sh
 ```
 
-To monitor installation progress for LibreOffice:
-
-```sh
-sh ./scripts/ssh-converter.sh
-```
 To monitor installation progress for Typesense:
 
 ```sh
