@@ -1,0 +1,1 @@
+{"responses":{"204":{"description":"Database cache flushed"},"500":{"description":"Failed to purge presigned cache","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}}}}

@@ -1,0 +1,1 @@
+{"responses":{"200":{"description":"Got server details successfully","content":{"application/json":{"schema":{"type":"object","required":["version"],"properties":{"version":{"type":"string","description":"Version of the docbox server"}},"title":"DocboxServerResponse"}}}}}}

@@ -18,6 +18,7 @@ import StatusCodes from "@theme/StatusCodes";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
 import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
 
 <Heading
   as={"h1"}
@@ -42,27 +43,24 @@ Updates a link, can be a name change, value change, a folder move, or all
   id={"request"}
   as={"h2"}
   className={"openapi-tabs__heading"}
-  children={"Request"}
 >
+  <Translate id="theme.openapi.request.title">Request</Translate>
 </Heading>
 
 <ParamsDetails
-  parameters={[{"name":"scope","in":"path","description":"Scope the link resides within","required":true,"schema":{"type":"string","description":"Valid document box scope string, must be: A-Z, a-z, 0-9, ':', '-', '_', '.'","examples":["user:1:files"],"title":"DocumentBoxScope"}},{"name":"link_id","in":"path","description":"ID of the link to request","required":true,"schema":{"type":"string","format":"uuid"}},{"name":"x-tenant-id","in":"header","description":"ID of the tenant you are targeting","required":true,"schema":{"type":"string"}},{"name":"x-tenant-env","in":"header","description":"Environment of the tenant you are targeting","required":true,"schema":{"type":"string"}},{"name":"x-user-id","in":"header","description":"Optional ID of the user if performed on behalf of a user","required":false,"schema":{"type":["string","null"]}},{"name":"x-user-name","in":"header","description":"Optional name of the user if performed on behalf of a user","required":false,"schema":{"type":["string","null"]}},{"name":"x-user-image-id","in":"header","description":"Optional image ID of the user if performed on behalf of a user","required":false,"schema":{"type":["string","null"]}}]}
+  {...require("./link-update.ParamsDetails.json")}
 >
   
 </ParamsDetails>
 
 <RequestSchema
-  title={"Body"}
-  body={{"content":{"application/json":{"schema":{"type":"object","description":"Request to rename a file","properties":{"folder_id":{"type":["string","null"],"format":"uuid","description":"New parent folder ID for the link"},"name":{"type":["string","null"],"description":"Name for the link","maxLength":255,"minLength":1},"pinned":{"type":["boolean","null"],"description":"Whether to pin the link"},"value":{"type":["string","null"],"description":"Value for the link","minLength":1}},"title":"UpdateLinkRequest"}}},"required":true}}
+  {...require("./link-update.RequestSchema.json")}
 >
   
 </RequestSchema>
 
 <StatusCodes
-  id={undefined}
-  label={undefined}
-  responses={{"200":{"description":"Updated link successfully"},"404":{"description":"Link not found","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}},"500":{"description":"Internal server error","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}}}}
+  {...require("./link-update.StatusCodes.json")}
 >
   
 </StatusCodes>

@@ -1,0 +1,1 @@
+{"title":"Body","body":{"content":{"application/json":{"schema":{"type":"object","description":"Request to create a document box","required":["scope"],"properties":{"scope":{"type":"string","description":"Scope for the document box to use","minLength":1}},"title":"CreateDocumentBoxRequest"}}},"required":true}}

@@ -18,6 +18,7 @@ import StatusCodes from "@theme/StatusCodes";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
 import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
 
 <Heading
   as={"h1"}
@@ -43,27 +44,24 @@ the current progress of a task
   id={"request"}
   as={"h2"}
   className={"openapi-tabs__heading"}
-  children={"Request"}
 >
+  <Translate id="theme.openapi.request.title">Request</Translate>
 </Heading>
 
 <ParamsDetails
-  parameters={[{"name":"scope","in":"path","description":"Scope the task is within","required":true,"schema":{"type":"string"}},{"name":"task_id","in":"path","description":"ID of the task to query","required":true,"schema":{"type":"string","format":"uuid"}},{"name":"x-tenant-id","in":"header","description":"ID of the tenant you are targeting","required":true,"schema":{"type":"string"}},{"name":"x-tenant-env","in":"header","description":"Environment of the tenant you are targeting","required":true,"schema":{"type":"string"}}]}
+  {...require("./task-get.ParamsDetails.json")}
 >
   
 </ParamsDetails>
 
 <RequestSchema
-  title={"Body"}
-  body={undefined}
+  {...require("./task-get.RequestSchema.json")}
 >
   
 </RequestSchema>
 
 <StatusCodes
-  id={undefined}
-  label={undefined}
-  responses={{"200":{"description":"Task found successfully","content":{"application/json":{"schema":{"type":"object","description":"Represents a stored asynchronous task progress","required":["id","document_box","status","created_at"],"properties":{"completed_at":{"type":["string","null"],"format":"date-time"},"created_at":{"type":"string","format":"date-time","description":"When the task was created"},"document_box":{"type":"string","title":"String","description":"ID of the document box the task belongs to"},"id":{"type":"string","format":"uuid","description":"Unique ID of the task"},"output_data":{"description":"Output data from the task completion"},"status":{"description":"Status of the task","type":"string","enum":["Pending","Completed","Failed"],"title":"TaskStatus"}},"title":"Task"}}}},"404":{"description":"Task not found","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}},"500":{"description":"Internal server error","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}}}}
+  {...require("./task-get.StatusCodes.json")}
 >
   
 </StatusCodes>

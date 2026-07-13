@@ -18,6 +18,7 @@ import StatusCodes from "@theme/StatusCodes";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
 import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
 
 <Heading
   as={"h1"}
@@ -46,27 +47,24 @@ progress.
   id={"request"}
   as={"h2"}
   className={"openapi-tabs__heading"}
-  children={"Request"}
 >
+  <Translate id="theme.openapi.request.title">Request</Translate>
 </Heading>
 
 <ParamsDetails
-  parameters={[{"name":"scope","in":"path","description":"Scope to create the file within","required":true,"schema":{"type":"string","description":"Valid document box scope string, must be: A-Z, a-z, 0-9, ':', '-', '_', '.'","examples":["user:1:files"],"title":"DocumentBoxScope"}},{"name":"x-tenant-id","in":"header","description":"ID of the tenant you are targeting","required":true,"schema":{"type":"string"}},{"name":"x-tenant-env","in":"header","description":"Environment of the tenant you are targeting","required":true,"schema":{"type":"string"}},{"name":"x-user-id","in":"header","description":"Optional ID of the user if performed on behalf of a user","required":false,"schema":{"type":["string","null"]}},{"name":"x-user-name","in":"header","description":"Optional name of the user if performed on behalf of a user","required":false,"schema":{"type":["string","null"]}},{"name":"x-user-image-id","in":"header","description":"Optional image ID of the user if performed on behalf of a user","required":false,"schema":{"type":["string","null"]}}]}
+  {...require("./file-create-presigned.ParamsDetails.json")}
 >
   
 </ParamsDetails>
 
 <RequestSchema
-  title={"Body"}
-  body={{"content":{"application/json":{"schema":{"type":"object","description":"Request to create a new presigned file upload","required":["name","folder_id","size"],"properties":{"disable_mime_sniffing":{"type":["boolean","null"],"description":"Whether to disable mime sniffing for the file. When false/not specified\nif a application/octet-stream mime type is provided the file name\nwill be used to attempt to determine the real mime type"},"folder_id":{"type":"string","format":"uuid","description":"ID of the folder to store the file in"},"mime":{"type":["string","null"],"description":"Mime type of the file"},"name":{"type":"string","description":"Name of the file being uploaded","maxLength":255,"minLength":1},"parent_id":{"type":["string","null"],"format":"uuid","description":"Optional ID of the parent file if this file is associated as a child\nof another file. Mainly used to associating attachments to email files"},"processing_config":{"oneOf":[{"type":"null"},{"description":"Optional processing config","type":"object","properties":{"email":{"oneOf":[{"type":"null"},{"description":"Email specific processing configuration","type":"object","properties":{"skip_attachments":{"type":["boolean","null"],"description":"Whether to skip extracting attachments when processing an email","default":null}},"title":"EmailProcessingConfig"}],"default":null},"max_unpack_iterations":{"type":["integer","null"],"description":"Maximum number of times to unpack a file. When unpacking\nthings like email attachments, these are recursively this\nlimits the number of nested unpacking that can occur.\n\nDefault: 1 (Unpack Only the immediate children)","default":null,"minimum":0}},"title":"ProcessingConfig"}]},"size":{"type":"integer","format":"int32","description":"Size of the file being uploaded in bytes. Must match the size of the\nfile being uploaded","minimum":1}},"title":"CreatePresignedRequest"}}},"required":true}}
+  {...require("./file-create-presigned.RequestSchema.json")}
 >
   
 </RequestSchema>
 
 <StatusCodes
-  id={undefined}
-  label={undefined}
-  responses={{"201":{"description":"Created presigned upload successfully","content":{"application/json":{"schema":{"type":"object","description":"Response describing how to upload the presigned file and the ID\nfor polling the progress","required":["task_id","method","uri","headers"],"properties":{"headers":{"type":"object","description":"Headers to include on the file upload request","additionalProperties":{"type":"string"},"propertyNames":{"type":"string"}},"method":{"type":"string","description":"HTTP method to use when uploading the file"},"task_id":{"type":"string","format":"uuid","description":"ID of the file upload task to poll"},"uri":{"type":"string","description":"URL to upload the file to"}},"title":"PresignedUploadResponse"}}}},"400":{"description":"Malformed or invalid request not meeting validation requirements","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}},"404":{"description":"Target folder could not be found","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}},"500":{"description":"Internal server error","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}}}}
+  {...require("./file-create-presigned.StatusCodes.json")}
 >
   
 </StatusCodes>

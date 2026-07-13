@@ -18,6 +18,7 @@ import StatusCodes from "@theme/StatusCodes";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
 import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
 
 <Heading
   as={"h1"}
@@ -43,27 +44,24 @@ a specific query with support for wildcards
   id={"request"}
   as={"h2"}
   className={"openapi-tabs__heading"}
-  children={"Request"}
 >
+  <Translate id="theme.openapi.request.title">Request</Translate>
 </Heading>
 
 <ParamsDetails
-  parameters={[{"name":"x-tenant-id","in":"header","description":"ID of the tenant you are targeting","required":true,"schema":{"type":"string"}},{"name":"x-tenant-env","in":"header","description":"Environment of the tenant you are targeting","required":true,"schema":{"type":"string"}}]}
+  {...require("./admin-tenant-boxes.ParamsDetails.json")}
 >
   
 </ParamsDetails>
 
 <RequestSchema
-  title={"Body"}
-  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"offset":{"type":["integer","null"],"format":"int64","description":"Offset to start results from","default":null,"minimum":0},"query":{"type":["string","null"],"description":"Optional query to search document boxes by","default":null},"size":{"type":["integer","null"],"format":"int32","description":"Number of items to include in the response","default":null,"minimum":0}},"title":"TenantDocumentBoxesRequest"}}},"required":true}}
+  {...require("./admin-tenant-boxes.RequestSchema.json")}
 >
   
 </RequestSchema>
 
 <StatusCodes
-  id={undefined}
-  label={undefined}
-  responses={{"201":{"description":"Searched successfully","content":{"application/json":{"schema":{"type":"object","required":["results","total"],"properties":{"results":{"type":"array","items":{"type":"object","required":["scope","created_at"],"properties":{"created_at":{"type":"string","format":"date-time","description":"Date of creation for the document box"},"scope":{"description":"Scope for the document box","type":"string","title":"String"}},"title":"DocumentBox"},"description":"The document boxes"},"total":{"type":"integer","format":"int64","description":"The total number of document boxes available to query"}},"title":"TenantDocumentBoxesResponse"}}}},"400":{"description":"Malformed or invalid request not meeting validation requirements","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}},"500":{"description":"Internal server error","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}}}}
+  {...require("./admin-tenant-boxes.StatusCodes.json")}
 >
   
 </StatusCodes>

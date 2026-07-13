@@ -1,0 +1,1 @@
+{"responses":{"200":{"description":"Got settings successfully","content":{"application/json":{"schema":{"type":"object","description":"Response to an options request","required":["max_file_size"],"properties":{"max_file_size":{"type":"integer","format":"int32","description":"Max allowed upload file size in bytes"}},"title":"DocumentBoxOptions"}}}}}}

@@ -18,6 +18,7 @@ import StatusCodes from "@theme/StatusCodes";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
 import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
 
 <Heading
   as={"h1"}
@@ -42,27 +43,24 @@ Search within the contents of the file
   id={"request"}
   as={"h2"}
   className={"openapi-tabs__heading"}
-  children={"Request"}
 >
+  <Translate id="theme.openapi.request.title">Request</Translate>
 </Heading>
 
 <ParamsDetails
-  parameters={[{"name":"scope","in":"path","description":"Scope the file resides within","required":true,"schema":{"type":"string","description":"Valid document box scope string, must be: A-Z, a-z, 0-9, ':', '-', '_', '.'","examples":["user:1:files"],"title":"DocumentBoxScope"}},{"name":"file_id","in":"path","description":"ID of the file to query","required":true,"schema":{"type":"string","format":"uuid"}},{"name":"x-tenant-id","in":"header","description":"ID of the tenant you are targeting","required":true,"schema":{"type":"string"}},{"name":"x-tenant-env","in":"header","description":"Environment of the tenant you are targeting","required":true,"schema":{"type":"string"}}]}
+  {...require("./file-search.ParamsDetails.json")}
 >
   
 </ParamsDetails>
 
 <RequestSchema
-  title={"Body"}
-  body={{"content":{"application/json":{"schema":{"type":"object","description":"Request to search within a file","properties":{"limit":{"type":["integer","null"],"format":"int32","description":"Maximum number of results to return","default":null,"minimum":0},"offset":{"type":["integer","null"],"format":"int64","description":"Offset to start returning results from","default":null,"minimum":0},"query":{"type":["string","null"],"description":"The search query","default":null}},"title":"FileSearchRequest"}}},"required":true}}
+  {...require("./file-search.RequestSchema.json")}
 >
   
 </RequestSchema>
 
 <StatusCodes
-  id={undefined}
-  label={undefined}
-  responses={{"200":{"description":"Searched successfully","content":{"application/json":{"schema":{"type":"object","required":["total_hits","results"],"properties":{"results":{"type":"array","items":{"type":"object","required":["page","matches"],"properties":{"matches":{"type":"array","items":{"type":"string"}},"page":{"type":"integer","format":"int64","minimum":0}},"title":"PageResult"}},"total_hits":{"type":"integer","format":"int64","minimum":0}},"title":"FileSearchResultResponse"}}}},"400":{"description":"Malformed or invalid request not meeting validation requirements","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}},"404":{"description":"File not found","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}},"500":{"description":"Internal server error","content":{"application/json":{"schema":{"type":"object","description":"HTTP error JSON format for serializing responses","required":["reason"],"properties":{"reason":{"type":"string"}},"title":"HttpErrorResponse"}}}}}}
+  {...require("./file-search.StatusCodes.json")}
 >
   
 </StatusCodes>
