@@ -2,6 +2,7 @@
 
 Website for Docbox documentation
 
-npm run docusaurus gen-api-docs all
+## To re-generate docs
 
 npm run docusaurus clean-api-docs all
+npm run docusaurus gen-api-docs all
